@@ -9,6 +9,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {AngularMultiSelectModule} from "angular2-multiselect-dropdown";
 
 @NgModule({
   declarations: [ListUserComponent, CreateUserComponent],
@@ -18,7 +19,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         Ng2SmartTableModule,
         ReactiveFormsModule,
         UsersRoutingModule,
-        FormsModule
+        FormsModule,
+        AngularMultiSelectModule
     ]
 })
 export class UsersModule { }

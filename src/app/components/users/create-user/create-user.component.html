@@ -10,45 +10,53 @@
                     <ngb-tabset class="tab-coupon">
                         <ngb-tab title="Account">
                             <ng-template ngbTabContent>
-                                                                                                                                        <div class="tab-pane fade active show" id="account" role="tabpanel"
-                                <div >
-                                    <label for="validationCustom0" class="col-xl-3 col-md-4"><span>*</span>
-                                        First Name</label>
+                                <angular2-multiselect [data]="list" [(ngModel)]="selectedItems"
+                                                      [settings]="dropdownSettings"
+                                                      (onSelect)="onItemSelect($event)"
+                                                      (onDeSelect)="OnItemDeSelect($event)"
 
-                                    <select style="border-radius: 25px;" class="custom-select col-md-7"
-                                            required=""  id="validationCustom0" (click)="SelectLevel()">
-                                        <option *ngFor="let f of mainCategory" [value]="f.name">{{f.name}}</option>
-                                    </select>
-                                </div>                                                                                                     aria-labelledby="account-tab">
-<!--                                    <form [formGroup]="accountForm" (ngSubmit)="onSubmit()"-->
-<!--                                        class="needs-validation user-add" novalidate="">-->
-<!--                                        <h4>Заполните следующие поля</h4>-->
+                                >
 
-<!--                                        <div class="form-group row">-->
-<!--                                            <label for="validationCustom1" class="col-xl-3 col-md-4"><span>*</span> Last-->
-<!--                                                Name</label>-->
-<!--                                            <input class="form-control col-xl-8 col-md-7" id="validationCustom1"-->
-<!--                                                type="text" required="">-->
-<!--                                        </div>-->
-<!--                                        <div class="form-group row">-->
-<!--                                            <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>-->
-<!--                                                Email</label>-->
-<!--                                            <input class="form-control col-xl-8 col-md-7" id="validationCustom2"-->
-<!--                                                type="text" required="">-->
-<!--                                        </div>-->
-<!--                                        <div class="form-group row">-->
-<!--                                            <label for="validationCustom3" class="col-xl-3 col-md-4"><span>*</span>-->
-<!--                                                Password</label>-->
-<!--                                            <input class="form-control col-xl-8 col-md-7" id="validationCustom3"-->
-<!--                                                type="password" required="">-->
-<!--                                        </div>-->
-<!--                                        <div class="form-group row">-->
-<!--                                            <label for="validationCustom4" class="col-xl-3 col-md-4"><span>*</span>-->
-<!--                                                Confirm Password</label>-->
-<!--                                            <input class="form-control col-xl-8 col-md-7" id="validationCustom4"-->
-<!--                                                type="password" required="">-->
-<!--                                        </div>-->
-<!--                                    </form>-->
+                                </angular2-multiselect>
+                                <angular2-multiselect *ngIf="subcat" [data]="sublist" [(ngModel)]="selectedSubItems"
+                                                      [settings]="dropdownSubSettings"
+                                                      (onSelect)="onItemSubSelect($event)"
+                                                      (onDeSelect)="OnItemDeSelect($event)"
+
+                                >
+
+                                </angular2-multiselect>
+                                    <form [formGroup]="accountForm" (ngSubmit)="onSubmit()" *ngIf="subflag"
+                                        class="needs-validation user-add" novalidate="">
+                                        <h4>Заполните следующие поля</h4>
+
+                                        <div class="form-group row">
+                                            <label for="validationCustom1" class="col-xl-3 col-md-4"><span>*</span>                                                 Наименование</label>
+                                            <input class="form-control col-xl-8 col-md-7" id="validationCustom1" formControlName="name"
+                                                   type="text" required="">
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>
+                                                Email</label>
+                                            <input class="form-control col-xl-8 col-md-7" id="validationCustom2"
+                                                type="text" required="" formControlName="email">
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="validationCustom3" class="col-xl-3 col-md-4"><span>*</span>
+                                                Телефон</label>
+                                            <input class="form-control col-xl-8 col-md-7" id="validationCustom3"
+                                                type="password" required="" formControlName="phone">
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="validationCustom4" class="col-xl-3 col-md-4"><span>*</span>
+                                                Адрес</label>
+                                            <input class="form-control col-xl-8 col-md-7" id="validationCustom4"
+                                                type="text" required="" formControlName="address">
+                                        </div>
+                                        <div class="form-button">
+                                            <button class="btn btn-primary" type="submit" >Сохранить</button>
+                                        </div>
+                                    </form>
 <!--                                </div>-->
                             </ng-template>
                         </ngb-tab>
@@ -230,9 +238,9 @@
 <!--                            </ng-template>-->
 <!--                        </ngb-tab>-->
                     </ngb-tabset>
-                    <div class="pull-right">
-                        <button type="button" class="btn btn-primary">Save</button>
-                    </div>
+<!--                    <div class="pull-right">-->
+<!--                        <button type="button" class="btn btn-primary">Save</button>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>
