@@ -1,20 +1,75 @@
 <!-- Container-fluid starts-->
+<!--<div class="container-fluid">-->
+<!--    <div class="row">-->
+<!--        <div class="col-sm-12">-->
+<!--            <div class="card">-->
+<!--                <div class="card-header">-->
+<!--                    <h5>Invoice List</h5>-->
+<!--                </div>-->
+<!--                <div class="card-body">-->
+<!--                    <div id="batchDelete" class="custom-datatable">-->
+<!--                        <div class="table-responsive">-->
+<!--                            <ng2-smart-table [settings]="settings" [source]="invoice"></ng2-smart-table>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!-- Container-fluid Ends-->
+
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5>Invoice List</h5>
-                </div>
-                <div class="card-body">
-                    <div id="batchDelete" class="custom-datatable">
-                        <div class="table-responsive">
-                            <ng2-smart-table [settings]="settings" [source]="invoice"></ng2-smart-table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="col-sm-1" style="background: white; height: 20px">ПН</div>
+        <div class="col-sm-1" style="background: white; height: 20px">ВТ</div>
+        <div class="col-sm-1" style="background: white; height: 20px">СР</div>
+        <div class="col-sm-1" style="background: white; height: 20px">ЧТ</div>
+        <div class="col-sm-1" style="background: white; height: 20px">ПТ</div>
+        <div class="col-sm-1" style="background: white; height: 20px">СБ</div>
+        <div class="col-sm-1" style="background: white; height: 20px">ВС</div>
     </div>
+    <ng-container *ngFor="let a of maindays, let i=index">
+    <div class="row">
+        <ng-container *ngFor="let b of a, let j = index">
+        <div class="col-sm-1" (click)="open(content, b)" [style.background-color]="b.color" >{{b.date|date:'yyyy-MM-dd'}}</div>
+
+            </ng-container>
+    </div>
+    </ng-container>
+<!--    <ng-container *ngFor="let a of [1,2,3,4,5], let i=index">-->
+<!--            <div class="row">-->
+<!--                <ng-container *ngFor="let b of [1,2,3,4,5,6,7], let j = index">-->
+<!--                <div class="col-sm-1"></div>-->
+
+<!--                    </ng-container>-->
+<!--            </div>-->
+<!--    </ng-container>-->
 </div>
-<!-- Container-fluid Ends-->
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title f-w-600" id="exampleModalLabel">{{header}}</h5>
+        <button type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" *ngIf="addDay">
+        <span>Чтобы добавить рабочий день выберите время работы</span>
+        <form [formGroup]="TimeControl" (ngSubmit)="AddDays()">
+        <div class="form-group">
+        <label>Время начала</label>
+            <input type="time" style="margin-left: 20px" formControlName="start">
+
+        </div>
+        <div class="form-group">
+            <label>Время окончания</label>
+            <input type="time" style="margin-left: 20px" formControlName="end">
+
+        </div>
+<button class="btn btn-success shadow-lg mx-auto" type="submit">Добавить</button>
+        </form>
+    </div>
+
+
+</ng-template>

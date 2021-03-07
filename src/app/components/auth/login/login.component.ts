@@ -5,6 +5,8 @@ import {Router} from '@angular/router';
 import {Answer} from '../../../shared/class/helpers/Response';
 import Swal from 'sweetalert2';
 import {Token} from '../../../shared/class/auth/Token';
+import {DataServices} from '../../../shared/service/data.services';
+import {SendAuth} from '../../../shared/class/auth/SendAuth';
 
 
 
@@ -17,15 +19,14 @@ import {Token} from '../../../shared/class/auth/Token';
 export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
-  public registerForm: FormGroup;
   public tokens: Token;
   public auth = false;
 
 
   constructor(private formBuilder: FormBuilder, private  authservice: AuthServices,
-              private router: Router) {
+              private router: Router, private dataservies: DataServices) {
     this.createLoginForm();
-    this.createRegisterForm();
+
   }
 
   owlcarousel = [
@@ -57,15 +58,7 @@ export class LoginComponent implements OnInit {
       error: '',
     });
   }
-  createRegisterForm() {
-    this.registerForm = this.formBuilder.group({
-      userName: new FormControl(''),
-      password: new FormControl('', Validators.minLength(8)),
-      confirmPassword: '',
-      error: '',
-      term: new FormControl(false, Validators.requiredTrue)
-    });
-  }
+
   position(text: string) {
     Swal.fire({
       position: 'top-end',
@@ -83,23 +76,31 @@ export class LoginComponent implements OnInit {
       timer: 1500
     }); }
   TokensData() {
-  if (this.Chooser()) {
     this.authservice.getAuth(this.loginForm.get('userName').value, this.loginForm.get('password').value, this.choose).subscribe(
         (result: Answer) => {
-          if (result.status.code === 201) {
-            this.tokens = result.responce as Token;
-            // localStorage.setItem('token', JSON.stringify(this.tokens));
-            //
-            this.router.navigate(['/settings/profile']);
+          if (result.status.code === 200) {
+            const user = result.responce as SendAuth;
+            this.dataservies.SendAccount(user);
+            if (user.isfilled) {
+              if (user.role === 'owner') {
+              this.router.navigate(['/settings/profile']);
+              } else {
+                this.router.navigate(['/settings/profilestaff']);
+              }
+            } else {
+                if (user.role === 'owner') {
+              this.router.navigate(['/settings/update']);
+                } else {
+                    this.router.navigate(['/settings/updatestaff']);
+                }
+            }
 
           } else {
             this.choose = 'Выберите тип';
             this.loginForm.setValue({error: 'Нет такого пользователя', userName: '', password: ''});
           }
         }
-    ); } else {
-    this.loginForm.patchValue({error: 'Выберите тип'});
-  }
+    );
   }
   ngOnInit() {
     const  temp = JSON.parse(localStorage.getItem('token'));
@@ -115,7 +116,7 @@ Chooser() {
     this.choose = 'owner';
     return true;
   } else if (this.choose === 'Сотрудник') {
-    this.choose = 'job';
+    this.choose = 'staff';
     return true;
   } else {
     this.loginForm.patchValue({error: 'Выберите тип'});
@@ -125,39 +126,14 @@ Chooser() {
     return false;
   }
 }
-  Register() {
-    if (this.Chooser()) {
-      if (this.registerForm.get('password').value !== this.registerForm.get('confirmPassword').value) {
-this.registerForm.setValue({error: 'Пароли не совпадают', userName: '', password: ''});
-    }
-      this.authservice.registration(this.registerForm.get('userName').value, this.registerForm.get('password').value,
-        this.choose).subscribe(
-        (result: Answer) => {
-          if (result.status.code === 201) {
-            this.position('Регистрация прошла успешно');
-            // l JSON.parse(result['message']);
-            // localStorage.setItem('token', JSON.stringify(this.tokens));
 
-            this.router.navigate(['/users/create-user']);
-
-          } else {
-            this.choose = 'Выберите тип';
-            this.registerForm.setValue({error: result.status.message , userName: '', password: '', confirmPassword: '',
-            term: false});
-          }
-        }
-    );
-  } else {
-      this.registerForm.patchValue({error: 'Выберите тип'});
-    }
-  }
 
 
 
 
   selectOption(value: any) {
     if (value === 'Сотрудник') {
-      this.choose = 'job';
+      this.choose = 'staff';
     } else if (value === 'Собственник') {
       this.choose = 'owner';
     } else { this.choose = undefined; }

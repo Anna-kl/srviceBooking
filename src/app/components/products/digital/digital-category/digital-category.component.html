@@ -4,44 +4,87 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Digital Products</h5>
+                    <h5>Услуги вашего бизнеса</h5>
                 </div>
                 <div class="card-body">
                     <div class="btn-popup pull-right">
                         <button type="button" class="btn btn-secondary" data-toggle="modal" data-original-title="test"
-                            data-target="#exampleModal" (click)="open(content)">Add Category</button>
+                            data-target="#exampleModal" (click)="open(content)">Добавить услугу</button>
                         <ng-template #content let-modal>
                             <div class="modal-header">
-                                <h5 class="modal-title f-w-600" id="exampleModalLabel">Add Digital Product</h5>
+                                <h5 class="modal-title f-w-600" id="exampleModalLabel">Управление услугами</h5>
                                 <button type="button" class="close" aria-label="Close"
                                     (click)="modal.dismiss('Cross click')">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form class="needs-validation">
+                                <form class="needs-validation" [formGroup]="ServicesControl" (ngSubmit)="Saveservices()">
                                     <div class="form">
                                         <div class="form-group">
-                                            <label for="validationCustom01" class="mb-1">Category Name :</label>
-                                            <input class="form-control" id="validationCustom01" type="text">
+                                            <label for="validationCustom01" class="mb-1">Наименование :</label>
+                                            <input class="form-control" id="validationCustom01" type="text"
+                                            formControlName="name">
                                         </div>
                                         <div class="form-group mb-0">
-                                            <label for="validationCustom02" class="mb-1">Category Image :</label>
-                                            <input class="form-control" id="validationCustom02" type="file">
+                                            <label for="validationCustom02" class="mb-1">Длительность:</label>
+                                            <input class="form-control" id="validationCustom02" type="number"
+                                            formControlName="minutes">
                                         </div>
+                                        <div class="form-group mb-0">
+                                            <label for="validationCustom03" class="mb-1">Стоимость:</label>
+                                            <input class="form-control" id="validationCustom03" type="number"
+                                                   formControlName="price">
+                                        </div>
+                                        <div class="form-group mb-0">
+                                            <label for="validationCustom04" class="mb-1">Описание:</label>
+                                            <textarea rows="3" cols="20" class="form-control" id="validationCustom04" type="text"
+                                                      formControlName="descride"></textarea>
+                                        </div>
+                                        <label class="mb-1" *ngIf="add">Выберите категорию:</label>
+                                        <label class="mb-1" *ngIf="!add">Категория:</label>
+                                        <select class="custom-select" (change)="changeCategory($event)"                                            formControlName="category">
+                                            <option value="" disabled>Выберите категорию</option>
+                                            <option *ngFor="let city of Category" [(ngModel)]="category">{{city.name}}</option>
+                                        </select>
+                                        <label class="mb-1" *ngIf="add">Добавить фото</label>
+                                        <label class="mb-1" *ngIf="!add">Редактировать фото</label>
+                                        <input type="file" class="form-control" id="files" multiple *ngIf="add"
+                                               (change)="detectFiles($event)" accept="image/x-png,image/jpeg">
+
+                                        <div class="images-preview mt-2" *ngIf="photos.length" class="d-flex flex-row">
+                                            <div formArrayName="photos" *ngFor="let photo of photos.controls; let i = index;" class="col-sm-3">
+                                                <div [formGroupName]="i" >
+                                                    <img [src]="photo.controls.url.value" class="card-img-top" alt="Image Preview">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="images-preview mt-2" *ngIf="images.length" class="d-flex flex-row">
+                                            <div formArrayName="photos" *ngFor="let photo of images; let i = index;" class="col-sm-3">
+                                                <div [formGroupName]="i" >
+                                                    <img [src]="photo" class="card-img-top" alt="Image Preview">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary" *ngIf="add">Сохранить</button>
+                                        <button type="submit" class="btn btn-primary" *ngIf="!add">Редактировать</button>
+                                        <button class="btn btn-secondary" type="button" data-dismiss="modal"
+                                                (click)="modal.dismiss('Cross click')">Закрыть</button>
                                     </div>
                                 </form>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" (click)="c('Save click')">Save</button>
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal"
-                                    (click)="modal.dismiss('Cross click')">Close</button>
-                            </div>
+
                         </ng-template>
                     </div>
                     <div id="batchDelete" class="category-table custom-datatable">
                         <div class="table-responsive">
-                            <ng2-smart-table [settings]="settings" [source]="digital_categories"></ng2-smart-table>
+                            <ng2-smart-table [settings]="settings" [source]="servicesdata"
+                                             (deleteConfirm)="onRoleDelete($event)"
+                                             (edit)="onEditConfirm($event, content)" ></ng2-smart-table>
                         </div>
                     </div>
                 </div>

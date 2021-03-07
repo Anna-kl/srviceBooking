@@ -1,0 +1,83 @@
+
+<div class="my-flex-cont">
+    <div class="all-prod">
+        <!-- LOGO -->
+        <div class="logo">
+            <a href="/"><img src="/assets/images/logo.png" /></a>
+        </div>
+        <div class="other">
+            <b>Выберите тип регистрации</b>
+        </div>
+        <!-- PROD1 -->
+        <div class="prod">
+            <div class="prod-img">
+                <img src="/assets/images/prod1.png" style="margin:10px;">
+            </div>
+            <div style="padding: 20px 20px 20px 110px;" [style.background-color]="choose=='owner'? '#67c4b2' : 'white'" (click)="Choose('owner')">
+                <p class="prod-numb" style="color:grey"><b>Вы собственник</b><br>
+                    <span style="color:#000;">Вы хотите зарегистрировать свой бизнес</span>
+                </p>
+            </div>
+        </div>
+        <!-- PROD2 -->
+        <div class="prod">
+            <div class="prod-img">
+                <img src="/assets/images/prod2.png" style="margin:10px;">
+            </div>
+            <div style="padding: 20px 20px 20px 110px;" [style.background-color]="choose=='staff'? '#67c4b2' : 'white'" (click)="Choose('staff')">
+                <p class="prod-numb" style="color:grey"><b>Вы сотрудник</b><br>
+                    <span style="color:#000;">Хотите присоединиться к бизнесу</span>
+                </p>
+            </div>
+        </div>
+        <!-- PROD3 -->
+<!--        <div class="prod">-->
+<!--            <div class="prod-img">-->
+<!--                <img src="/assets/images/prod3.png" style="margin:10px;">-->
+<!--            </div>-->
+<!--            <div style="padding: 20px 20px 20px 110px;">-->
+<!--                <p class="prod-numb"><b>Продукт третий</b><br>-->
+<!--                    <span style="color:#000;">Описание продукта</span>-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <a href="#"  >-->
+<!--            <b>-->
+<!--                <span style="font-size:30px;color: #333;">&#129046;</span>-->
+<!--                <span style="color:#000;vertical-align:super;">Смотреть все</span>-->
+<!--            </b>-->
+<!--        </a>-->
+    </div>
+    <!-- Форма входа -->
+    <div class="formvhod" style="height: 530px;max-width: 350px;" >
+        <form class="form-horizontal" [formGroup]="registerForm" (ngSubmit)="Register()">
+            <span class="heading">Добро пожаловать!</span>
+            <span class="#">уже есть аккаунт? <span class="green"><a [routerLink]="'/login'">Войти</a></span></span>
+            <br><br>
+            <div class="form-group">
+                <input type="email" class="form-control" id="inputEmail" formControlName="userName" placeholder="Ваш логин или почта">
+                <i class="fa fa-user"></i>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="inputPassword" formControlName="password" placeholder="Пароль">
+                <i class="fa fa-lock"></i>
+
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword"
+                       placeholder="Подтвердите пароль">
+                <i class="fa fa-lock"></i>
+                <!--                <div class="main-checkbox" style="">-->
+                <!--                    <input type="checkbox" value="none" id="checkbox1" name="check"/>-->
+                <!--                    <label for="checkbox1"></label>-->
+                <!--                </div>-->
+                <!--                <span class="text">Запомнить</span>-->
+                                <span style="float:right;margin:5px;">{{registerForm.get('error').value}}</span>
+               </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default"><b>РЕГИСТРАЦИЯ</b></button>
+            </div>
+            <!--            </span></span>-->
+        </form>
+    </div>
+</div>

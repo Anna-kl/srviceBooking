@@ -10,9 +10,11 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {AngularMultiSelectModule} from "angular2-multiselect-dropdown";
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import {GalleryModule} from "@ks89/angular-modal-gallery";
 
 @NgModule({
-  declarations: [ListUserComponent, CreateUserComponent],
+  declarations: [ListUserComponent, CreateUserComponent, UserDetailComponent],
     imports: [
         CommonModule,
         NgbModule,
@@ -20,7 +22,8 @@ import {AngularMultiSelectModule} from "angular2-multiselect-dropdown";
         ReactiveFormsModule,
         UsersRoutingModule,
         FormsModule,
-        AngularMultiSelectModule
+        AngularMultiSelectModule,
+        GalleryModule
     ]
 })
 export class UsersModule { }

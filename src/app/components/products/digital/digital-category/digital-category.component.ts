@@ -1,64 +1,1 @@
-import { Component, OnInit } from '@angular/core';
-import { digitalCategoryDB } from 'src/app/shared/tables/digital-category';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-
-@Component({
-  selector: 'app-digital-category',
-  templateUrl: './digital-category.component.html',
-  styleUrls: ['./digital-category.component.scss']
-})
-export class DigitalCategoryComponent implements OnInit {
-  public closeResult: string;
-  public digital_categories = []
-
-  constructor(private modalService: NgbModal) {
-    this.digital_categories = digitalCategoryDB.digital_category;
-  }
-
-  open(content) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
-
-
-  public settings = {
-    actions: {
-      position: 'right'
-    },
-    columns: {
-      img: {
-        title: 'Image',
-        type: 'html',
-      },
-      product_name: {
-        title: 'Name'
-      },
-      price: {
-        title: 'Price'
-      },
-      status: {
-        title: 'Status',
-        type: 'html',
-      },
-      category: {
-        title: 'Category',
-      }
-    },
-  };
-
-  ngOnInit() {
-  }
-
-}
+import {Component, OnInit, TemplateRef} from '@angular/core';import { digitalCategoryDB } from 'src/app/shared/tables/digital-category';import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';import {DataServices} from '../../../../shared/service/data.services';import {SendAuth} from '../../../../shared/class/auth/SendAuth';import {ServicesServices} from '../../../../shared/service/services.services';import {Answer} from '../../../../shared/class/helpers/Response';import {SendServices} from '../../../../shared/class/SendServices';import {FormArray, FormBuilder, FormGroup, Validator, Validators} from '@angular/forms';import {CategoryServices} from '../../../../shared/service/category.services';import {Category} from '../../../../shared/class/category/Category';import Swal from 'sweetalert2';import {content} from '../../../../shared/routes/content-routes';@Component({  selector: 'app-digital-category',  templateUrl: './digital-category.component.html',  styleUrls: ['./digital-category.component.scss'],  providers: [ServicesServices, CategoryServices]})export class DigitalCategoryComponent implements OnInit {    private add: boolean = false;    private images: any[];  constructor(private modalService: NgbModal, private dataservices: DataServices,              private services: ServicesServices, private formbuilder: FormBuilder,              private categories: CategoryServices) {   // this.digital_categories = digitalCategoryDB.digital_category;  }    get photos(): FormArray {        return this.ServicesControl.get('photos') as FormArray;    }  public closeResult: string;  public servicesdata = []  private user: SendAuth;  ServicesControl: FormGroup;  Category: Category[];  category: Category;    private modalReference: any;  public settings = {    actions: {      position: 'right',        delete: true,        add: false,        edit: true    },      mode: 'external',      delete: {          deleteButtonContent: 'Delete',          confirmDelete: true      },      edit: {          editButtonContent: '',          saveButtonContent: 'save',          cancelButtonContent: 'cancel',          confirmSave: true,      },    columns: {      name: {        title: 'Наименование'      },      price: {        title: 'Цена'      },      minutes: {        title: 'Длительность',      },      category: {        title: 'Категория',      }    },  };    // tslint:disable-next-line:no-shadowed-variable  open(content) {      this.add = true;      this.categories.getCategoriesservices(this.user.token).subscribe(          (result: Answer) => {              if (result.status.code === 200) {                  this.Category = [];                  this.Category.push(new Category(-1, -1, 'Выберите категорию', -1));                  this.Category.push(...result.responce as Category[]);                  this.category = this.Category[0];                  this.ServicesControl.setValue({                      name: '',                      price: 0,                      minutes: 0,                      descride: '',                      category: this.category                  });              }          }      );      this.modalReference = this.modalService.open(content);      this.modalReference.result.then((result) => {          this.closeResult = `Closed with: ${result}`;      }, (reason) => {          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;      });    //       , { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {    //   this.closeResult = `Closed with: ${result}`;    // }, (reason) => {    //   this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;    // });  }  private getDismissReason(reason: any): string {    if (reason === ModalDismissReasons.ESC) {      return 'by pressing ESC';    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {      return 'by clicking on a backdrop';    } else {      return `with: ${reason}`;    }  }createForm(){    this.ServicesControl = this.formbuilder.group({        name: ['', Validators.required],        price: [0, Validators.required],        minutes: [0, Validators.required],        descride: [''],        category: ['Выберите категорию', Validators.required],        photos: this.formbuilder.array([])    });}  ngOnInit() {    this.createForm();    this.dataservices.users.subscribe(result => {      this.user = result;      this.services.getServices(this.user.token).subscribe(    (result1: Answer) => {      if (result1.status.code === 200) {this.servicesdata = result1.responce as SendServices[];      }    });    });  }    createItem(data): FormGroup {        return this.formbuilder.group(data);    }    detectFiles(event) {        const files = event.target.files;        if (files) {            for (const file of files) {                const reader = new FileReader();                reader.onload = (e: any) => {                    this.photos.push(this.createItem({                        file,                        url: e.target.result  //Base64 string for preview image                    }));                }                reader.readAsDataURL(file);            }        }    }    changeCategory($event: Event) {const data1 = this.Category.filter(x => x.id === this.category.id)[0];console.log('hello');    }    position(text: string) {        Swal.fire({            position: 'top-end',            icon: 'success',            title: text,            showConfirmButton: false,            timer: 1500        }); }    noposition(text: string) {        Swal.fire({            position: 'top-end',            icon: 'error',            title: text,            showConfirmButton: false,            timer: 1500        }); }    Saveservices() {const data = this.ServicesControl.getRawValue();const sent = new SendServices(data['id'], data['price'], data['name'], data['describe'], data['minutes'], data['category']);if (this.add){this.services.addService(this.user.token, sent).subscribe(    (result: Answer) => {        if (result.status.code === 201) {this.position('Услуга добавлена');const res = result.responce as SendServices;for (const a of data['photos']) {    this.services.uploadUserPhoto(this.user.token, a.file, res.id).subscribe(        (resultphoto: Answer) => {            if (resultphoto.status.code === 500){                this.noposition(resultphoto.status.message);                return -1;            }        }    );}            this.services.getServices(this.user.token).subscribe(                (result1: Answer) => {                    if (result1.status.code === 200) {                        this.servicesdata = result1.responce as SendServices[];                    }                }            );this.modalReference.close();        } else {            this.noposition(result.status.message);        }    });    } else {    this.services.updateService(this.user.token, sent).subscribe(        (result: Answer) => {            if (result.status.code === 201) {                this.position('Услуга изменена');                const res = result.responce as SendServices;                              this.services.getServices(this.user.token).subscribe(                    (result1: Answer) => {                        if (result1.status.code === 200) {                            this.servicesdata = result1.responce as SendServices[];                        }                    }                );                this.modalReference.close();            } else {                this.noposition(result.status.message);            }        }    );}}    onRoleDelete($event: any) {        this.services.deleteServices(this.user.token, $event.data.id).subscribe(            (result: Answer) => {                if (result.status.code === 200){                    this.position('Услуга удалена');                }            }        );    }    // tslint:disable-next-line:no-shadowed-variable    onEditConfirm($event: any, content: TemplateRef<any>) {        this.add = false;        this.ServicesControl.reset();        this.ServicesControl = this.formbuilder.group({            id: $event.data.id,            name: $event.data.name,            price: $event.data.price,            minutes: $event.data.minutes,            descride: $event.data.describe,            category: $event.data.category,            photos: ''        });        this.images=[];        this.services.getPhotos(this.user.token, $event.data.id).subscribe(            (result: Answer) => {                if (result.status.code === 200){                    const temp = result.responce as any[];                    for (const a of temp) {                        this.images.push('data:image/jpeg;base64,' + a.fileContents);                    }                }            }        )        this.modalReference = this.modalService.open(content);        this.modalReference.result.then((result) => {                this.closeResult = 'Closed';        }, (reason) => {            this.closeResult = 'Dissmissed';        }   );    }}

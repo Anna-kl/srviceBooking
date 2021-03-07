@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-title"><h4>Карточка Заказа</h4></div>
+            <span *ngIf="isdesc" class="bg-warning">Для показа информации выберите заявку</span>
+            <div class="card-body" *ngIf="!isdesc">
+
+                            <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Имя клиента: {{this.DescCard.name_client}}</li>
+                            <li class="list-group-item">Наименование услуги: {{this.DescCard.services_name}}</li>
+                            <li class="list-group-item"> Время начала: {{DescCard.start_dttm| date:"HH:mm"}}</li>
+                                <li class="list-group-item">Стоимость: {{DescCard.price}}</li>
+                            </ul>
+                            <label for="comment">Ваш комментарий</label>
+                            <textarea cols="40" rows="5" [(ngModel)]="DescCard.comment_service" id="comment"></textarea>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-danger" style="background-color: red">Отменить</button>
+                    <button type="button" class="btn btn-secondary">Middle</button>
+                    <button type="button" class="btn btn-secondary">Right</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    <div class="col-sm-2">
+        <div class="card">
+<table>
+    <tr *ngFor="let b of this.work; let i=index">
+
+        <th  *ngIf="i%2==0"> {{this.Subcapital[i]|date:'h:mm'}}</th>
+        <th  *ngIf="i%2==1"> </th>
+        <td *ngFor="let c of this.work[i]" [style.background]="c.color" (click)="ShowDesc(c)" style="width: 60px"></td>
+    </tr>
+<!--    <body>-->
+
+<!--<ng-template >-->
+
+<!--</ng-template>-->
+
+<!--    </body>-->
+</table>
+
+</div>
+    </div>
+        </div>
+
+

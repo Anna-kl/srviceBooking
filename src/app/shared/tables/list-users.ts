@@ -2,7 +2,7 @@ export class userListDB {
     static list_user = [
         {
             avatar: "<img src='assets/images/dashboard/user5.jpg' class='imgTable'>",
-            fName: "Rowan",
+            name: "Rowan",
             lName: "Torres",
             email: "Rowan.torres@gmail.com",
             last_login: "6 Days ago",
@@ -10,7 +10,7 @@ export class userListDB {
         },
         {
             avatar: "<img src='assets/images/dashboard/user3.jpg' class='imgTable'>",
-            fName: "Alonzo",
+            name: "Alonzo",
             lName: "Perez",
             email: "Perez.Alonzo@gmail.com",
             last_login: "2 Days ago",
@@ -18,7 +18,7 @@ export class userListDB {
         },
         {
             avatar: "<img src='assets/images/dashboard/user1.jpg' class='imgTable'>",
-            fName: "Skylar",
+            name: "Skylar",
             lName: "Lane",
             email: "Lane.Skylar@gmail.com",
             last_login: "1 Days ago",

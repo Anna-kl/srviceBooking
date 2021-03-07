@@ -1,246 +1,81 @@
 <!-- Container-fluid starts-->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-xl-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="profile-details text-center">
+
+                        <img src="{{img}}" height="100"
+                             class="img-fluid img-90 rounded-circle blur-up lazyloaded"  alt="" />
+
+                        <span *ngIf="!imgflag">Добавить аватар</span>
+
+                    </div>
+                    <hr>
+                    <div class="form-group row">
+
+                        <input type="file" class="form-control col-xl-8 col-md-7" (change)="uploadFile($event)"/>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-sm-8">
             <div class="card tab2-card">
                 <div class="card-header">
-                    <h5> Добавить компанию</h5>
+                    <h5> Добавить сотрудника</h5>
                 </div>
                 <div class="card-body tab2-card">
-                    <ngb-tabset class="tab-coupon">
-                        <ngb-tab title="Account">
-                            <ng-template ngbTabContent>
-                                <angular2-multiselect [data]="list" [(ngModel)]="selectedItems"
-                                                      [settings]="dropdownSettings"
-                                                      (onSelect)="onItemSelect($event)"
-                                                      (onDeSelect)="OnItemDeSelect($event)"
 
-                                >
 
-                                </angular2-multiselect>
-                                <angular2-multiselect *ngIf="subcat" [data]="sublist" [(ngModel)]="selectedSubItems"
-                                                      [settings]="dropdownSubSettings"
-                                                      (onSelect)="onItemSubSelect($event)"
-                                                      (onDeSelect)="OnItemDeSelect($event)"
-
-                                >
-
-                                </angular2-multiselect>
-                                    <form [formGroup]="accountForm" (ngSubmit)="onSubmit()" *ngIf="subflag"
+                                    <form [formGroup]="accountForm" (ngSubmit)="onSubmit($event)"
                                         class="needs-validation user-add" novalidate="">
                                         <h4>Заполните следующие поля</h4>
 
                                         <div class="form-group row">
-                                            <label for="validationCustom1" class="col-xl-3 col-md-4"><span>*</span>                                                 Наименование</label>
-                                            <input class="form-control col-xl-8 col-md-7" id="validationCustom1" formControlName="name"
+                                            <label for="validationCustom1" class="col-xl-3 col-md-4"><span>*</span>Имя</label>
+                                            <input class="form-control col-xl-8 col-md-7" id="validationCustom1" formControlName="first"
                                                    type="text" required="">
                                         </div>
                                         <div class="form-group row">
-                                            <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>
-                                                Email</label>
+                                            <label for="validationCustom2" class="col-xl-3 col-md-4">
+                                                Отчество</label>
                                             <input class="form-control col-xl-8 col-md-7" id="validationCustom2"
-                                                type="text" required="" formControlName="email">
+                                                type="text" required="" formControlName="middle">
                                         </div>
                                         <div class="form-group row">
-                                            <label for="validationCustom3" class="col-xl-3 col-md-4"><span>*</span>
-                                                Телефон</label>
+                                            <label for="validationCustom3" class="col-xl-3 col-md-4">
+                                                Фамилия</label>
                                             <input class="form-control col-xl-8 col-md-7" id="validationCustom3"
-                                                type="password" required="" formControlName="phone">
+                                                type="text" required="" formControlName="last">
                                         </div>
                                         <div class="form-group row">
                                             <label for="validationCustom4" class="col-xl-3 col-md-4"><span>*</span>
-                                                Адрес</label>
+                                                Email</label>
                                             <input class="form-control col-xl-8 col-md-7" id="validationCustom4"
-                                                type="text" required="" formControlName="address">
+                                                type="text" required="" formControlName="email">
                                         </div>
+                                        <div class="form-group row" >
+                                            <label for="validationCustom5" class="col-xl-3 col-md-4">
+                                                Телефон</label>
+                                            <input class="form-control col-xl-8 col-md-7" id="validationCustom5"
+                                                   type="number" required="" formControlName="phone">
+                                        </div>
+                                        <div class="form-group row" >
+                                            <label for="validationCustom6" class="col-xl-3 col-md-4">
+                                                День рождения</label>
+                                            <input class="form-control col-xl-8 col-md-7" id="validationCustom6"
+                                                   type="date" required="" formControlName="birthday">
+                                        </div>
+
                                         <div class="form-button">
-                                            <button class="btn btn-primary" type="submit" >Сохранить</button>
+<!--                                            <button class="btn btn-primary" type="submit">Отправить приглашение</button>-->
+                                            <button type="submit">Submit</button>
                                         </div>
                                     </form>
-<!--                                </div>-->
-                            </ng-template>
-                        </ngb-tab>
-<!--                        <ngb-tab>-->
-<!--                            <ng-template ngbTabTitle>Permission-->
-<!--                                <ng-template ngbTabContent>-->
-<!--                                    <form [formGroup]="permissionForm" (ngSubmit)="onSubmit()"-->
-<!--                                        class="needs-validation user-add" novalidate="">-->
-<!--                                        <div class="permission-block">-->
-<!--                                            <div class="attribute-blocks">-->
-<!--                                                <h5 class="f-w-600 mb-3">Product Related permission </h5>-->
-<!--                                                <div class="row">-->
-<!--                                                    <div class="col-xl-3 col-sm-4">-->
-<!--                                                        <label>Add Product</label>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="col-xl-9 col-sm-8">-->
-<!--                                                        <div-->
-<!--                                                            class="form-group m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated">-->
-<!--                                                            <label class="d-block" for="edo-ani1">-->
-<!--                                                                <input class="radio_animated" id="edo-ani1" type="radio"-->
-<!--                                                                    name="rdo-ani">-->
-<!--                                                                Allow-->
-<!--                                                            </label>-->
-<!--                                                            <label class="d-block" for="edo-ani2">-->
-<!--                                                                <input class="radio_animated" id="edo-ani2" type="radio"-->
-<!--                                                                    name="rdo-ani" checked="">-->
-<!--                                                                Deny-->
-<!--                                                            </label>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                                <div class="row">-->
-<!--                                                    <div class="col-xl-3 col-sm-4">-->
-<!--                                                        <label>Update Product</label>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="col-xl-9 col-sm-8">-->
-<!--                                                        <div-->
-<!--                                                            class="form-group m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated">-->
-<!--                                                            <label class="d-block" for="edo-ani3">-->
-<!--                                                                <input class="radio_animated" id="edo-ani3" type="radio"-->
-<!--                                                                    name="rdo-ani1">-->
-<!--                                                                Allow-->
-<!--                                                            </label>-->
-<!--                                                            <label class="d-block" for="edo-ani4">-->
-<!--                                                                <input class="radio_animated" id="edo-ani4" type="radio"-->
-<!--                                                                    name="rdo-ani1" checked="">-->
-<!--                                                                Deny-->
-<!--                                                            </label>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                                <div class="row">-->
-<!--                                                    <div class="col-xl-3 col-sm-4">-->
-<!--                                                        <label>Delete Product</label>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="col-xl-9 col-sm-8">-->
-<!--                                                        <div-->
-<!--                                                            class="form-group m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated">-->
-<!--                                                            <label class="d-block" for="edo-ani5">-->
-<!--                                                                <input class="radio_animated" id="edo-ani5" type="radio"-->
-<!--                                                                    name="rdo-ani2">-->
-<!--                                                                Allow-->
-<!--                                                            </label>-->
-<!--                                                            <label class="d-block" for="edo-ani6">-->
-<!--                                                                <input class="radio_animated" id="edo-ani6" type="radio"-->
-<!--                                                                    name="rdo-ani2" checked="">-->
-<!--                                                                Deny-->
-<!--                                                            </label>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                                <div class="row">-->
-<!--                                                    <div class="col-xl-3 col-sm-4">-->
-<!--                                                        <label class="mb-0 sm-label-radio">Apply discount</label>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="col-xl-9 col-sm-8">-->
-<!--                                                        <div-->
-<!--                                                            class="form-group m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated pb-0">-->
-<!--                                                            <label class="d-block mb-0" for="edo-ani7">-->
-<!--                                                                <input class="radio_animated" id="edo-ani7" type="radio"-->
-<!--                                                                    name="rdo-ani3">-->
-<!--                                                                Allow-->
-<!--                                                            </label>-->
-<!--                                                            <label class="d-block mb-0" for="edo-ani8">-->
-<!--                                                                <input class="radio_animated" id="edo-ani8" type="radio"-->
-<!--                                                                    name="rdo-ani3" checked="">-->
-<!--                                                                Deny-->
-<!--                                                            </label>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                            <div class="attribute-blocks">-->
-<!--                                                <h5 class="f-w-600 mb-3">Category Related permission </h5>-->
-<!--                                                <div class="row">-->
-<!--                                                    <div class="col-xl-3 col-sm-4">-->
-<!--                                                        <label>Add Category</label>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="col-xl-9 col-sm-8">-->
-<!--                                                        <div-->
-<!--                                                            class="form-group m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated">-->
-<!--                                                            <label class="d-block" for="edo-ani9">-->
-<!--                                                                <input class="radio_animated" id="edo-ani9" type="radio"-->
-<!--                                                                    name="rdo-ani4">-->
-<!--                                                                Allow-->
-<!--                                                            </label>-->
-<!--                                                            <label class="d-block" for="edo-ani10">-->
-<!--                                                                <input class="radio_animated" id="edo-ani10"-->
-<!--                                                                    type="radio" name="rdo-ani4" checked="">-->
-<!--                                                                Deny-->
-<!--                                                            </label>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                                <div class="row">-->
-<!--                                                    <div class="col-xl-3 col-sm-4">-->
-<!--                                                        <label>Update Category</label>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="col-xl-9 col-sm-8">-->
-<!--                                                        <div-->
-<!--                                                            class="form-group m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated">-->
-<!--                                                            <label class="d-block" for="edo-ani11">-->
-<!--                                                                <input class="radio_animated" id="edo-ani11"-->
-<!--                                                                    type="radio" name="rdo-ani5">-->
-<!--                                                                Allow-->
-<!--                                                            </label>-->
-<!--                                                            <label class="d-block" for="edo-ani12">-->
-<!--                                                                <input class="radio_animated" id="edo-ani12"-->
-<!--                                                                    type="radio" name="rdo-ani5" checked="">-->
-<!--                                                                Deny-->
-<!--                                                            </label>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                                <div class="row">-->
-<!--                                                    <div class="col-xl-3 col-sm-4">-->
-<!--                                                        <label>Delete Category</label>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="col-xl-9 col-sm-8">-->
-<!--                                                        <div-->
-<!--                                                            class="form-group m-checkbox-inline mb-0 custom-radio-ml d-flex radio-animated">-->
-<!--                                                            <label class="d-block" for="edo-ani13">-->
-<!--                                                                <input class="radio_animated" id="edo-ani13"-->
-<!--                                                                    type="radio" name="rdo-ani6">-->
-<!--                                                                Allow-->
-<!--                                                            </label>-->
-<!--                                                            <label class="d-block" for="edo-ani14">-->
-<!--                                                                <input class="radio_animated" id="edo-ani14"-->
-<!--                                                                    type="radio" name="rdo-ani6" checked="">-->
-<!--                                                                Deny-->
-<!--                                                            </label>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                                <div class="row">-->
-<!--                                                    <div class="col-xl-3 col-sm-4">-->
-<!--                                                        <label class="mb-0 sm-label-radio">Apply discount</label>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="col-xl-9 col-sm-8">-->
-<!--                                                        <div-->
-<!--                                                            class="form-group m-checkbox-inline custom-radio-ml d-flex radio-animated pb-0">-->
-<!--                                                            <label class="d-block mb-0" for="edo-ani15">-->
-<!--                                                                <input class="radio_animated" id="edo-ani15"-->
-<!--                                                                    type="radio" name="rdo-ani7">-->
-<!--                                                                Allow-->
-<!--                                                            </label>-->
-<!--                                                            <label class="d-block mb-0" for="edo-ani16">-->
-<!--                                                                <input class="radio_animated" id="edo-ani16"-->
-<!--                                                                    type="radio" name="rdo-ani7" checked="">-->
-<!--                                                                Deny-->
-<!--                                                            </label>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </form>-->
-<!--                                </ng-template>-->
-<!--                            </ng-template>-->
-<!--                        </ngb-tab>-->
-                    </ngb-tabset>
-<!--                    <div class="pull-right">-->
-<!--                        <button type="button" class="btn btn-primary">Save</button>-->
-<!--                    </div>-->
+
                 </div>
             </div>
         </div>

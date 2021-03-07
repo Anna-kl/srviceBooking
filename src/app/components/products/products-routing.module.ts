@@ -58,8 +58,8 @@ const routes: Routes = [
         path: 'digital/digital-category',
         component: DigitalCategoryComponent,
         data: {
-          title: "Category",
-          breadcrumb: "Category"
+          title: 'Категории',
+          breadcrumb: 'Категории'
         }
       },
       {

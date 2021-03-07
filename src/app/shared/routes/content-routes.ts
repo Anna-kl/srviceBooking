@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 export const content: Routes = [
 
-  {
+{
     path: 'dashboard',
     loadChildren: () => import('../../components/dashboard/dashboard.module').then(m => m.DashboardModule),
   },
@@ -53,13 +53,13 @@ export const content: Routes = [
     }
   },
 
-  // {
-  //   path: 'vendors',
-  //   loadChildren: () => import('../../components/vendors/vendors.module').then(m => m.VendorsModule),
-  //   data: {
-  //     breadcrumb: "Vendors"
-  //   }
-  // },
+  {
+    path: 'vendors',
+    loadChildren: () => import('../../components/vendors/vendors.module').then(m => m.VendorsModule),
+    data: {
+      breadcrumb: "Vendors"
+    }
+  },
   // {
   //   path: 'localization',
   //   loadChildren: () => import('../../components/localization/localization.module').then(m => m.LocalizationModule),
@@ -67,22 +67,22 @@ export const content: Routes = [
   //     breadcrumb: "Localization"
   //   }
   // },
-  // {
-  //   path: 'reports',
-  //   loadChildren: () => import('../../components/reports/reports.module').then(m => m.ReportsModule),
-  // },
+  {
+    path: 'reports',
+    loadChildren: () => import('../../components/reports/reports.module').then(m => m.ReportsModule),
+  },
   {
     path: 'settings',
     loadChildren: () => import('../../components/setting/setting.module').then(m => m.SettingModule),
     data: {
-      breadcrumb: "Settings"
+      breadcrumb: 'Settings'
     }
   },
-  // {
-  //   path: 'invoice',
-  //   loadChildren: () => import('../../components/invoice/invoice.module').then(m => m.InvoiceModule),
-  //   data: {
-  //     breadcrumb: "Invoice"
-  //   }
-  // },
+  {
+    path: 'invoice',
+    loadChildren: () => import('../../components/invoice/invoice.module').then(m => m.InvoiceModule),
+    data: {
+      breadcrumb: 'Invoice'
+    }
+  },
 ];

@@ -10,9 +10,10 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SharedModule } from '../../shared/shared.module';
 import { RememberComponent } from './remember/remember.component';
 import { ConfirmComponent } from './confirm/confirm.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
-  declarations: [LoginComponent, RememberComponent, ConfirmComponent],
+  declarations: [LoginComponent, RememberComponent, ConfirmComponent, RegistrationComponent],
     imports: [
         CommonModule,
         AuthRoutingModule,

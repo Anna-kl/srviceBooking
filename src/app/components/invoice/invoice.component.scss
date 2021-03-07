@@ -1,0 +1,10 @@
+::ng-deep .col-sm-1{
+  height: 100px;
+  background-color: green;
+  margin: 5px;
+}
+
+:ng-deep .card-body{
+  margin-left: 0;
+  padding-left: 0;
+}

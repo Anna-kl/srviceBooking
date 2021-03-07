@@ -1,13 +1,14 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
+import {environment} from '../../../environments/environment.prod';
 
 @Injectable()
 
 export  class AuthServices {
   //  private url = 'https://localhost:44304/api/auths/';
-    private testurl = 'http://185.220.35.179/api/auths/';
-    private url = 'http://185.220.35.179/api/auths/';
+
+    private url = environment.Uri + 'auths/';
     constructor(private  http: HttpClient) {
 
         }

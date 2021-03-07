@@ -21,6 +21,7 @@ import { SettingModule } from './components/setting/setting.module';;
 import { ReportsModule } from './components/reports/reports.module';
 import { AuthModule } from './components/auth/auth.module';
 import {HttpClientModule} from '@angular/common/http';
+import {DataServices} from "./shared/service/data.services";
 
 
 @NgModule({
@@ -49,7 +50,7 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
 
   ],
-  providers: [],
+  providers: [DataServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
