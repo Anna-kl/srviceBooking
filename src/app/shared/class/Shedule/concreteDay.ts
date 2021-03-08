@@ -1,5 +1,6 @@
 import {DaysOf} from "./DaysOf";
 import {DayOfWeek} from "./dateOfweek";
+import {ConcreteSend} from "./concreteSend";
 
 export interface ConcreteDay {
     id: number;
@@ -12,8 +13,10 @@ export interface ConcreteDay {
 }
 
 export interface SendConcrete {
-    day: DayOfWeek;
-    concrete: ConcreteDay[];
+    start: Date;
+    end: Date;
+    id_day: number;
+    send: ConcreteSend[];
 
 }
 
