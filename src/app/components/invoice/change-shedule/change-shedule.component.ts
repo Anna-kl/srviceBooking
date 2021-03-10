@@ -41,21 +41,33 @@ export class ChangeSheduleComponent implements OnInit {
                 let end = new Date(temp.start);
                 const t = new Date(start).getTime() - new Date(temp.start).getTime();
                 let d = []
-                while (start !== end) {
+                while (start <= end) {
     d.push(start);
-    пшеstart = new Date(start.getTime() + (15 * 60 * 1000));
+    start = new Date(start.getTime() + (15 * 60 * 1000));
 }
 
-                this.work.push({start, end: temp.start, service: null, flag: false});
+                this.work.push({start, end: temp.start, service: null, flag: false, td: d, color:'white', price: undefined, client: null, comment: null});
                 start = new Date(temp.start);
                 end = new Date(temp.end);
-                while (start !== end){
+                d = [];
+                start = new Date(start.getTime() + (15 * 60 * 1000));
+
+                while (start <= end){
                     d.push(start);
-                    start = new Date(start.getTime() + 15 * 60);
+                    start = new Date(start.getTime() + 15 * 60*1000);
                 }
 
-                this.work.push({start, end: temp.end, service: temp.nameservices, flag: true});
+                this.work.push({start, end: temp.end, service: temp.nameservices, flag: true, td: d, color: 'green', price: temp.price,
+                client: temp.nameclient, comment: temp.comment});
             }
+            let d = [];
+            const end = new Date(this.days.end);
+            while (start <= end){
+                  d.push(start);
+                  start = new Date(start.getTime() + 15 * 60*1000);
+              }
+
+              this.work.push({start, end, service: null, flag: false, td: d, color: 'white', price: undefined, client: null, comment: null});
 //             this.days.concrete.map(res => {
 //                 res.dttm_start = new Date(res.dttm_start);
 //                 res.dttm_end = new Date(res.dttm_end);

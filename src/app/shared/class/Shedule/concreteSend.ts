@@ -5,4 +5,5 @@ export interface ConcreteSend {
   nameservices: string;
   nameclient: string;
   price: string;
+  comment: string;
 }

@@ -1,36 +1,61 @@
-<div class="row">
-    <div class="col-xl-6">
-        <div class="card">
-            <div class="card-title"><h4>Карточка Заказа</h4></div>
-            <span *ngIf="isdesc" class="bg-warning">Для показа информации выберите заявку</span>
-            <div class="card-body" *ngIf="!isdesc">
+<div class="container">
+<div class="row" *ngFor="let b of this.work" [style.background-color]="b.color">
+<!--    <div class="col-xl-6">-->
+<!--        <div class="card">-->
+<!--            <div class="card-title"><h4>Карточка Заказа</h4></div>-->
+<!--            <span *ngIf="isdesc" class="bg-warning">Для показа информации выберите заявку</span>-->
+<!--            <div class="card-body" *ngIf="!isdesc">-->
 
-                            <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Имя клиента: {{this.DescCard.name_client}}</li>
-                            <li class="list-group-item">Наименование услуги: {{this.DescCard.services_name}}</li>
-                            <li class="list-group-item"> Время начала: {{DescCard.start_dttm| date:"HH:mm"}}</li>
-                                <li class="list-group-item">Стоимость: {{DescCard.price}}</li>
-                            </ul>
-                            <label for="comment">Ваш комментарий</label>
-                            <textarea cols="40" rows="5" [(ngModel)]="DescCard.comment_service" id="comment"></textarea>
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-danger" style="background-color: red">Отменить</button>
-                    <button type="button" class="btn btn-secondary">Middle</button>
-                    <button type="button" class="btn btn-secondary">Right</button>
+<!--                            <ul class="list-group list-group-flush">-->
+<!--                            <li class="list-group-item">Имя клиента: {{this.DescCard.name_client}}</li>-->
+<!--                            <li class="list-group-item">Наименование услуги: {{this.DescCard.services_name}}</li>-->
+<!--                            <li class="list-group-item"> Время начала: {{DescCard.start_dttm| date:"HH:mm"}}</li>-->
+<!--                                <li class="list-group-item">Стоимость: {{DescCard.price}}</li>-->
+<!--                            </ul>-->
+<!--                            <label for="comment">Ваш комментарий</label>-->
+<!--                            <textarea cols="40" rows="5" [(ngModel)]="DescCard.comment_service" id="comment"></textarea>-->
+<!--                <div class="btn-group" role="group" aria-label="Basic example">-->
+<!--                    <button type="button" class="btn btn-danger" style="background-color: red">Отменить</button>-->
+<!--                    <button type="button" class="btn btn-secondary">Middle</button>-->
+<!--                    <button type="button" class="btn btn-secondary">Right</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+    <div class="col-sm-2" >
+        <table>
+            <tr *ngFor="let a of b.td">
+                <td>{{a| date: 'HH:mm'}}</td>
+            </tr>
+        </table>
+    </div>
+        <div class="col-sm-6" >
+            <div class="card">
+                <div class="card-deck" [style.background-color]="b.color">
+                    <div class="card-left" [style.background-color]="b.color" style="padding-top: 25px; margin-left: 20px;  ">
+                        <h4 style="color: white; font-size: 20px;">Клиент - {{b.client}}</h4>
+                        <div class="card-columns" *ngIf="b.flag" >
+                            <span style="font-size: 18px">4.3</span><span style="font-size: 18px; margin-left: 20px">13</span>
+                        </div>
+                    </div>
+                <div class="card" [style.background-color]="b.color" style="padding-top: 20px;"><h4 style="font-size: 30px; margin-left: 30px"> {{b.service}}</h4>
+                    <span *ngIf="b.price!==undefined" style="color: wheat; font-size: 20px">Стоимость: {{b.price}}</span>
+                    <button *ngIf="b.price===undefined" class="btn btn-primary-gradien">Записать</button>
+            </div>
+
+                    <div class="card-right" *ngIf="b.flag" >
+                        <span class="card-text">{{b.comment}}</span>
+                        <img class="card-img-top" src="/assets/images/edit.png" style="padding-top: 30px; margin-left: 15px">
+                    </div>
                 </div>
-            </div>
-            </div>
-        </div>
+<!--<table>-->
+<!--    <tr *ngFor="let b of this.work; let i=index">-->
 
-    <div class="col-sm-2">
-        <div class="card">
-<table>
-    <tr *ngFor="let b of this.work; let i=index">
-
-        <th  *ngIf="i%2==0"> {{this.Subcapital[i]|date:'h:mm'}}</th>
-        <th  *ngIf="i%2==1"> </th>
-        <td *ngFor="let c of this.work[i]" [style.background]="c.color" (click)="ShowDesc(c)" style="width: 60px"></td>
-    </tr>
+<!--        <th  *ngIf="i%2==0"> {{this.Subcapital[i]|date:'h:mm'}}</th>-->
+<!--        <th  *ngIf="i%2==1"> </th>-->
+<!--        <td *ngFor="let c of this.work[i]" [style.background]="c.color" (click)="ShowDesc(c)" style="width: 60px"></td>-->
+<!--    </tr>-->
 <!--    <body>-->
 
 <!--<ng-template >-->
@@ -38,10 +63,11 @@
 <!--</ng-template>-->
 
 <!--    </body>-->
-</table>
+<!--</table>-->
 
 </div>
     </div>
         </div>
+</div>
 
 
