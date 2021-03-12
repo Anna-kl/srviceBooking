@@ -36,7 +36,7 @@ public mainCategory: Category[];
     subflag = false;
     private auth: SendAuth;
     private account: SendAcount;
-    img = '';
+    img: string | ArrayBuffer | null = '';
     private user: SendAuth;
     private file: any;
   constructor(private formBuilder: FormBuilder,

@@ -8,9 +8,9 @@ import * as screenfull from 'screenfull';
 })
 export class ToggleFullscreenDirective {
   public screenfull: Screenfull;
-  @HostListener('click') onClick() {
-    if ((<Screenfull>screenfull).enabled) {
-      (<Screenfull>screenfull).toggle();
-    }
-  }
+  // @HostListener('click') onClick() {
+  //   if ((<Screenfull>screenfull).enabled) {
+  //     (<Screenfull>screenfull).toggle();
+  //   }
+  // }
 }

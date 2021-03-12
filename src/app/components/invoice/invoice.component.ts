@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { invoiceDB } from '../../shared/tables/invoice';
-import {numericIndexGetter} from '@swimlane/ngx-datatable/release/utils';
 import {SheduleServices} from '../../shared/service/shedule.services';
 import {DataServices} from '../../shared/service/data.services';
 import {SendAuth} from '../../shared/class/auth/SendAuth';
@@ -12,7 +11,7 @@ import {Category} from '../../shared/class/category/Category';
 import {ModalDismissReasons, NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 
 import Swal from 'sweetalert2';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-invoice',

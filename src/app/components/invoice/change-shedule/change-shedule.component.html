@@ -22,7 +22,122 @@
 <!--            </div>-->
 <!--            </div>-->
 <!--        </div>-->
+    <ng-template #content2 let-modal>
+        <div class="modal-header">
+            <h5 class="modal-title f-w-600" id="exampleModalLabel">Создать запись</h5>
+            <button type="button" class="close" aria-label="Close"
+                    (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
 
+            <form [formGroup]="ServiceControl" (ngSubmit)="AddRecord()">
+                <ng-multiselect-dropdown
+                        [placeholder]="'Выберите услугу'"
+                        [data]="dropdownList"
+                        [(ngModel)]="selectedItems"
+                        [settings]="dropdownSettings"
+                        (onSelect)="onItemSelect($event)"
+                        (onSelectAll)="onSelectAll($event)"
+                >
+                </ng-multiselect-dropdown>
+<!--                <div class="form-group">-->
+<!--                    <label>Выберите услугу</label>-->
+<!--                    <select class="custom-select" (change)="changeCategory($event)"                                            formControlName="category">-->
+<!--&lt;!&ndash;                        <option value="" disabled>Выберите категорию</option>&ndash;&gt;-->
+<!--                        <option *ngFor="let city of Category" [(ngModel)]="category" [ngModelOptions]="{standalone: true}">{{city.name}}</option>-->
+<!--                    </select>-->
+
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label>Время начала</label>-->
+<!--                    <input type="time" style="margin-left: 20px" formControlName="start">-->
+
+<!--                </div>-->
+                <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Время начала</mat-label>
+                    <input matInput type="time" formControlName="dttm" (change)="CheckTime()">
+                    <mat-hint style="color: red">{{errortime}}</mat-hint>
+                </mat-form-field>
+                </p>
+                <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Телефон клиента</mat-label>
+                    <input matInput type="text" formControlName="client" (change)="GetClient()">
+                    <mat-hint>Введите номер для поиска в системе</mat-hint>
+                </mat-form-field>
+                </p>
+<!--                <div class="form-group">-->
+<!--                    <label>Телефон клиента</label>-->
+<!--                    <input type="text" style="margin-left: 20px" formControlName="client"  (change)="GetClient()"placeholder="Введите номер телефона для поиска...">-->
+<!--                    <span>Введите</span>-->
+
+<!--                </div>-->
+                <p>
+                    <mat-form-field appearance="fill" *ngIf="error!==''">
+                        <mat-label>Имя клиента</mat-label>
+                        <input matInput type="text" formControlName="nameclient">
+                        <mat-hint>{{error}}</mat-hint>
+                    </mat-form-field>
+                </p>
+<!--                <div class="form-group" *ngIf="ServiceControl.get('nameclient').value!==''">-->
+<!--                    <label>Имя клиента</label>-->
+<!--                    <input type="text" style="margin-left: 20px" formControlName="nameclient" placeholder="Ввдедите имя клиента">-->
+
+<!--                </div>-->
+
+                <button class="btn btn-success shadow-lg mx-auto" type="submit">Добавить</button>
+            </form>
+        </div>
+
+
+    </ng-template>
+    <ng-template #content1 let-modal>
+        <div class="modal-header">
+            <h5 class="modal-title f-w-600" >Вы уверены, что хотите отменить заказ</h5>
+
+        </div>
+        <div class="modal-body">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-danger" style="background-color: red!important;" (click)="Ok()">OK</button>
+                <button type="button" class="btn btn-secondary" (click)="Cancel()" >Cancel</button>
+                <!--                                <button type="button" class="btn btn-secondary">Right</button>-->
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h5 class="modal-title f-w-600" id="exampleModalLabel2">Описание заказа</h5>
+            <button type="button" class="close" aria-label="Close"
+                    (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+                    <div class="card">
+                        <div class="card-title"><h4>Карточка Заказа</h4></div>
+                        <div class="card-body" >
+
+                                        <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Имя клиента: {{this.DescCard.name_client}}</li>
+                                        <li class="list-group-item">Наименование услуги: {{this.DescCard.services_name}}</li>
+                                        <li class="list-group-item"> Время начала: {{DescCard.start_dttm| date:"HH:mm"}}</li>
+                                            <li class="list-group-item">Стоимость: {{DescCard.price}}</li>
+                                            <li class="list-group-item">Комментарий клиента: {{DescCard.comment_client}}</li>
+                                        </ul>
+                                        <label for="comment">Ваш комментарий</label>
+                                        <textarea cols="40" rows="5" [(ngModel)]="DescCard.comment_service" id="comment"></textarea>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-danger" style="background-color: red!important;" (click)="CancelService(content1)">Отменить</button>
+                                <button type="button" class="btn btn-secondary" (click)="AddComment()" [(ngModel)]="this.DescCard.comment_service">Добавить комментарий</button>
+<!--                                <button type="button" class="btn btn-secondary">Right</button>-->
+                            </div>
+                        </div>
+                        </div>
+        </div>
+    </ng-template>
     <div class="col-sm-2" >
         <table>
             <tr *ngFor="let a of b.td">
@@ -30,23 +145,26 @@
             </tr>
         </table>
     </div>
-        <div class="col-sm-6" >
-            <div class="card">
-                <div class="card-deck" [style.background-color]="b.color">
+        <div class="col-md-10" >
+            <div class="card" [style.background-color]="b.color" style="height:  100%">
+                <div class="card-deck" style="height: 100%">
                     <div class="card-left" [style.background-color]="b.color" style="padding-top: 25px; margin-left: 20px;  ">
                         <h4 style="color: white; font-size: 20px;">Клиент - {{b.client}}</h4>
                         <div class="card-columns" *ngIf="b.flag" >
                             <span style="font-size: 18px">4.3</span><span style="font-size: 18px; margin-left: 20px">13</span>
                         </div>
                     </div>
-                <div class="card" [style.background-color]="b.color" style="padding-top: 20px;"><h4 style="font-size: 30px; margin-left: 30px"> {{b.service}}</h4>
+                <div class="card" [style.background-color]="b.color" style="padding-top: 20px;"><h4 style="font-size: 30px; margin-left: 30px; min-width: 30%"> {{b.service}}</h4>
                     <span *ngIf="b.price!==undefined" style="color: wheat; font-size: 20px">Стоимость: {{b.price}}</span>
-                    <button *ngIf="b.price===undefined" class="btn btn-primary-gradien">Записать</button>
+                    <button *ngIf="b.price===undefined" class="btn btn-primary-gradien" (click)="CreateRecord(b.td, content2)">Записать</button>
             </div>
 
-                    <div class="card-right" *ngIf="b.flag" >
-                        <span class="card-text">{{b.comment}}</span>
-                        <img class="card-img-top" src="/assets/images/edit.png" style="padding-top: 30px; margin-left: 15px">
+                    <div class="card-right" *ngIf="b.flag" style="margin-left: 15px; width: 30% ">
+                        <div class="row" *ngIf="b.flag">
+
+                        <span class="card-text" style="color:ghostwhite">Комментарий клиента: <br> {{b.comment}}</span>
+                        <img class="card-img-top"  src="/assets/images/edit.png" style="margin-top: 60px; float: left; margin-left: 15px; width: 40px; position: absolute " (click)="Edit(b, content)">
+                        </div>
                     </div>
                 </div>
 <!--<table>-->

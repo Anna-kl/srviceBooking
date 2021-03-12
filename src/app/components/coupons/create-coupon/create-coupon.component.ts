@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { NgbDateStruct, NgbDate, NgbCalendar, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbDateStruct, NgbDate, NgbCalendar, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-create-coupon',
@@ -11,18 +11,18 @@ export class CreateCouponComponent implements OnInit {
   public generalForm: FormGroup;
   public restrictionForm: FormGroup;
   public usageForm: FormGroup;
-  public model: NgbDateStruct;
-  public date: { year: number, month: number };
-  public modelFooter: NgbDateStruct;
+  // public model: NgbDateStruct;
+  // public date: { year: number, month: number };
+  // public modelFooter: NgbDateStruct;
 
-  constructor(private formBuilder: FormBuilder, private calendar: NgbCalendar) {
+  constructor(private formBuilder: FormBuilder) {
     this.createGeneralForm();
     this.createRestrictionForm();
     this.createUsageForm();
   }
 
   selectToday() {
-    this.model = this.calendar.getToday();
+//    this.model = this.calendar.getToday();
   }
 
   createGeneralForm() {

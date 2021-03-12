@@ -6,6 +6,10 @@ This component is based on [angucomplete-alt](https://github.com/ghiden/angucomp
 
 Click for [demo](http://oferh.github.io/ng2-completer/) or [plunk](https://plnkr.co/edit/sVnfpBiEb5jBdtul4ls9?p=preview)
 
+## help needed
+I don't use this library much anymore and don't have time to properly maintain it.
+If you are currently using ng2-completer and interested to maintain it please let me know!
+
 ## Installation
 
 ```sh

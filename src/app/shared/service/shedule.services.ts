@@ -6,6 +6,7 @@ import {environment} from '../../../environments/environment.prod';
 import {SendServices} from '../class/SendServices';
 import {DaysOf} from '../class/Shedule/DaysOf';
 import {DayOfWeek} from '../class/Shedule/dateOfweek';
+import {AComment} from "../class/Shedule/AComment";
 
 @Injectable()
 
@@ -33,5 +34,16 @@ export  class SheduleServices {
         let  headers: HttpHeaders = new HttpHeaders();
         headers = headers.append('Authorization', 'Bearer ' + token);
         return this.http.post(this.url, days, {headers } );
+    }
+    CancelService(token: string, id: number) {
+        let  headers: HttpHeaders = new HttpHeaders();
+        headers = headers.append('Authorization', 'Bearer ' + token);
+        return this.http.delete(this.url + id, {headers } );
+    }
+    AddComment(token: string, id: number, comment: string) {
+        let  headers: HttpHeaders = new HttpHeaders();
+        const body = new AComment(comment);
+        headers = headers.append('Authorization', 'Bearer ' + token);
+        return this.http.put(this.url + id, body,{headers } );
     }
 }

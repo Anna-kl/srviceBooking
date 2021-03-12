@@ -31,4 +31,5 @@ export interface SendAllInfo {
     services_name: string;
     comment_service: string;
     price: number;
+    id: number;
 }

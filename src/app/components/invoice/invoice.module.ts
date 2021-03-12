@@ -6,6 +6,8 @@ import { InvoiceComponent } from './invoice.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ChangeSheduleComponent } from './change-shedule/change-shedule.component';
+import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [InvoiceComponent, ChangeSheduleComponent],
@@ -14,7 +16,10 @@ import { ChangeSheduleComponent } from './change-shedule/change-shedule.componen
         InvoiceRoutingModule,
         Ng2SmartTableModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        NgMultiSelectDropDownModule.forRoot(),
+        MatInputModule
+
     ]
 })
 export class InvoiceModule { }
