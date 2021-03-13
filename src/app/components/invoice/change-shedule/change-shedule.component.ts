@@ -41,15 +41,15 @@ export class ChangeSheduleComponent implements OnInit {
                 let end = new Date(temp.start);
                 const t = new Date(start).getTime() - new Date(temp.start).getTime();
                 let d = []
-                while (start !== end) {
+                while (start <= end) {
     d.push(start);
-    пшеstart = new Date(start.getTime() + (15 * 60 * 1000));
+    start = new Date(start.getTime() + (15 * 60 * 1000));
 }
 
                 this.work.push({start, end: temp.start, service: null, flag: false});
                 start = new Date(temp.start);
                 end = new Date(temp.end);
-                while (start !== end){
+                while (start <= end){
                     d.push(start);
                     start = new Date(start.getTime() + 15 * 60);
                 }
