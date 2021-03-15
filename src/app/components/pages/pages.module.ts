@@ -10,16 +10,18 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { PagesRoutingModule } from './pages-routing.module';
 import { ListPageComponent } from './list-page/list-page.component';
 import { CreatePageComponent } from './create-page/create-page.component';
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [ListPageComponent, CreatePageComponent],
-  imports: [
-    CommonModule,
-    PagesRoutingModule,
-    NgbModule,
-    ReactiveFormsModule,
-    CKEditorModule,
-    NgxDatatableModule
-  ]
+    imports: [
+        CommonModule,
+        PagesRoutingModule,
+        NgbModule,
+        ReactiveFormsModule,
+        CKEditorModule,
+        NgxDatatableModule,
+        MatTabsModule
+    ]
 })
 export class PagesModule { }

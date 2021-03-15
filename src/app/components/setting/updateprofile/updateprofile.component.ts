@@ -34,8 +34,8 @@ export class UpdateprofileComponent implements OnInit  {
   sublist: any;
   selectedSubItems: any;
   subflag = false;
-  private auth: SendAuth;
-  private account: SendAcount;
+  auth: SendAuth;
+  account: SendAcount;
   private staffAccount: SendEmployee;
   constructor(private formBuilder: FormBuilder, private categorys: CategoryServices, private staffservices: StaffServices,
               private accountSer: AccountServices, private dataservices: DataServices,  private router: Router, ) {

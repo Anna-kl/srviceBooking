@@ -5,9 +5,9 @@
             <h5>Add Page</h5>
         </div>
         <div class="card-body tab2-card">
-            <ngb-tabset class="tab-coupon">
-                <ngb-tab title="General">
-                    <ng-template ngbTabContent>
+
+            <mat-tab-group>
+                <mat-tab label="General">
                         <form [formGroup]="generalForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate="">
                             <h4>General</h4>
                             <div class="form-group row">
@@ -31,11 +31,9 @@
                                 </div>
                             </div>
                         </form>
-                    </ng-template>
-                </ngb-tab>
-                <ngb-tab>
-                    <ng-template ngbTabTitle>SEO</ng-template>
-                    <ng-template ngbTabContent>
+                </mat-tab>
+                <mat-tab label="SEO">
+
                         <form [formGroup]="seoForm" class="needs-validation" novalidate="">
                             <h4>SEO</h4>
                             <div class="form-group row">
@@ -48,9 +46,9 @@
                                 <textarea rows="4" formControlName="meta_desc" class="col-xl-8 col-md-7"></textarea>
                             </div>
                         </form>
-                    </ng-template>
-                </ngb-tab>
-            </ngb-tabset>
+
+                </mat-tab>
+            </mat-tab-group>
             <!-- <ul class="nav nav-tabs tab-coupon" id="myTab" role="tablist">
                 <li class="nav-item"><a class="nav-link active show" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="true" data-original-title="" title="">General</a></li>
                 <li class="nav-item"><a class="nav-link" id="restriction-tabs" data-toggle="tab" href="#seo" role="tab" aria-controls="seo" aria-selected="false" data-original-title="" title="">SEO</a></li>

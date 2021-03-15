@@ -5,12 +5,13 @@ import {SendEmployee} from "../../../shared/class/staff/SendEmployee";
 import {DataServices} from "../../../shared/service/data.services";
 import {StaffServices} from "../../../shared/service/staff.services";
 import {SendAuth} from "../../../shared/class/auth/SendAuth";
-
+import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
+import {MatTabsModule} from '@angular/material/tabs';
 @Component({
   selector: 'app-profilestaff',
   templateUrl: './profilestaff.component.html',
   styleUrls: ['./profilestaff.component.scss'],
-  providers: [StaffServices]
+  providers: [StaffServices ]
 })
 export class ProfilestaffComponent implements OnInit {
   private auth: SendAuth;

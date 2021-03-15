@@ -21,7 +21,8 @@ import { SettingModule } from './components/setting/setting.module';;
 import { ReportsModule } from './components/reports/reports.module';
 import { AuthModule } from './components/auth/auth.module';
 import {HttpClientModule} from '@angular/common/http';
-import {DataServices} from "./shared/service/data.services";
+import {DataServices} from './shared/service/data.services';
+import {NgbModule, NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -48,7 +49,7 @@ import {DataServices} from "./shared/service/data.services";
     MenusModule,
     UsersModule,
     HttpClientModule,
-
+    NgbModule,
   ],
   providers: [DataServices],
   bootstrap: [AppComponent]

@@ -32,4 +32,7 @@ export class CreateVendorsComponent implements OnInit {
 
   ngOnInit() { }
 
+  onSubmit() {
+
+  }
 }

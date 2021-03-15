@@ -33,4 +33,7 @@ export class CreatePageComponent implements OnInit {
   ngOnInit() {
   }
 
+    onSubmit() {
+
+    }
 }

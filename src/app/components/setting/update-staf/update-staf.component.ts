@@ -5,8 +5,8 @@ import {StaffServices} from '../../../shared/service/staff.services';
 import {DataServices} from '../../../shared/service/data.services';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {SendAuth} from '../../../shared/class/auth/SendAuth';
-import {EmployeeOwner} from "../../../shared/class/staff/EmployeeOwner";
-import Swal from "sweetalert2";
+import {EmployeeOwner} from '../../../shared/class/staff/EmployeeOwner';
+import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
 
 @Component({
@@ -17,8 +17,8 @@ import {Router} from '@angular/router';
 })
 export class UpdateStafComponent implements OnInit {
   private auth: SendAuth;
-  private staffForm: FormGroup;
-  private staffAccount: SendEmployee;
+   staffForm: FormGroup;
+   staffAccount: SendEmployee;
 
   constructor(private staffservice: StaffServices, private dataservices: DataServices,
               private formBuilder: FormBuilder, private route: Router) { }
@@ -80,4 +80,7 @@ createStaffForm() {
   );
 }
 
+    uploadFile($event: Event) {
+        
+    }
 }

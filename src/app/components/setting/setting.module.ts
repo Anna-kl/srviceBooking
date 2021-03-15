@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule, NgbNavItem, NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { SettingRoutingModule } from './setting-routing.module';
@@ -12,6 +12,7 @@ import {AngularMultiSelectModule} from 'angular2-multiselect-dropdown';
 import { ProfilestaffComponent } from './profilestaff/profilestaff.component';
 import { UpdateStafComponent } from './update-staf/update-staf.component';
 import {RouterModule} from "@angular/router";
+import {MatTabsModule} from "@angular/material/tabs";
 
 
 
@@ -19,12 +20,12 @@ import {RouterModule} from "@angular/router";
   declarations: [ProfileComponent, UpdateprofileComponent, ProfilestaffComponent, UpdateStafComponent],
   imports: [
     CommonModule,
-    NgbModule,
     ReactiveFormsModule,
     SettingRoutingModule,
     SharedModule,
     AngularMultiSelectModule,
-    FormsModule
+    FormsModule,
+    MatTabsModule
   ]
 })
 export class SettingModule { }

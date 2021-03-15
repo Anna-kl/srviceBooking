@@ -58,7 +58,7 @@
                 <p>
                 <mat-form-field appearance="fill">
                     <mat-label>Время начала</mat-label>
-                    <input matInput type="time" formControlName="dttm" (change)="CheckTime()">
+                    <input matInput type="time" formControlName="dttm" (change)="CheckTime()" [min]="ServiceControl.get('start')" [max]="ServiceControl.get('end')">
                     <mat-hint style="color: red">{{errortime}}</mat-hint>
                 </mat-form-field>
                 </p>
@@ -80,6 +80,13 @@
                         <mat-label>Имя клиента</mat-label>
                         <input matInput type="text" formControlName="nameclient">
                         <mat-hint>{{error}}</mat-hint>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="fill" *ngIf="error!==''">
+                        <mat-label>Имя клиента</mat-label>
+                        <textarea cols="40" matInput type="text" formControlName="servicescomment" ></textarea>
+
                     </mat-form-field>
                 </p>
 <!--                <div class="form-group" *ngIf="ServiceControl.get('nameclient').value!==''">-->

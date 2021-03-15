@@ -16,7 +16,8 @@ import {Category} from '../../../shared/class/category/Category';
 import {Service} from '../../../shared/class/services/Service';
 import {ClientServices} from '../../../shared/service/client.services';
 import { Client } from 'src/app/shared/class/client/Client';
-import {ProvidersEvaluator} from "@angular/core/schematics/migrations/missing-injectable/providers_evaluator";
+import {ProvidersEvaluator} from '@angular/core/schematics/migrations/missing-injectable/providers_evaluator';
+import {SendServices} from '../../../shared/class/services/SendServices';
 @Component({
   selector: 'app-change-shedule',
   templateUrl: './change-shedule.component.html',
@@ -42,7 +43,8 @@ export class ChangeSheduleComponent implements OnInit {
     dropdownList = [];
     selectedItems = [];
     dropdownSettings = {};
-
+    getclients: Client;
+flaguser = false;
     errortime: any;
     constructor(private route: ActivatedRoute, private shedule: SheduleServices, private dataservices: DataServices,
               private modalService: NgbModal, private formbuilder: FormBuilder, private servic: ServicesServices, private clientservice: ClientServices) { }
@@ -71,7 +73,8 @@ export class ChangeSheduleComponent implements OnInit {
           client: ['', Validators.required],
           nameclient: '',
           end: '',
-          dttm: ['', Validators.required]
+          dttm: ['', Validators.required],
+          servicescomment: ''
 
       });
   }
@@ -250,7 +253,18 @@ this.shedule.AddComment(this.user.token, this.DescCard.id, this.DescCard.comment
     }
 
     AddRecord() {
-let data = this.ServiceControl.getRawValue();
+const data = this.ServiceControl.getRawValue();
+const services=this.Category.find(x=>x.id===this.selectedItems['id_item']);
+let start=new Date(data.start);
+        const tt=data.dttm.split(':');
+        start=new Date(new Date(data.start.setHours(tt[0])).setMinutes(tt[1]));
+const end = new Date(start.getTime()+60*1000*services.minutes);
+if (start>=data.start&&end<=data.end){
+    this.noposition('Не правильно выбрано время');
+    this.ServiceControl.patchValue({dttm: undefined});
+}else{
+    const send = new SendServices(this.selectedItems['id_item'], data['nameclient'], start, this.getclients.id, data['phone'], data['servicescomment']);
+}
 console.log(data);
     }
 
@@ -260,6 +274,8 @@ console.log(data);
 
     CreateRecord(td: any, content2: TemplateRef<any>) {
         this.error = '';
+        this.errortime='';
+        this.flaguser=false;
         this.servic.getServices(this.user.token).subscribe(
             (result: Answer) => {
                 this.Category = [];
@@ -285,7 +301,8 @@ console.log(data);
                     dttm: new Date(),
                     client: '',
                     nameclient: '',
-                    end: new Date(td[td.length-1])
+                    end: new Date(td[td.length-1]),
+                    servicescomment: ''
                 });
             }
         );
@@ -303,8 +320,9 @@ console.log(data);
         this.clientservice.getPhotos(this.user.token,this.ServiceControl.get('client').value).subscribe(
             (result: Answer) => {
                 if (result.status.code===200){
-                    const clients = result.responce as Client;
-                    this.ServiceControl.patchValue({nameclient: result.responce['name']});
+                    this.getclients = result.responce as Client;
+                    this.ServiceControl.patchValue({nameclient: this.getclients.name});
+                    this.flaguser=true;
                 }
              //   this.ServiceControl.patchValue({nameclient: 'Введите имя пользователя'})
                 this.error = 'Клиент не найден';
@@ -313,21 +331,21 @@ console.log(data);
     }
 
     onItemSelect($event: any) {
-        
+        this.selectedItems=$event;
     }
 
     onSelectAll($event: any) {
-        
+
     }
 
     CheckTime() {
         const data=this.ServiceControl.getRawValue();
-        const start=new Date(data['start']);
-        const tt=data['dttm'].split(':');
-        let test=new Date(new Date(data['start'].setHours(tt[0])).setMinutes(tt[1]));
+        const start=new Date(data.start);
+        const tt=data.dttm.split(':');
+        const test=new Date(new Date(data.start.setHours(tt[0])).setMinutes(tt[1]));
 
-        if (test< start || test>data['end']){
-            this.errortime = 'Выберите интервал между '+data['start'].toLocaleTimeString()+ ' и '+data['end'].toTimeString();
+        if (test< start || test>data.end){
+            this.errortime = 'Выберите интервал между '+data.start.toLocaleTimeString()+ ' и '+data.end.toTimeString();
         }
         console.log();
     }
