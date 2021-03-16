@@ -9,18 +9,23 @@ import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ChartistModule } from 'ng-chartist';
 import { SharedModule } from '../../shared/shared.module';
+import {NgCircleProgressModule} from "ng-circle-progress";
+import {Ng2SmartTableModule} from "ng2-smart-table";
 
 @NgModule({
   declarations: [DashboardComponent],
-  imports: [
-    CommonModule,
-    DashboardRoutingModule,
-    CountToModule,
-    SharedModule,
-    ChartsModule,
-    Ng2GoogleChartsModule,
-    NgxChartsModule,
-    ChartistModule
-  ]
+    imports: [
+        CommonModule,
+        DashboardRoutingModule,
+        CountToModule,
+        SharedModule,
+        ChartsModule,
+        Ng2GoogleChartsModule,
+        NgxChartsModule,
+        ChartistModule,
+        NgCircleProgressModule,
+        Ng2SmartTableModule,
+
+    ]
 })
 export class DashboardModule { }

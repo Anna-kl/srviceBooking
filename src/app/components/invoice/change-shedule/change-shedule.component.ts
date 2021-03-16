@@ -17,7 +17,7 @@ import {Service} from '../../../shared/class/services/Service';
 import {ClientServices} from '../../../shared/service/client.services';
 import { Client } from 'src/app/shared/class/client/Client';
 import {ProvidersEvaluator} from '@angular/core/schematics/migrations/missing-injectable/providers_evaluator';
-import {SendServices} from '../../../shared/class/services/SendServices';
+import {Cancelled, SendRecord} from '../../../shared/class/services/SendServices';
 @Component({
   selector: 'app-change-shedule',
   templateUrl: './change-shedule.component.html',
@@ -36,6 +36,7 @@ export class ChangeSheduleComponent implements OnInit {
     public closeResult: string;
     modalReference1: any;
     DescCard: SendAllInfo;
+    Cancelles: SendAllInfo[];
     error: string;
     Category: Service[];
     category: Service;
@@ -158,6 +159,14 @@ RefreshData() {
 //                 index++;
 //             }
         });
+    this.shedule.GetCancelled(this.user.token, this.name).subscribe(
+        (result: Answer) => {
+            if (result.status.code === 200){
+            this.Cancelles = result.responce as SendAllInfo[];
+        } else if (result.status.code === 404){
+            this.Cancelles = undefined;}
+        }
+    )
 }
     ShowDesc(a: DescDay) {
         this.isdesc = false;
@@ -263,7 +272,21 @@ if (start>=data.start&&end<=data.end){
     this.noposition('Не правильно выбрано время');
     this.ServiceControl.patchValue({dttm: undefined});
 }else{
-    const send = new SendServices(this.selectedItems['id_item'], data['nameclient'], start, this.getclients.id, data['phone'], data['servicescomment']);
+    let id_client=0;
+    if (this.getclients!==undefined){
+        id_client=this.getclients.id
+
+    }
+    const send = new SendRecord(this.selectedItems['id_item'], data['nameclient'], start, id_client, data['phone'], data['servicescomment'], this.days.id_day);
+    this.shedule.AddRecord(this.user.token, send).subscribe(
+        (result: Answer) => {
+            if (result.status.code === 200){
+                this.position('Запись добавлена');
+            } else {
+                this.noposition(result.status.message);
+            }
+    }
+    )
 }
 console.log(data);
     }
@@ -274,6 +297,7 @@ console.log(data);
 
     CreateRecord(td: any, content2: TemplateRef<any>) {
         this.error = '';
+        this.getclients = undefined;
         this.errortime='';
         this.flaguser=false;
         this.servic.getServices(this.user.token).subscribe(

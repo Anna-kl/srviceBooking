@@ -7,6 +7,7 @@ import {SendServices} from '../class/SendServices';
 import {DaysOf} from '../class/Shedule/DaysOf';
 import {DayOfWeek} from '../class/Shedule/dateOfweek';
 import {AComment} from "../class/Shedule/AComment";
+import {SendRecord} from "../class/services/SendServices";
 
 @Injectable()
 
@@ -45,5 +46,15 @@ export  class SheduleServices {
         const body = new AComment(comment);
         headers = headers.append('Authorization', 'Bearer ' + token);
         return this.http.put(this.url + id, body,{headers } );
+    }
+    AddRecord(token: string, send: SendRecord){
+        let  headers: HttpHeaders = new HttpHeaders();
+        headers = headers.append('Authorization', 'Bearer ' + token);
+        return this.http.put(this.url + 'addservices', send,{headers } );
+    }
+    GetCancelled(token: string, id: number){
+        let  headers: HttpHeaders = new HttpHeaders();
+        headers = headers.append('Authorization', 'Bearer ' + token);
+        return this.http.get(this.url +'cancelled?id='+id, {headers } );
     }
 }

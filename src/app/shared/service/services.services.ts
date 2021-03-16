@@ -3,7 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
 import {SendAcount} from '../class/account/SendAcount';
 import {environment} from '../../../environments/environment.prod';
-import {SendServices} from '../class/SendServices';
+import {SendServices} from "../class/SendServices";
+
 
 @Injectable()
 
@@ -48,4 +49,5 @@ export  class ServicesServices {
         headers = headers.append('Authorization', 'Bearer ' + token);
         return this.http.put(this.url + send.id, send, {headers } );
     }
+    // addService2(token: str)
 }

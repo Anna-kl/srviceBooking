@@ -83,8 +83,8 @@
                     </mat-form-field>
                 </p>
                 <p>
-                    <mat-form-field appearance="fill" *ngIf="error!==''">
-                        <mat-label>Имя клиента</mat-label>
+                    <mat-form-field appearance="fill" >
+                        <mat-label>Комментарий</mat-label>
                         <textarea cols="40" matInput type="text" formControlName="servicescomment" ></textarea>
 
                     </mat-form-field>
@@ -193,6 +193,15 @@
 </div>
     </div>
         </div>
+    <div class="card-body" >
+
+                                    <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" style="color: red" *ngFor="let a of Cancelles">Имя клиента: {{a.name_client}} Наименование услуги: {{a.services_name}}
+                                        Время начала: {{a.start_dttm| date:"HH:mm"}}</li>
+                                    </ul>
+                        </div>
+
 </div>
+
 
 

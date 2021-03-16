@@ -74,6 +74,26 @@ export class DashboardComponent implements OnInit {
   public chartHovered(e: any): void {
   }
 
+  public settings = {
+
+    mode: 'external',
+
+    columns: {
+      hours: {
+        title: 'Количество часов'
+      },
+      earnings: {
+        title: 'Заработок'
+      },
+      client: {
+        title: 'Длительность',
+      },
+      consumption: {
+        title: 'Расходы',
+      }
+    },
+  };
+
   ngOnInit() {
   }
 
