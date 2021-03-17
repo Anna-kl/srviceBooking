@@ -1284,6 +1284,9 @@ MIT
 ng-chartist
 Apache-2.0
 
+ng-circle-progress
+MIT
+
 ng-multiselect-dropdown
 MIT
 

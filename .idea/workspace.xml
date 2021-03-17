@@ -3,19 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="0fac6c7d-08c8-4d3e-a7ed-2cbfdd281a9c" name="Default Changelist" comment="add shedule check">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/multikart-admin/3rdpartylicenses.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dist/multikart-admin/3rdpartylicenses.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/multikart-admin/fontawesome-webfont.6878d55e3615ccf40c38.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/multikart-admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/multikart-admin/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/multikart-admin/main-es2015.615484cfbe24a2ee35c1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/multikart-admin/main-es5.615484cfbe24a2ee35c1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/multikart-admin/polyfills-es2015.933fb2229af1780a59f2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/multikart-admin/polyfills-es5.232f853b07b6edc8d9f7.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/multikart-admin/styles.a6c2e6a27d9b25a39d0f.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/dashboard/dashboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/dashboard/dashboard.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/dashboard/dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/dashboard/dashboard.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/dashboard/dashboard.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/dashboard/dashboard.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/invoice/change-shedule/change-shedule.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/invoice/change-shedule/change-shedule.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/invoice/change-shedule/change-shedule.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/invoice/change-shedule/change-shedule.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/shared/class/services/SendServices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/class/services/SendServices.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/service/services.services.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/service/services.services.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/shared/service/shedule.services.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/service/shedule.services.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/environments/environment.prod.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,6 +208,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.karma.karma_node_package_dir" value="" />
@@ -219,7 +221,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propDebugger" />
-    <property name="ts.external.directory.path" value="C:\Users\andji\WebstormProjects\srviceBooking\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="D:\Data\RunetBackend — копия\backend\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -410,6 +412,7 @@
       <workItem from="1615531492697" duration="7602000" />
       <workItem from="1615540886611" duration="24950000" />
       <workItem from="1615880625480" duration="7479000" />
+      <workItem from="1615958794333" duration="4494000" />
     </task>
     <task id="LOCAL-00001" summary="add shedule">
       <created>1615359293700</created>
@@ -568,31 +571,31 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/components/invoice/change-shedule/change-shedule.component.ts</url>
-          <line>237</line>
+          <line>238</line>
           <option name="timeStamp" value="271" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/components/invoice/change-shedule/change-shedule.component.ts</url>
-          <line>235</line>
+          <line>236</line>
           <option name="timeStamp" value="272" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/components/invoice/change-shedule/change-shedule.component.ts</url>
-          <line>279</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="310" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/components/invoice/change-shedule/change-shedule.component.ts</url>
-          <line>264</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="311" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/components/invoice/change-shedule/change-shedule.component.ts</url>
           <line>282</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="312" />
+          <option name="timeStamp" value="315" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/components/invoice/change-shedule/change-shedule.component.ts</url>
+          <line>284</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="316" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/components/invoice/change-shedule/change-shedule.component.ts</url>
+          <line>287</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="320" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -50,7 +50,7 @@ export  class SheduleServices {
     AddRecord(token: string, send: SendRecord){
         let  headers: HttpHeaders = new HttpHeaders();
         headers = headers.append('Authorization', 'Bearer ' + token);
-        return this.http.put(this.url + 'addservices', send,{headers } );
+        return this.http.post(this.url + 'addservices', send,{headers } );
     }
     GetCancelled(token: string, id: number){
         let  headers: HttpHeaders = new HttpHeaders();

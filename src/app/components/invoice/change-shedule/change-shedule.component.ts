@@ -182,7 +182,8 @@ this.DescCard = result.responce as SendAllInfo;
     }
 
     Edit(b: any, content: TemplateRef<any>) {
-        this.modalReference1 = this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+        this.modalReference1 = this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
+        this.modalReference1.result.then((result) => {
             this.closeResult = `Closed with: ${result}`;
         }, (reason) => {
             this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -240,7 +241,8 @@ this.shedule.AddComment(this.user.token, this.DescCard.id, this.DescCard.comment
             timer: 1500
         }); }
     CancelService(content1: TemplateRef<any>) {
-        this.modalReference = this.modalService.open(content1, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+        this.modalReference = this.modalService.open(content1, { ariaLabelledBy: 'modal-basic-title' });
+        this.modalReference.result.then((result) => {
             this.closeResult = `Closed with: ${result}`;
         }, (reason) => {
             this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -268,7 +270,7 @@ let start=new Date(data.start);
         const tt=data.dttm.split(':');
         start=new Date(new Date(data.start.setHours(tt[0])).setMinutes(tt[1]));
 const end = new Date(start.getTime()+60*1000*services.minutes);
-if (start>=data.start&&end<=data.end){
+if (start<data.start||end>data.end){
     this.noposition('Не правильно выбрано время');
     this.ServiceControl.patchValue({dttm: undefined});
 }else{
@@ -277,11 +279,13 @@ if (start>=data.start&&end<=data.end){
         id_client=this.getclients.id
 
     }
-    const send = new SendRecord(this.selectedItems['id_item'], data['nameclient'], start, id_client, data['phone'], data['servicescomment'], this.days.id_day);
+    const send = new SendRecord(this.selectedItems['id_item'], data['nameclient'], start, id_client, data['client'], data['servicescomment'], this.days.id_day);
     this.shedule.AddRecord(this.user.token, send).subscribe(
         (result: Answer) => {
-            if (result.status.code === 200){
+            if (result.status.code === 201){
                 this.position('Запись добавлена');
+                this.modalReference.close();
+                this.RefreshData();
             } else {
                 this.noposition(result.status.message);
             }
@@ -330,7 +334,8 @@ console.log(data);
                 });
             }
         );
-        this.modalReference = this.modalService.open(content2, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+        this.modalReference = this.modalService.open(content2, { ariaLabelledBy: 'modal-basic-title' })
+        this.modalReference.result.then((result) => {
             this.closeResult = `Closed with: ${result}`;
         }, (reason) => {
             this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
