@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import {Token} from '../../../shared/class/auth/Token';
 import {DataServices} from '../../../shared/service/data.services';
 import {SendAuth} from '../../../shared/class/auth/SendAuth';
+import {CookieService} from "ngx-cookie-service";
 
 
 
@@ -80,6 +81,7 @@ export class LoginComponent implements OnInit {
         (result: Answer) => {
           if (result.status.code === 200) {
             const user = result.responce as SendAuth;
+            this.authservice.setCookie(JSON.stringify(user));
             this.dataservies.SendAccount(user);
             if (user.isfilled) {
               if (user.role === 'owner') {

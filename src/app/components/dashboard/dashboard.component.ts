@@ -1,18 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import * as chartData from '../../shared/data/chart';
 import { doughnutData, pieData } from '../../shared/data/chart';
+import {IndicatorServices} from '../../shared/service/indicator.service';
+import {DataServices} from '../../shared/service/data.services';
+import {SendAuth} from '../../shared/class/auth/SendAuth';
+import {Answer} from "../../shared/class/helpers/Response";
+import {Indicator} from "../../shared/class/indicators/Indicator";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  providers: [IndicatorServices]
 })
 export class DashboardComponent implements OnInit {
+  private user: SendAuth;
+  main: Indicator;
+  constructor(private indicator: IndicatorServices, private dataservices: DataServices, private cookieService: CookieService) {
+    Object.assign(this, { doughnutData, pieData })
+    this.dataservices.users.subscribe(result => {
+      if (result === undefined || result === null) {
+        this.user = JSON.parse(this.cookieService.get('user'));
+        this.dataservices.SendAccount(this.user);
+      } else {
+        this.user = result;
+      }
+    });
+  }
   public doughnutData = doughnutData;
   public pieData = pieData;
-  constructor() {
-    Object.assign(this, { doughnutData, pieData })
-  }
 
   // doughnut 2
   public view = chartData.view;
@@ -66,14 +83,6 @@ export class DashboardComponent implements OnInit {
 
   public chart3 = chartData.chart3;
 
-
-
-  // events
-  public chartClicked(e: any): void {
-  }
-  public chartHovered(e: any): void {
-  }
-
   public settings = {
 
     mode: 'external',
@@ -94,7 +103,23 @@ export class DashboardComponent implements OnInit {
     },
   };
 
+
+
+  // events
+  public chartClicked(e: any): void {
+  }
+  public chartHovered(e: any): void {
+  }
+
   ngOnInit() {
+
+    this.indicator.getIndicators(this.user.token, 'week').subscribe(
+        (result: Answer) => {
+          if (result.status.code === 200){
+            this.main = result.responce as Indicator;
+          }
+        }
+    );
   }
 
 }

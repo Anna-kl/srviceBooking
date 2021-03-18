@@ -24,6 +24,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {DataServices} from './shared/service/data.services';
 import {NgbModule, NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
 import {CircleProgressOptions, NgCircleProgressModule} from "ng-circle-progress";
+import {CookieService} from "ngx-cookie-service";
 
 
 @NgModule({
@@ -52,7 +53,7 @@ import {CircleProgressOptions, NgCircleProgressModule} from "ng-circle-progress"
     HttpClientModule,
     NgbModule,
   ],
-  providers: [DataServices, CircleProgressOptions ],
+  providers: [DataServices, CircleProgressOptions, CookieService  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

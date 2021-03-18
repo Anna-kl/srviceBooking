@@ -12,6 +12,7 @@ import {ModalDismissReasons, NgbModal, NgbModalRef} from '@ng-bootstrap/ng-boots
 
 import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-invoice',
@@ -22,9 +23,15 @@ import {Router} from '@angular/router';
 export class InvoiceComponent implements OnInit {
   private modalReference: NgbModalRef;
   constructor(private sheduleservices: SheduleServices, private dataservices: DataServices,
-              private modalService: NgbModal, private formBuilder: FormBuilder, private Route: Router) {
+              private modalService: NgbModal, private formBuilder: FormBuilder, private Route: Router, private cookieService: CookieService ) {
     this.dataservices.users.subscribe(result => {
-      this.user = result;
+      if (result===undefined || result === null){
+        this.user=JSON.parse(this.cookieService.get('user'));
+        this.dataservices.SendAccount(this.user);
+      } else {
+        this.user = result;
+      }
+
       this.sheduleservices.getDaysOfWeek(this.user.token, ((new Date()).getMonth() + 1).toString(),
           (new Date()).getFullYear().toString()).subscribe(
           (result1: Answer) => {

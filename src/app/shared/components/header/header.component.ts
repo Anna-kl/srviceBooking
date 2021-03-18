@@ -8,6 +8,7 @@ import {AccountServices} from "../../service/accountservices";
 import {DomSanitizer} from "@angular/platform-browser";
 import {StaffServices} from '../../service/staff.services';
 import {Route, Router} from '@angular/router';
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-header',
@@ -27,7 +28,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(public navServices: NavService, private  dataservices: DataServices,
               private  accountSer: AccountServices, private sanitizer: DomSanitizer,
-              private staffservices: StaffServices, private route: Router) { }
+              private staffservices: StaffServices, private route: Router, private cookieService: CookieService) { }
 
   collapseSidebar() {
     this.open = !this.open;
@@ -45,7 +46,13 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit() {
-    this.dataservices.users.subscribe(result => {this.auth = result;
+    this.dataservices.users.subscribe(result => {
+      if (result===undefined || result === null){
+        this.auth=JSON.parse(this.cookieService.get('user'));
+        this.dataservices.SendAccount(this.auth);
+      } else {
+        this.auth = result;
+      }
     if (this.auth.role === 'owner') {
       this.accountSer.getUserpic(this.auth.token).subscribe(
           result1 => {

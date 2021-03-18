@@ -5,6 +5,7 @@ import {SendAuth} from '../../class/auth/SendAuth';
 import {DataServices} from '../../service/data.services';
 import {AccountServices} from '../../service/accountservices';
 import {DomSanitizer} from '@angular/platform-browser';
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-sidebar',
@@ -22,9 +23,14 @@ export class SidebarComponent {
   img: any;
 
   constructor(private router: Router, public navServices: NavService, private dataservices: DataServices,
-              private  accountSer: AccountServices, private sanitizer: DomSanitizer) {
+              private  accountSer: AccountServices, private sanitizer: DomSanitizer,  private cookieService: CookieService) {
     this.dataservices.users.subscribe(result => {
-      this.user = result;
+      if (result===undefined || result == null){
+        this.user=JSON.parse(this.cookieService.get('user'));
+        this.dataservices.SendAccount(this.user);
+      } else {
+        this.user = result;
+      }
       this.accountSer.getUserpic(this.user.token).subscribe(
           result1 => {
             const unsafeImageUrl = URL.createObjectURL(result1);

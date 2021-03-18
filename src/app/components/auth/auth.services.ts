@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
 import {environment} from '../../../environments/environment.prod';
+import {SendAuth} from "../../shared/class/auth/SendAuth";
+import {CookieService} from "ngx-cookie-service";
 
 @Injectable()
 
@@ -9,7 +11,7 @@ export  class AuthServices {
   //  private url = 'https://localhost:44304/api/auths/';
 
     private url = environment.Uri + 'auths/';
-    constructor(private  http: HttpClient) {
+    constructor(private  http: HttpClient, private cookieService: CookieService) {
 
         }
 
@@ -44,5 +46,8 @@ changepassword(email: string) {
         headers.set('Content-Type', 'application/x-www-form-urlencoded');
         return this.http.put(this.url + '/change_password/user' + '?link=' + link + '&password=' + password,
             {headers} );
+    }
+    setCookie(user: string){
+        this.cookieService.set( 'user', user );
     }
 }
