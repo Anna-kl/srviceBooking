@@ -1,8 +1,10 @@
 export interface Indicator {
-  price: number;
+  sum: number;
+  id: number;
     count: number;
-  cancelled: number;
+  canceled: number;
   new: number;
-  avg: number;
-  confirm: number;
+  complete: number;
+  avatar: any;
+  current: number
 }

@@ -30,12 +30,12 @@ export class NavService {
 	public screenWidth: any
 	public collapseSidebar: boolean = false
 	MENUITEMSSTAFF: Menu[] = [
-        {
-        	path: '/dashboard/default', title: 'Dashboard', icon: 'home', type: 'link', badgeType: 'primary', active: false
-        },
-		{
-			path: '/dashboard/default', title: 'Основные показатели', icon: 'home', type: 'link', badgeType: 'primary', active: false
-		},
+        // {
+        // 	path: '/dashboard/default', title: 'Dashboard', icon: 'home', type: 'link', badgeType: 'primary', active: false
+        // },
+		// {
+		// 	path: '/dashboard/default', title: 'Основные показатели', icon: 'home', type: 'link', badgeType: 'primary', active: false
+		// },
 		{
 			path: '/invoice', title: 'Расписание', icon: 'home', type: 'link', badgeType: 'primary', active: false
 		},
@@ -70,9 +70,9 @@ export class NavService {
 		}
 	]
 	MENUITEMS: Menu[] = [
-		{
-			path: '/dashboard/default', title: 'Финансы', icon: 'home', type: 'link', badgeType: 'primary', active: false
-		},
+		// {
+		// 	path: '/dashboard/default', title: 'Финансы', icon: 'home', type: 'link', badgeType: 'primary', active: false
+		// },
 		{
 			path: '/dashboard/default', title: 'Основные показатели',
             icon: 'home', type: 'link', badgeType: 'primary', active: false

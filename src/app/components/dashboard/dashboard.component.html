@@ -1,173 +1,273 @@
 <!-- Container-fluid starts-->
+<style>
+    .kart{
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 20px;
+        min-width: 300px;
+        max-width: 350px;
+        margin: 0px 20px;
+        float: left;
+    }
+    .end{
+        float:none!important;
+    }
+    .all-str{
+        border: 1px solid #f2f2f2;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 10px;
+    }
+    .str{
+        padding: 10px;
+        border-bottom: 1px solid #f2f2f2;
+    }
+    .cont{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .zh2{
+        padding: 20px 20px 20px 20px ;
+    }
+</style>
 <div class="container-fluid">
     <div class="row">
-<!--        <div class="col-xl-3 col-md-6 xl-50">-->
-<!--            <div class="card o-hidden widget-cards">-->
-<!--                <div class="bg-warning card-body">-->
-<!--                    <div class="media static-top-widget row">-->
-<!--                        <div class="icons-widgets col-4">-->
-<!--                            <div class="align-self-center text-center">-->
-<!--                                <app-feather-icons [icon]="'navigation'" class="font-warning"></app-feather-icons>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="media-body col-8"><span class="m-0">Earnings</span>-->
-<!--                            <h3 class="mb-0">$ <span class="counter" [CountTo]="6659" [from]="0"-->
-<!--                                    [duration]="2">6659</span><small> This Month</small></h3>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="col-xl-3 col-md-6 xl-50">-->
-<!--            <div class="card o-hidden  widget-cards">-->
-<!--                <div class="bg-secondary card-body">-->
-<!--                    <div class="media static-top-widget row">-->
-<!--                        <div class="icons-widgets col-4">-->
-<!--                            <div class="align-self-center text-center">-->
-<!--                                <app-feather-icons [icon]="'box'" class="font-secondary"></app-feather-icons>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="media-body col-8"><span class="m-0">Products</span>-->
-<!--                            <h3 class="mb-0">$ <span class="counter" [CountTo]="9856" [from]="0"-->
-<!--                                    [duration]="2">9856</span><small> This Month</small></h3>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="col-xl-3 col-md-6 xl-50">-->
-<!--            <div class="card o-hidden widget-cards">-->
-<!--                <div class="bg-primary card-body">-->
-<!--                    <div class="media static-top-widget row">-->
-<!--                        <div class="icons-widgets col-4">-->
-<!--                            <div class="align-self-center text-center">-->
-<!--                                <app-feather-icons [icon]="'message-square'" class="font-primary"></app-feather-icons>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="media-body col-8"><span class="m-0">Messages</span>-->
-<!--                            <h3 class="mb-0">$ <span class="counter" [CountTo]="893" [from]="0"-->
-<!--                                    [duration]="2">893</span><small> This Month</small></h3>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="col-xl-3 col-md-6 xl-50">-->
-<!--            <div class="card o-hidden widget-cards">-->
-<!--                <div class="bg-danger card-body">-->
-<!--                    <div class="media static-top-widget row">-->
-<!--                        <div class="icons-widgets col-4">-->
-<!--                            <div class="align-self-center text-center">-->
-<!--                                <app-feather-icons [icon]="'users'" class="font-danger"></app-feather-icons>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="media-body col-8"><span class="m-0">New Vendors</span>-->
-<!--                            <h3 class="mb-0">$ <span class="counter" [CountTo]="45631" [from]="0"-->
-<!--                                    [duration]="2">45631</span><small> This Month</small></h3>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="col-xl-6 xl-100">-->
-<!--            <div class="card">-->
-<!--                <div class="card-header">-->
-<!--                    <h5>Market Value</h5>-->
-<!--                </div>-->
-<!--                <div class="card-body">-->
-<!--                    <div class="market-chart">-->
-<!--                        <x-chartist class="board-chart ct-golden-section" [data]="chart3.data" [type]="chart3.type"-->
-<!--                            [options]="chart3.options" [events]="chart3.events">-->
-<!--                        </x-chartist>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="col-xl-6 xl-100">-->
-<!--            <div class="card">-->
-<!--                <div class="card-header">-->
-<!--                    <h5>Latest Orders</h5>-->
-<!--                </div>-->
-<!--                <div class="card-body">-->
-<!--                    <div class="user-status table-responsive latest-order-table">-->
-<!--                        <table class="table table-bordernone">-->
-<!--                            <thead>-->
-<!--                                <tr>-->
-<!--                                    <th scope="col">Order ID</th>-->
-<!--                                    <th scope="col">Order Total</th>-->
-<!--                                    <th scope="col">Payment Method</th>-->
-<!--                                    <th scope="col">Status</th>-->
-<!--                                </tr>-->
-<!--                            </thead>-->
-<!--                            <tbody>-->
-<!--                                <tr>-->
-<!--                                    <td>1</td>-->
-<!--                                    <td class="digits">$120.00</td>-->
-<!--                                    <td class="font-danger">Bank Transfers</td>-->
-<!--                                    <td class="digits">On Way</td>-->
-<!--                                </tr>-->
-<!--                                <tr>-->
-<!--                                    <td>2</td>-->
-<!--                                    <td class="digits">$90.00</td>-->
-<!--                                    <td class="font-secondary">Ewallets</td>-->
-<!--                                    <td class="digits">Delivered</td>-->
-<!--                                </tr>-->
-<!--                                <tr>-->
-<!--                                    <td>3</td>-->
-<!--                                    <td class="digits">$240.00</td>-->
-<!--                                    <td class="font-warning">Cash</td>-->
-<!--                                    <td class="digits">Delivered</td>-->
-<!--                                </tr>-->
-<!--                                <tr>-->
-<!--                                    <td>4</td>-->
-<!--                                    <td class="digits">$120.00</td>-->
-<!--                                    <td class="font-primary">Direct Deposit</td>-->
-<!--                                    <td class="digits">$6523</td>-->
-<!--                                </tr>-->
-<!--                                <tr>-->
-<!--                                    <td>5</td>-->
-<!--                                    <td class="digits">$50.00</td>-->
-<!--                                    <td class="font-primary">Bank Transfers</td>-->
-<!--                                    <td class="digits">Delivered</td>-->
-<!--                                </tr>-->
-<!--                            </tbody>-->
-<!--                        </table>-->
-<!--                        <a href="javascript:void(0)" class="btn btn-primary">View All Orders</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
         <div class="col-xl-3 col-md-6 xl-50">
-            <circle-progress
-                    [percent]="85"
-                    [radius]="50"
-                    [outerStrokeWidth]="10"
-                    [innerStrokeWidth]="8"
-                    [outerStrokeColor]="'#78C000'"
-                    [innerStrokeColor]="'#C7E596'"
-                    [animation]="true"
-                    [animationDuration]="300"
-            ></circle-progress>
-            <div class="table-responsive">
-                <table>
-                    <tr >
-                        <td>Число заказов</td><td>{{main.count}}</td>
-                    </tr>
-                    <tr >
-                        <td>Отмененные заказы</td><td>{{main.cancelled}}</td>
-                    </tr>
-                    <tr >
-                        <td>Заработок</td><td>{{main.price}}</td>
-                    </tr>
-                    <tr >
-                        <td>Новые клиенты</td><td>{{main.new}}</td>
-                    </tr>
-                    <tr >
-                        <td>Средняя стоимость</td><td>{{main.avg}}</td>
-                    </tr>
-                </table>
+            <div class="card o-hidden widget-cards">
+                <div class="bg-warning card-body">
+                    <div class="media static-top-widget row">
+                        <div class="icons-widgets col-4">
+                            <div class="align-self-center text-center">
+                                <app-feather-icons [icon]="'home'" class="font-warning"></app-feather-icons>
+                            </div>
+                        </div>
+                        <div class="media-body col-8"><span class="m-0">Заработок</span>
+                            <h3 class="mb-0"><span class="counter" [CountTo]="MIndicators.sum" [from]="0"
+                                                       [duration]="2">{{MIndicators.sum}} руб</span><small> В этом месяце</small></h3>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="col-xl-3 col-md-6 xl-50">
+            <div class="card o-hidden  widget-cards">
+                <div class="bg-secondary card-body">
+                    <div class="media static-top-widget row">
+                        <div class="icons-widgets col-4">
+                            <div class="align-self-center text-center">
+                                <app-feather-icons [icon]="'box'" class="font-secondary"></app-feather-icons>
+                            </div>
+                        </div>
+                        <div class="media-body col-8"><span class="m-0">Новые клиенты</span>
+                            <h3 class="mb-0"><span class="counter" [CountTo]="MIndicators.new" [from]="0"
+                                                   [duration]="2">{{MIndicators.new}}</span><small> В этом месяце</small></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 xl-50">
+            <div class="card o-hidden widget-cards">
+                <div class="bg-primary card-body">
+                    <div class="media static-top-widget row">
+                        <div class="icons-widgets col-4">
+                            <div class="align-self-center text-center">
+                                <app-feather-icons [icon]="'message-square'" class="font-primary"></app-feather-icons>
+                            </div>
+                        </div>
+                        <div class="media-body col-8"><span class="m-0">Заказов</span>
+                            <h3 class="mb-0"><span class="counter" [CountTo]="MIndicators.orders" [from]="0"
+                                                   [duration]="2">{{MIndicators.orders}}</span><small> В этом месяце</small></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--        <div class="col-xl-3 col-md-6 xl-50">-->
+        <!--            <div class="card o-hidden widget-cards">-->
+        <!--                <div class="bg-danger card-body">-->
+        <!--                    <div class="media static-top-widget row">-->
+        <!--                        <div class="icons-widgets col-4">-->
+        <!--                            <div class="align-self-center text-center">-->
+        <!--                                <app-feather-icons [icon]="'users'" class="font-danger"></app-feather-icons>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                        <div class="media-body col-8"><span class="m-0">New Vendors</span>-->
+        <!--                            <h3 class="mb-0">$ <span class="counter" [CountTo]="45631" [from]="0"-->
+        <!--                                    [duration]="2">45631</span><small> This Month</small></h3>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <div class="col-xl-6 xl-100">-->
+        <!--            <div class="card">-->
+        <!--                <div class="card-header">-->
+        <!--                    <h5>Market Value</h5>-->
+        <!--                </div>-->
+        <!--                <div class="card-body">-->
+        <!--                    <div class="market-chart">-->
+        <!--                        <x-chartist class="board-chart ct-golden-section" [data]="chart3.data" [type]="chart3.type"-->
+        <!--                            [options]="chart3.options" [events]="chart3.events">-->
+        <!--                        </x-chartist>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <div class="col-xl-6 xl-100">-->
+        <!--            <div class="card">-->
+        <!--                <div class="card-header">-->
+        <!--                    <h5>Latest Orders</h5>-->
+        <!--                </div>-->
+        <!--                <div class="card-body">-->
+        <!--                    <div class="user-status table-responsive latest-order-table">-->
+        <!--                        <table class="table table-bordernone">-->
+        <!--                            <thead>-->
+        <!--                                <tr>-->
+        <!--                                    <th scope="col">Order ID</th>-->
+        <!--                                    <th scope="col">Order Total</th>-->
+        <!--                                    <th scope="col">Payment Method</th>-->
+        <!--                                    <th scope="col">Status</th>-->
+        <!--                                </tr>-->
+        <!--                            </thead>-->
+        <!--                            <tbody>-->
+        <!--                                <tr>-->
+        <!--                                    <td>1</td>-->
+        <!--                                    <td class="digits">$120.00</td>-->
+        <!--                                    <td class="font-danger">Bank Transfers</td>-->
+        <!--                                    <td class="digits">On Way</td>-->
+        <!--                                </tr>-->
+        <!--                                <tr>-->
+        <!--                                    <td>2</td>-->
+        <!--                                    <td class="digits">$90.00</td>-->
+        <!--                                    <td class="font-secondary">Ewallets</td>-->
+        <!--                                    <td class="digits">Delivered</td>-->
+        <!--                                </tr>-->
+        <!--                                <tr>-->
+        <!--                                    <td>3</td>-->
+        <!--                                    <td class="digits">$240.00</td>-->
+        <!--                                    <td class="font-warning">Cash</td>-->
+        <!--                                    <td class="digits">Delivered</td>-->
+        <!--                                </tr>-->
+        <!--                                <tr>-->
+        <!--                                    <td>4</td>-->
+        <!--                                    <td class="digits">$120.00</td>-->
+        <!--                                    <td class="font-primary">Direct Deposit</td>-->
+        <!--                                    <td class="digits">$6523</td>-->
+        <!--                                </tr>-->
+        <!--                                <tr>-->
+        <!--                                    <td>5</td>-->
+        <!--                                    <td class="digits">$50.00</td>-->
+        <!--                                    <td class="font-primary">Bank Transfers</td>-->
+        <!--                                    <td class="digits">Delivered</td>-->
+        <!--                                </tr>-->
+        <!--                            </tbody>-->
+        <!--                        </table>-->
+        <!--                        <a href="javascript:void(0)" class="btn btn-primary">View All Orders</a>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+    </div>
+    <div class="row">
+        <div class="kart">
+            <h3>Клиенты</h3>
+            <div class="all-str">
+                <div class="cont"><div class="str">По записи Телефона</div> <div>34</div></div>
+                <div class="cont"><div class="str">По записи WhatsApp</div><div>34</div></div>
+                <div class="cont"><div class="str">По записи Online-формы</div><div>{{MIndicators.new}}</div></div>
+                <div class="cont"><div class="str">По записи E-mail</div><div>34</div></div>
+                <div class="cont"><div class="str">Без записи</div><div>34</div></div>
+                <div class="cont"><div class="str">По рекомендации</div><div>34</div></div>
+                <div class="cont"><div class="str">Рекламная кампания 1</div><div>34</div></div>
+                <div class="cont"><div class="str">Рекламная кампания 2</div><div>34</div></div>
+            </div>
+        </div>
+        <div class="kart end">
+            <h3>Записи</h3>
+            <div class="all-str">
+                <div class="cont"><div class="str">Завершенные</div><div>{{MIndicators.orders}}</div></div>
+                <div class="cont"><div class="str">Запланированные</div><div>34</div></div>
+                <div class="cont"><div class="str">Отказы</div><div>34</div></div>
+                <div class="cont"><div class="str">не пришедшие</div><div>34</div></div>
+            </div>
+        </div>
+    </div>
+
+        <div class="zh2 end"><h2>Динамика посещений по сотрудникам</h2></div>
+    <div class="row">
+        <div class="kart" *ngFor="let a of main">
+            <div class="all-str" >
+                <div class="row">
+                    <circle-progress
+                            [percent]="a.current"
+                            [radius]="50"
+                            [outerStrokeWidth]="10"
+                            [innerStrokeWidth]="8"
+                            [outerStrokeColor]="'#78C000'"
+                            [innerStrokeColor]="'#C7E596'"
+                            [animation]="true"
+                            [animationDuration]="300"
+                    ></circle-progress>
+                    <img [src]="a.avatar" alt="" style="height: 90px; margin-top: 20px;"
+                         class="img-fluid img-90 rounded-circle blur-up lazyloaded">
+                </div>
+                <div class="cont"><div class="str">По записи Телефона</div> <div>34</div></div>
+                <div class="cont"><div class="str">По записи WhatsApp</div><div>34</div></div>
+                <div class="cont"><div class="str">По записи Online-формы</div><div>34</div></div>
+                <div class="cont"><div class="str">По записи E-mail</div><div>34</div></div>
+                <div class="cont"><div class="str">Без записи</div><div>34</div></div>
+                <div class="cont"><div class="str">По рекомендации</div><div>34</div></div>
+                <div class="cont"><div class="str">Рекламная кампания 1</div><div>34</div></div>
+                <div class="cont"><div class="str">Рекламная кампания 2</div><div>34</div></div>
+                <div class="cont"><div class="str"><b>Новые клиенты</b></div><div>{{a.new}}</div></div>
+                <div class="cont"><div class="str"><b>Постоянные клиенты</b></div><div>37</div></div>
+                <div class="cont"><div class="str"><b>Записи</b></div><div>{{a.count}}</div></div>
+                <div class="cont"><div class="str">Завершенные</div><div>{{a.complete}}</div></div>
+                <div class="cont"><div class="str">Запланированные</div><div>34</div></div>
+                <div class="cont"><div class="str">Отказы</div><div>{{a.canceled}}</div></div>
+                <div class="cont"><div class="str">Не пришедшие</div><div>34</div></div>
+            </div>
+        </div>
+    </div><!--col-xl-3 col-md-6 xl-50-->
+</div><!--row-->
+
+
+<!--    <div class="row">-->
+<!--        <div class="col-xl-3 col-md-6 xl-50" *ngFor="let a of main">-->
+<!--            <div class="row">-->
+<!--            <circle-progress-->
+<!--                    [percent]="a.current"-->
+<!--                    [radius]="50"-->
+<!--                    [outerStrokeWidth]="10"-->
+<!--                    [innerStrokeWidth]="8"-->
+<!--                    [outerStrokeColor]="'#78C000'"-->
+<!--                    [innerStrokeColor]="'#C7E596'"-->
+<!--                    [animation]="true"-->
+<!--                    [animationDuration]="300"-->
+<!--            ></circle-progress>-->
+<!--            <img [src]="a.avatar" alt="" style="height: 90px; margin-top: 20px;"-->
+<!--                 class="img-fluid img-90 rounded-circle blur-up lazyloaded">-->
+<!--            </div>-->
+<!--            <div class="table-responsive">-->
+<!--                <table>-->
+<!--                    <tr >-->
+<!--                        <td>Число заказов</td><td>{{a.new+a.complete}}</td>-->
+<!--                    </tr>-->
+<!--                    <tr >-->
+<!--                        <td>Отмененные заказы</td><td>{{a.canceled}}</td>-->
+<!--                    </tr>-->
+<!--                    <tr >-->
+<!--                        <td>Заработок</td><td>{{a.sum}}</td>-->
+<!--                    </tr>-->
+<!--                    <tr >-->
+<!--                        <td>Новые клиенты</td><td>{{a.new}}</td>-->
+<!--                    </tr>-->
+
+<!--                </table>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 <!--        <div class="col-xl-3 col-md-6 xl-50">-->
 <!--            <div class="card order-graph sales-carousel">-->
 <!--                <div class="card-header">-->
@@ -613,6 +713,6 @@
 <!--            </div>-->
 <!--        </div>-->
 
-    </div>
-</div>
+
+
 <!-- Container-fluid Ends-->

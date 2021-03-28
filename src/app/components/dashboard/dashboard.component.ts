@@ -7,17 +7,22 @@ import {SendAuth} from '../../shared/class/auth/SendAuth';
 import {Answer} from "../../shared/class/helpers/Response";
 import {Indicator} from "../../shared/class/indicators/Indicator";
 import {CookieService} from "ngx-cookie-service";
+import {StaffServices} from "../../shared/service/staff.services";
+import {DomSanitizer} from "@angular/platform-browser";
+import {MainIndicators} from "../../shared/class/indicators/MainIndicators";
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  providers: [IndicatorServices]
+  providers: [IndicatorServices, StaffServices]
 })
 export class DashboardComponent implements OnInit {
   private user: SendAuth;
-  main: Indicator;
-  constructor(private indicator: IndicatorServices, private dataservices: DataServices, private cookieService: CookieService) {
+  MIndicators: MainIndicators;
+  main: Indicator[];
+  constructor(private indicator: IndicatorServices, private dataservices: DataServices,
+              private sanitizer: DomSanitizer, private cookieService: CookieService, private staff: StaffServices) {
     Object.assign(this, { doughnutData, pieData })
     this.dataservices.users.subscribe(result => {
       if (result === undefined || result === null) {
@@ -112,14 +117,26 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-
+this.indicator.getMainIndividual(this.user.token).subscribe(
+    (result: Answer) => {
+      if (result.status.code === 200 )
+      this.MIndicators = result.responce as MainIndicators;
+    }
+);
     this.indicator.getIndicators(this.user.token, 'week').subscribe(
         (result: Answer) => {
-          if (result.status.code === 200){
-            this.main = result.responce as Indicator;
+          if (result.status.code === 200) {
+            this.main = result.responce as Indicator[];
+            for (const a of this.main) {
+              this.staff.getUserpic(this.user.token, a.id).subscribe(
+                  resultavatar => {
+                    const unsafeImageUrl = URL.createObjectURL(resultavatar);
+                    a.avatar = this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl);
+                  });
+            }
           }
         }
     );
-  }
+        }
 
 }
