@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
 import {SendAcount} from '../class/account/SendAcount';
 import {environment} from '../../../environments/environment.prod';
+import {Category} from "../class/category/Category";
 
 @Injectable()
 
@@ -15,6 +16,11 @@ export  class AccountServices {
    // private urlaccount = 'http://185.220.35.179/api/accounts/';
     constructor(private  http: HttpClient) {
 
+    }
+    updateCategory(token: string, item: Category[]){
+        let  headers: HttpHeaders = new HttpHeaders();
+        headers = headers.append('Authorization', 'Bearer ' + token);
+        return this.http.put(this.urlaccount + 'category', item,{headers } );
     }
     uploadUserPic(header: string, file: File){
         let  headers: HttpHeaders = new HttpHeaders();

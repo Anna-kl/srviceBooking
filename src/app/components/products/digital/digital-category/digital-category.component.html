@@ -43,9 +43,17 @@
                                         </div>
                                         <label class="mb-1" *ngIf="add">Выберите категорию:</label>
                                         <label class="mb-1" *ngIf="!add">Категория:</label>
-                                        <select class="custom-select" (change)="changeCategory($event)"                                            formControlName="category">
+                                        <select class="custom-select" (change)="changeCategory($event)"
+                                                formControlName="category" [value]="category">
                                             <option value="" disabled>Выберите категорию</option>
-                                            <option *ngFor="let city of Category" [(ngModel)]="category">{{city.name}}</option>
+                                            <option *ngFor="let city of Category" >{{city.name}}</option>
+                                        </select>
+                                        <label class="mb-1" *ngIf="add">Выберите подкатегорию:</label>
+                                        <label class="mb-1" *ngIf="!add">Подкатегория:</label>
+                                        <select class="custom-select" (change)="changeSubCategory($event)"
+                                                formControlName="category" [value]="subcategory" formControlName="subcategory">
+                                            <option value="" disabled>Выберите подкатегорию</option>
+                                            <option *ngFor="let city of SubCategory" [(ngModel)]="subcategory">{{city.name}}</option>
                                         </select>
                                         <label class="mb-1" *ngIf="add">Добавить фото</label>
                                         <label class="mb-1" *ngIf="!add">Редактировать фото</label>

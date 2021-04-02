@@ -21,6 +21,11 @@ export  class CategoryServices {
         const  headers: HttpHeaders = new HttpHeaders();
         return this.http.get(this.url + 'Subcategory?level=' + level + '&parent=' + parent, {headers});
     }
+    getSubCategoryBissness(token: string) {
+        let  headers: HttpHeaders = new HttpHeaders();
+        headers = headers.append('Authorization', 'Bearer ' + token);
+        return this.http.get(this.url + 'bissness', {headers});
+    }
     getCategoriesservices(token: string) {
         let  headers: HttpHeaders = new HttpHeaders();
         headers = headers.append('Authorization', 'Bearer ' + token);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Category} from '../../../shared/class/category/Category';
+import {Category, MultiCategery} from '../../../shared/class/category/Category';
 import {SendAuth} from '../../../shared/class/auth/SendAuth';
 import {SendAcount} from '../../../shared/class/account/SendAcount';
 import {CategoryServices} from '../../../shared/service/category.services';
@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 import {EmployeeOwner} from '../../../shared/class/staff/EmployeeOwner';
 import {StaffServices} from '../../../shared/service/staff.services';
 import {SendEmployee} from '../../../shared/class/staff/SendEmployee';
+import {ListItem} from "ng-multiselect-dropdown/multiselect.model";
 
 @Component({
   selector: 'app-updateprofile',
@@ -23,13 +24,14 @@ export class UpdateprofileComponent implements OnInit  {
   public accountForm: FormGroup;
   public staffForm: FormGroup;
   public permissionForm: FormGroup;
+
   public mainCategory: Category[];
   choose = 'Выберите категорию';
   main = 'Выберите категорию';
   selectedItems: any;
-  private dropdownSettings: any;
-  private dropdownSubSettings: any;
-  private list: any;
+   dropdownSettings: any;
+   dropdownSubSettings: any;
+   list: any;
   subcat = false;
   sublist: any;
   selectedSubItems: any;
@@ -37,6 +39,8 @@ export class UpdateprofileComponent implements OnInit  {
   auth: SendAuth;
   account: SendAcount;
   private staffAccount: SendEmployee;
+  dropdownList: any;
+  selectedItems1: any;
   constructor(private formBuilder: FormBuilder, private categorys: CategoryServices, private staffservices: StaffServices,
               private accountSer: AccountServices, private dataservices: DataServices,  private router: Router, ) {
 
@@ -79,6 +83,19 @@ lastname: new FormControl(),
     );
 }
   ngOnInit() {
+      // this.selectedItems1 = [
+      //     { item_id: 3, item_text: 'Pune' },
+      //     { item_id: 4, item_text: 'Navsari' }
+      // ];
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'id_item',
+      textField: 'item_text',
+      selectAllText: 'Выбрать все',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 5,
+      allowSearchFilter: true
+    };
     this.createStaffForm();
     this.dataservices.users.subscribe(result => {this.auth = result;
     // if (this.auth.role === 'staff'){
@@ -104,15 +121,40 @@ lastname: new FormControl(),
                               };
                             }); } else if (this.account.level1 !== 0) {
                             this.subflag = true;
+                            this.accountForm.patchValue( {level0: this.mainCategory.find(x=>x.id === this.account.level0).name})
                             this.categorys.getSubCategory(1, this.account.level0).subscribe(
+                                (result_c:Answer)=>{
+                                    const temp = result_c.responce as Category[];
+                                    this.dropdownList=[];
+                                    temp.map(a=>{
+                                        this.dropdownList.push({id_item: a.id, item_text: a.name });
+                                    })
+                                }
+                            )
+                              this.categorys.getSubCategoryBissness(this.auth.token).subscribe(
                                 (result3: Answer) => {
                                   if (result3.status.code === 200) {
                                     this.subcat = true;
 
                                     const SubCategory = result3.responce as Category[];
-                                    this.accountForm.patchValue({level0: this.mainCategory.find(x =>
-                                          x.id === this.account.level0).name,
-                                      level1: SubCategory.find(x => x.id === this.account.level1).name});
+                                    // this.accountForm.patchValue({level0: this.mainCategory.find(x =>
+                                    //       x.id === this.account.level0).name,
+                                    //   level1: SubCategory.find(x => x.id === this.account.level1).name});
+
+                                      // this.dropdownList = [
+                                      //     { item_id: 1, item_text: 'Mumbai' },
+                                      //     { item_id: 2, item_text: 'Bangaluru' },
+                                      //     { item_id: 3, item_text: 'Pune' },
+                                      //     { item_id: 4, item_text: 'Navsari' },
+                                      //     { item_id: 5, item_text: 'New Delhi' }
+                                      // ];
+
+this.selectedItems1=[];
+                                      for (const i of SubCategory) {
+                                          this.selectedItems1.push({id_item: i.id, item_text:i.name});
+                                    // this.selectedItems1.push({id_item: i.id, item_text:i.name});
+                                   }
+                                  //  this.dropdownList.push(new MultiCategery(SubCategory[0]));
                                   }
                                 }
                             );
@@ -126,22 +168,22 @@ lastname: new FormControl(),
               }); },
         error1 => console.log()
     );
-    this.dropdownSettings = {
-      singleSelection: true,
-      text: 'Выберите категорию',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      enableSearchFilter: true,
-      classes: 'myclass custom-class'
-    };
-    this.dropdownSubSettings = {
-      singleSelection: true,
-      text: 'Выберите подкатегорию',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      enableSearchFilter: true,
-      classes: 'myclass custom-class'
-    };
+    // this.dropdownSettings = {
+    //   singleSelection: true,
+    //   text: 'Выберите категорию',
+    //   selectAllText: 'Select All',
+    //   unSelectAllText: 'UnSelect All',
+    //   enableSearchFilter: true,
+    //   classes: 'myclass custom-class'
+    // };
+    // this.dropdownSubSettings = {
+    //   singleSelection: true,
+    //   text: 'Выберите подкатегорию',
+    //   selectAllText: 'Select All',
+    //   unSelectAllText: 'UnSelect All',
+    //   enableSearchFilter: true,
+    //   classes: 'myclass custom-class'
+    // };
 
   }
   position(text: string) {
@@ -220,4 +262,25 @@ lastname: new FormControl(),
   }
 
 
+    onSelectAll($event: Array<ListItem>) {
+
+    }
+
+    onItemSelect1($event: ListItem) {
+         // this.selectedItems1.push(  $event);
+    }
+
+    UpdateCategory() {
+      const items = [];
+      this.selectedItems1.map(a=>{
+          items.push(new Category(a.id_item, 1, a.item_text, this.account.level0));
+      })
+        this.accountSer.updateCategory(this.auth.token, items).subscribe(
+            (result: Answer) => {
+                if (result.status.code === 200){
+                    this.position('Категории обновлены');
+                }
+            }
+        )
+    }
 }

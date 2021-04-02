@@ -55,23 +55,20 @@
                                         <input class="form-control col-xl-8 col-md-7" id="validationCustom4"
                                                type="text" required="" formControlName="address">
                                     </div>
-                                    <div class="form-group row" *ngIf="this.account.level0!=0">
-                                        <label for="validationCustom5" class="col-xl-3 col-md-4"><span>*</span>
-                                            Категория</label>
-                                        <input class="form-control col-xl-8 col-md-7" id="validationCustom5"
-                                               type="text" required="" formControlName="level0">
-                                    </div>
-                                    <div class="form-group row" *ngIf="this.account.level1!=0">
-                                        <label for="validationCustom6" class="col-xl-3 col-md-4"><span>*</span>
-                                            Подкатегория</label>
-                                        <input class="form-control col-xl-8 col-md-7" id="validationCustom6"
-                                               type="text" required="" formControlName="level1">
-                                    </div>
+
 
                                     <div class="form-button">
                                         <button class="btn btn-primary" type="submit">Сохранить</button>
                                     </div>
                                 </form>
+<!--                            <ng-multiselect-dropdown  [placeholder]="'Выберите услугу'"-->
+<!--                                                      [data]="dropdownList"-->
+<!--                                                      [(ngModel)]="selectedItems1"-->
+<!--                                                      [settings]="dropdownSettings"-->
+<!--                                                      (onSelect)="onItemSelect1($event)"-->
+<!--                                                      (onSelectAll)="onSelectAll($event)">-->
+
+<!--                            </ng-multiselect-dropdown>-->
 
 <!--                                <form [formGroup]="staffForm" (ngSubmit)="onSubmitStaff()"-->
 <!--                                      *ngIf="auth.role==='staff'"-->
@@ -118,7 +115,28 @@
                                 <!--&lt;!&ndash;                                </div>&ndash;&gt;-->
 
                         </mat-tab>
-                        <mat-tab title="Аватар">
+                        <mat-tab label="Категории">
+                            <div class="form-group row" *ngIf="this.account.level0!=0">
+                                <label for="validationCustom5" class="col-xl-3 col-md-4"><span>*</span>
+                                    Категория</label>
+                                <input class="form-control col-xl-8 col-md-7" id="validationCustom5"
+                                  [value]="accountForm.get('level0').value"     type="text" required="" >
+                            </div>
+                            <div class="form-group row" *ngIf="this.account.level1!=0">
+                                <label for="validationCustom9" class="col-xl-3 col-md-4"><span>*</span>
+                                    Подкатегория</label>
+
+                                <ng-multiselect-dropdown  [placeholder]="'Выберите услугу'"
+                                                          [data]="dropdownList"
+                                                          [(ngModel)]="selectedItems1"
+                                                          [settings]="dropdownSettings"
+                                                          (onSelect)="onItemSelect1($event)"
+                                                          (onSelectAll)="onSelectAll($event)">
+
+                                </ng-multiselect-dropdown>   </div>
+<button class="btn-success" (click)="UpdateCategory()">Сохранить</button>
+                        </mat-tab>
+                        <mat-tab label="Аватар">
 
                                 <div class="form-group row">
                                     <label class="col-xl-2 col-md-4"><span>*</span>

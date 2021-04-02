@@ -1348,6 +1348,9 @@ MIT
 
 ngx-ckeditor
 
+ngx-cookie-service
+MIT
+
 ngx-dropzone-wrapper
 MIT
 

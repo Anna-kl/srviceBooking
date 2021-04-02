@@ -13,19 +13,21 @@ import { ProfilestaffComponent } from './profilestaff/profilestaff.component';
 import { UpdateStafComponent } from './update-staf/update-staf.component';
 import {RouterModule} from "@angular/router";
 import {MatTabsModule} from "@angular/material/tabs";
+import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
 
 
 
 @NgModule({
   declarations: [ProfileComponent, UpdateprofileComponent, ProfilestaffComponent, UpdateStafComponent],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    SettingRoutingModule,
-    SharedModule,
-    AngularMultiSelectModule,
-    FormsModule,
-    MatTabsModule
-  ]
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        SettingRoutingModule,
+        SharedModule,
+        AngularMultiSelectModule,
+        FormsModule,
+        MatTabsModule,
+        NgMultiSelectDropDownModule.forRoot()
+    ]
 })
 export class SettingModule { }

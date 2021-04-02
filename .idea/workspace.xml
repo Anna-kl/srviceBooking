@@ -3,6 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="0fac6c7d-08c8-4d3e-a7ed-2cbfdd281a9c" name="Default Changelist" comment="add shedule check">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/multikart-admin.rar" beforeDir="false" afterPath="$PROJECT_DIR$/dist/multikart-admin.rar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/multikart-admin/3rdpartylicenses.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dist/multikart-admin/3rdpartylicenses.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/multikart-admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/multikart-admin/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/multikart-admin/main-es2015.dac23f32499c5a298769.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/multikart-admin/main-es5.dac23f32499c5a298769.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/invoice/invoice.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/invoice/invoice.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/setting/setting.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/setting/setting.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/setting/updateprofile/updateprofile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/setting/updateprofile/updateprofile.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/setting/updateprofile/updateprofile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/setting/updateprofile/updateprofile.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/class/category/Category.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/class/category/Category.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/service/accountservices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/service/accountservices.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/service/category.services.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/service/category.services.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/environments/environment.prod.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -209,7 +223,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propDebugger" />
-    <property name="ts.external.directory.path" value="C:\Users\andji\WebstormProjects\srviceBooking\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="D:\Data\RunetBackend — копия\backend\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -411,6 +425,8 @@
       <workItem from="1617116228340" duration="734000" />
       <workItem from="1617201087884" duration="787000" />
       <workItem from="1617204847537" duration="1239000" />
+      <workItem from="1617338684127" duration="1170000" />
+      <workItem from="1617345630724" duration="5385000" />
     </task>
     <task id="LOCAL-00001" summary="add shedule">
       <created>1615359293700</created>
@@ -521,7 +537,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/shared/service/accountservices.ts</url>
-          <line>39</line>
+          <line>45</line>
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -535,11 +551,6 @@
           <option name="timeStamp" value="164" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/components/setting/updateprofile/updateprofile.component.ts</url>
-          <line>57</line>
-          <option name="timeStamp" value="175" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/components/users/create-user/create-user.component.ts</url>
           <line>105</line>
           <option name="timeStamp" value="201" />
@@ -551,17 +562,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.ts</url>
-          <line>246</line>
+          <line>260</line>
           <option name="timeStamp" value="219" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.ts</url>
-          <line>247</line>
+          <line>261</line>
           <option name="timeStamp" value="220" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.ts</url>
-          <line>260</line>
+          <line>275</line>
           <option name="timeStamp" value="256" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -590,9 +601,33 @@
           <option name="timeStamp" value="333" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/components/setting/updateprofile/updateprofile.component.ts</url>
+          <line>116</line>
+          <option name="timeStamp" value="351" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/components/setting/updateprofile/updateprofile.component.ts</url>
+          <line>277</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="352" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/components/setting/updateprofile/updateprofile.component.ts</url>
+          <line>279</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="353" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.ts</url>
-          <line>89</line>
-          <option name="timeStamp" value="343" />
+          <line>307</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="360" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.ts</url>
+          <line>205</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="363" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
