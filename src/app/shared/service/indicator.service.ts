@@ -20,10 +20,10 @@ export  class IndicatorServices {
         headers = headers.append('Authorization', 'Bearer ' + token);
         return this.http.get(this.url  + '?dttm=' + date,  {headers} );
     }
-    getStaffIndividual(token: string, date:string) {
+    getStaffIndividual(token: string) {
         let headers: HttpHeaders = new HttpHeaders();
         headers = headers.append('Authorization', 'Bearer ' + token);
-        return this.http.get(this.url + 'staff', {headers});
+        return this.http.get(this.url + '/staff', {headers});
     }
     getMainIndividual(token: string) {
         let headers: HttpHeaders = new HttpHeaders();

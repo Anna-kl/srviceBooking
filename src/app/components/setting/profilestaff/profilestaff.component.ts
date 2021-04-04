@@ -7,18 +7,21 @@ import {StaffServices} from "../../../shared/service/staff.services";
 import {SendAuth} from "../../../shared/class/auth/SendAuth";
 import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatTabsModule} from '@angular/material/tabs';
+import {IndicatorServices} from "../../../shared/service/indicator.service";
+import {StaffIndicator} from "../../../shared/class/indicators/StaffIndicator";
 @Component({
   selector: 'app-profilestaff',
   templateUrl: './profilestaff.component.html',
   styleUrls: ['./profilestaff.component.scss'],
-  providers: [StaffServices ]
+  providers: [StaffServices, IndicatorServices ]
 })
 export class ProfilestaffComponent implements OnInit {
   private auth: SendAuth;
   staff: SendEmployee;
   img: any;
+  mainIn: StaffIndicator;
 
-  constructor(private dataservices: DataServices, private staffservice: StaffServices) {
+  constructor(private dataservices: DataServices, private staffservice: StaffServices, private indicator: IndicatorServices) {
   }
 
   ngOnInit() {
@@ -35,7 +38,13 @@ export class ProfilestaffComponent implements OnInit {
           }
       );
     });
-
+this.indicator.getStaffIndividual(this.auth.token).subscribe(
+    (result: Answer) => {
+      if (result.status.code === 200){
+        this.mainIn = result.responce as StaffIndicator;
+      }
+    }
+)
 
   }
 }

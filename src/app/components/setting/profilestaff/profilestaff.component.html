@@ -24,32 +24,36 @@
                     <div class="project-status">
                         <h5 class="f-w-600">Ваш статус в системе</h5>
                         <div class="media">
-                            <div class="media-body">
-                                <h6>Заказы<span class="pull-right">80%</span></h6>
+                            <div class="media-body" *ngIf="mainIn.now!=-1">
+                                <h6>Выполненные заказы<span class="pull-right">{{mainIn.now}}%</span></h6>
                                 <div class="progress sm-progress-bar">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 90%"
+                                    <div class="progress-bar bg-primary" role="progressbar"  [ngStyle]="{'width': mainIn.now + '%'}"
                                          aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
+                            </div>
+                            <div class="media-body" *ngIf="mainIn.now==-1">
+                                <h6>У вас сегодня нет заказов</h6>
+
                             </div>
                         </div>
                         <div class="media">
                             <div class="media-body">
-                                <h6>Время <span class="pull-right">60%</span></h6>
+                                <h6>Заказы по сравнению с прошлой неделей<span class="pull-right">{{mainIn.week}}%</span></h6>
                                 <div class="progress sm-progress-bar">
-                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 60%"
+                                    <div class="progress-bar bg-secondary" role="progressbar" [ngStyle]="{'width': mainIn.week + '%'}"
                                          aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="media">
-                            <div class="media-body">
-                                <h6>Заработок<span class="pull-right">70%</span></h6>
-                                <div class="progress sm-progress-bar">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 70%"
-                                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
+<!--                        <div class="media">-->
+<!--                            <div class="media-body">-->
+<!--                                <h6>Заработок<span class="pull-right">70%</span></h6>-->
+<!--                                <div class="progress sm-progress-bar">-->
+<!--                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 70%"-->
+<!--                                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>

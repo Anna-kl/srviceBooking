@@ -42,16 +42,20 @@
                                                       formControlName="descride"></textarea>
                                         </div>
                                         <label class="mb-1" *ngIf="add">Выберите категорию:</label>
-                                        <label class="mb-1" *ngIf="!add">Категория:</label>
-                                        <select class="custom-select" (change)="changeCategory($event)"
+                                        <label class="mb-1" for="validationCustom031" *ngIf="!add">Категория:</label>
+                                        <input class="form-control" id="validationCustom031" type="text"
+                                               formControlName="category"  *ngIf="!add">
+                                        <select class="custom-select" (change)="changeCategory($event)" *ngIf="add"
                                                 formControlName="category" [value]="category">
                                             <option value="" disabled>Выберите категорию</option>
                                             <option *ngFor="let city of Category" >{{city.name}}</option>
                                         </select>
                                         <label class="mb-1" *ngIf="add">Выберите подкатегорию:</label>
-                                        <label class="mb-1" *ngIf="!add">Подкатегория:</label>
-                                        <select class="custom-select" (change)="changeSubCategory($event)"
-                                                formControlName="category" [value]="subcategory" formControlName="subcategory">
+                                        <label class="mb-1" *ngIf="!add" for="validationCustom031">Подкатегория:</label>
+                                        <input class="form-control" id="validationCustom032" type="text"
+                                               formControlName="subcategory"  *ngIf="!add">
+                                        <select class="custom-select" (change)="changeSubCategory($event)" *ngIf="add"
+                                                formControlName="category" [value]="subcategory" >
                                             <option value="" disabled>Выберите подкатегорию</option>
                                             <option *ngFor="let city of SubCategory" [(ngModel)]="subcategory">{{city.name}}</option>
                                         </select>

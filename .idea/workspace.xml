@@ -2,21 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0fac6c7d-08c8-4d3e-a7ed-2cbfdd281a9c" name="Default Changelist" comment="add shedule check">
+      <change afterPath="$PROJECT_DIR$/src/app/shared/class/indicators/StaffIndicator.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_04_2021_8_27__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_04_2021_8_27__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_03_2021_8_23_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_03_2021_8_23__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_03_2021_8_23__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/multikart-admin.rar" beforeDir="false" afterPath="$PROJECT_DIR$/dist/multikart-admin.rar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/multikart-admin/3rdpartylicenses.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dist/multikart-admin/3rdpartylicenses.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/multikart-admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/multikart-admin/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/multikart-admin/main-es2015.dac23f32499c5a298769.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/multikart-admin/main-es5.dac23f32499c5a298769.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/invoice/invoice.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/invoice/invoice.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/setting/setting.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/setting/setting.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/setting/updateprofile/updateprofile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/setting/updateprofile/updateprofile.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/setting/updateprofile/updateprofile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/setting/updateprofile/updateprofile.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/class/category/Category.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/class/category/Category.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/service/accountservices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/service/accountservices.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/service/category.services.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/service/category.services.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/setting/profilestaff/profilestaff.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/setting/profilestaff/profilestaff.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/setting/profilestaff/profilestaff.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/setting/profilestaff/profilestaff.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/class/SendServices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/class/SendServices.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/service/indicator.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/service/indicator.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/environments/environment.prod.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -223,7 +219,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propDebugger" />
-    <property name="ts.external.directory.path" value="D:\Data\RunetBackend — копия\backend\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Users\andji\WebstormProjects\srviceBooking\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -427,6 +423,7 @@
       <workItem from="1617204847537" duration="1239000" />
       <workItem from="1617338684127" duration="1170000" />
       <workItem from="1617345630724" duration="5385000" />
+      <workItem from="1617514386193" duration="6904000" />
     </task>
     <task id="LOCAL-00001" summary="add shedule">
       <created>1615359293700</created>
@@ -562,17 +559,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.ts</url>
-          <line>260</line>
-          <option name="timeStamp" value="219" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.ts</url>
-          <line>261</line>
-          <option name="timeStamp" value="220" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.ts</url>
-          <line>275</line>
+          <line>291</line>
           <option name="timeStamp" value="256" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -596,37 +583,13 @@
           <option name="timeStamp" value="272" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/components/invoice/change-shedule/change-shedule.component.ts</url>
-          <line>266</line>
-          <option name="timeStamp" value="333" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/components/setting/updateprofile/updateprofile.component.ts</url>
-          <line>116</line>
+          <line>158</line>
           <option name="timeStamp" value="351" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/components/setting/updateprofile/updateprofile.component.ts</url>
-          <line>277</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="352" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/components/setting/updateprofile/updateprofile.component.ts</url>
-          <line>279</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="353" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.ts</url>
-          <line>307</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="360" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.ts</url>
-          <line>205</line>
-          <properties lambdaOrdinal="-1" />
+          <line>219</line>
           <option name="timeStamp" value="363" />
         </line-breakpoint>
       </breakpoints>
