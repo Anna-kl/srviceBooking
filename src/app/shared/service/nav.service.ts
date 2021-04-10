@@ -78,7 +78,7 @@ export class NavService {
             icon: 'home', type: 'link', badgeType: 'primary', active: false
 		},
         {
-            title: 'Расписание', path: '/invoice', icon: 'archive', type: 'link', active: false
+            title: 'Расписание', path: '/calendar', icon: 'archive', type: 'link', active: false
         },
 		// {
 		// 	path: 'Основные показатели', title: 'Расписание', icon: 'home', type: 'link', badgeType: 'primary', active: false

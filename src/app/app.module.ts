@@ -20,12 +20,17 @@ import { InvoiceModule } from './components/invoice/invoice.module';
 import { SettingModule } from './components/setting/setting.module';;
 import { ReportsModule } from './components/reports/reports.module';
 import { AuthModule } from './components/auth/auth.module';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {DataServices} from './shared/service/data.services';
 import {NgbModule, NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
 import {CircleProgressOptions, NgCircleProgressModule} from "ng-circle-progress";
 import {CookieService} from "ngx-cookie-service";
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 
+
+function HttpLoaderFactory() {
+
+}
 
 @NgModule({
   declarations: [

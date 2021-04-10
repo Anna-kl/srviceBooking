@@ -2,17 +2,58 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0fac6c7d-08c8-4d3e-a7ed-2cbfdd281a9c" name="Default Changelist" comment="add shedule check">
-      <change afterPath="$PROJECT_DIR$/src/app/shared/class/indicators/StaffIndicator.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_04_2021_8_27__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_04_2021_8_27__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_03_2021_8_23_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_03_2021_8_23__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_03_2021_8_23__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/calendar/calendar-routing.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/calendar/createcalendar/multiple-icons-dialog.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/shared/class/Shedule/SendCalendar.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/shared/class/client/SendDare.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_04_2021_8_27_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_04_2021_8_27__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_03_2021_8_23__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/dispatchers/base-overlay-dispatcher.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/dispatchers/base-overlay-dispatcher.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/dispatchers/overlay-keyboard-dispatcher.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/dispatchers/overlay-keyboard-dispatcher.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/dispatchers/overlay-outside-click-dispatcher.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/dispatchers/overlay-outside-click-dispatcher.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/fullscreen-overlay-container.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/fullscreen-overlay-container.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/overlay-container.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/overlay-container.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/overlay-directives.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/overlay-directives.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/overlay-module.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/overlay-module.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/overlay.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/overlay.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/position/overlay-position-builder.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/position/overlay-position-builder.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/scroll/scroll-strategy-options.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/cdk/overlay/scroll/scroll-strategy-options.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/button/button-module.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/button/button-module.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/button/button.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/button/button.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/button/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/button/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/button/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/button/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/dialog/dialog-container.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/dialog/dialog-container.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/dialog/dialog-content-directives.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/dialog/dialog-content-directives.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/dialog/dialog-module.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/dialog/dialog-module.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/dialog/dialog.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/dialog/dialog.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/dialog/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/dialog/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/dialog/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/dialog/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/grid-list/grid-list-module.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/grid-list/grid-list-module.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/grid-list/grid-list.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/grid-list/grid-list.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/grid-list/grid-tile.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/grid-list/grid-tile.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/grid-list/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/grid-list/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/grid-list/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/grid-list/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/icon/icon-module.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/icon/icon-module.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/icon/icon-registry.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/icon/icon-registry.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/icon/icon.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/icon/icon.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/icon/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/icon/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@angular/material/icon/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@angular/material/icon/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/__ngcc_entry_points__.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/__ngcc_entry_points__.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/invoice/invoice.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/invoice/invoice.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/setting/profilestaff/profilestaff.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/setting/profilestaff/profilestaff.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/setting/profilestaff/profilestaff.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/setting/profilestaff/profilestaff.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/class/SendServices.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/class/SendServices.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/service/indicator.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/service/indicator.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/setting/update-staf/update-staf.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/setting/update-staf/update-staf.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/routes/content-routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/routes/content-routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/service/client.services.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/service/client.services.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/service/nav.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/service/nav.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/service/shedule.services.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/service/shedule.services.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/environments/environment.prod.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -219,7 +260,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propDebugger" />
-    <property name="ts.external.directory.path" value="C:\Users\andji\WebstormProjects\srviceBooking\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Users\andji\WebstormProjects\ServiceBooking\srviceBooking\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -227,6 +268,7 @@
       <recent name="D:\Data\RunetBackend — копия\backend\src\app\components\setting" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\andji\WebstormProjects\ServiceBooking\srviceBooking\src\app\components\calendar" />
       <recent name="D:\Data\RunetBackend — копия\backend\src\assets\images" />
       <recent name="D:\Data\RunetBackend — копия\backend\src\assets\fonts" />
       <recent name="D:\Data\Multikart_angular_All_in_one\backend\src\app\components\auth" />
@@ -424,6 +466,12 @@
       <workItem from="1617338684127" duration="1170000" />
       <workItem from="1617345630724" duration="5385000" />
       <workItem from="1617514386193" duration="6904000" />
+      <workItem from="1617603975542" duration="2184000" />
+      <workItem from="1617606181900" duration="4087000" />
+      <workItem from="1617688965512" duration="269000" />
+      <workItem from="1617776622897" duration="319000" />
+      <workItem from="1617777494704" duration="15431000" />
+      <workItem from="1617896139697" duration="9749000" />
     </task>
     <task id="LOCAL-00001" summary="add shedule">
       <created>1615359293700</created>
@@ -591,6 +639,27 @@
           <url>file://$PROJECT_DIR$/src/app/components/products/digital/digital-category/digital-category.component.ts</url>
           <line>219</line>
           <option name="timeStamp" value="363" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/components/calendar/createcalendar/createcalendar.component.ts</url>
+          <line>376</line>
+          <option name="timeStamp" value="365" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/components/calendar/createcalendar/createcalendar.component.ts</url>
+          <line>123</line>
+          <option name="timeStamp" value="369" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/components/calendar/createcalendar/createcalendar.component.ts</url>
+          <line>237</line>
+          <option name="timeStamp" value="396" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/components/calendar/createcalendar/createcalendar.component.ts</url>
+          <line>354</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="405" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

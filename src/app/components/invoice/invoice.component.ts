@@ -12,7 +12,7 @@ import {ModalDismissReasons, NgbModal, NgbModalRef} from '@ng-bootstrap/ng-boots
 
 import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
-import {CookieService} from "ngx-cookie-service";
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-invoice',

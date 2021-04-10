@@ -37,12 +37,16 @@
                             </div>
                         </div>
                         <div class="media">
-                            <div class="media-body">
+                            <div class="media-body" *ngIf="mainIn.week!=-1">
                                 <h6>Заказы по сравнению с прошлой неделей<span class="pull-right">{{mainIn.week}}%</span></h6>
                                 <div class="progress sm-progress-bar">
                                     <div class="progress-bar bg-secondary" role="progressbar" [ngStyle]="{'width': mainIn.week + '%'}"
                                          aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
+                            </div>
+                            <div class="media-body" *ngIf="mainIn.week==-1">
+                                <h6>У вас не было заказов более 14 дней</h6>
+
                             </div>
                         </div>
 <!--                        <div class="media">-->

@@ -1,0 +1,112 @@
+<mat-grid-list cols="3" rowHeight="60px" class="primary-bg calendar-nav">
+    <mat-grid-tile>
+        <button mat-button (click)="previous()">
+         <span class="legend">{{prevmonth}}</span><img src="assets/images/prevmonth.png">
+        </button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <strong>
+            {{ 'МЕСЯЦ ' + visibleMonth | translate }}
+            {{ visibleYear }}
+        </strong>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <button mat-button (click)="next()">
+            {{ nextButtonText }}
+            <span class="legend">{{nextmonth}}</span><img src="assets/images/nextmonth.png">
+        </button>
+    </mat-grid-tile>
+</mat-grid-list>
+<mat-grid-list cols="7" rowHeight="30px" class="accent-bg color-white">
+    <mat-grid-tile *ngFor="let day of daysShort">
+        {{ day }}
+    </mat-grid-tile>
+</mat-grid-list>
+<mat-grid-list cols="7" class="calendar">
+    <mat-grid-tile
+            *ngFor="let cell of cells"
+            class="cell"
+            [ngClass]="cell.cellClass"
+            (click)="TestClick(content, cell)"
+    >
+        <span [ngClass]="cell.dayClass">{{ cell.dayNumber }}</span>
+        <mat-grid-list
+                cols="2"
+                class="innerCell"
+                *ngIf="cell.styles"
+                [ngStyle]="{
+        'background': 'none'
+      }"
+                [ngClass]="cell.date"
+                gutterSize="0"
+        >
+            <button
+                    class="dialogButton"
+                    mat-raised-button
+                    color="accent"
+                    (click)="openDialog(cell)"
+                    *ngIf="cell.styles.showDialogButton"
+            >
+                <mat-icon>list</mat-icon>
+            </button>
+
+            <mat-grid-tile *ngFor="let temp of cell.icon"
+class="img-fluid img-90 rounded-circle blur-up lazyloaded"
+                    [ngStyle]="{
+          'background-image':temp
+        }"
+            >
+            </mat-grid-tile>
+<!--            <mat-grid-tile-->
+<!--                    [ngStyle]="{-->
+<!--          'background-image':-->
+<!--            'url(' + iconPath + cell.styles.topRight + iconFormat + ')'-->
+<!--        }"-->
+<!--            ></mat-grid-tile>-->
+<!--            <mat-grid-tile-->
+<!--                    [ngStyle]="{-->
+<!--          'background-image':-->
+<!--            'url(' + iconPath + cell.styles.bottomLeft + iconFormat + ')'-->
+<!--        }"-->
+<!--            ></mat-grid-tile>-->
+<!--            <mat-grid-tile-->
+<!--                    [ngStyle]="{-->
+<!--          'background-image':-->
+<!--            'url(' + iconPath + cell.styles.bottomRight + iconFormat + ')'-->
+<!--        }"-->
+<!--            ></mat-grid-tile>-->
+        </mat-grid-list>
+    </mat-grid-tile>
+</mat-grid-list>
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title f-w-600" id="exampleModalLabel">Добавить рабочий день</h5>
+        <button type="button" class="close" aria-label="Close"
+                (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" *ngIf="addDay">
+        <span>Чтобы добавить рабочий день выберите время работы и сотрудника</span>
+        <form [formGroup]="TimeControl" (ngSubmit)="AddDays()">
+            <select class="custom-select" (change)="changeCategory($event)"
+                    formControlName="category" [value]="category">
+
+                <option *ngFor="let city of Category" >{{city.firstname}} {{city.lastname}}</option>
+            </select>
+            <div class="form-group">
+                <label>Время начала</label>
+                <input type="time" style="margin-left: 20px" formControlName="start">
+
+            </div>
+            <div class="form-group">
+                <label>Время окончания</label>
+                <input type="time" style="margin-left: 20px" formControlName="end">
+
+            </div>
+            <button class="btn btn-success shadow-lg mx-auto" type="submit">Добавить</button>
+        </form>
+    </div>
+
+
+</ng-template>

@@ -80,7 +80,17 @@ createStaffForm() {
   );
 }
 
-    uploadFile($event: Event) {
-        
+    uploadFile($event) {
+        const  filelist: FileList = $event.target.files;
+        const  file: File = filelist[0];
+        this.staffservice.uploadUserPic(this.auth.token, this.auth.accountid, file).subscribe(
+            (result: Answer) => {
+                if (result.status.code === 200) {
+                    this.position('Изображение сохранено');
+                } else {
+                    this.noposition(result.status.message);
+                }
+            }
+        );
     }
 }

@@ -21,6 +21,13 @@ export const content: Routes = [
     }
   },
   {
+    path: 'calendar',
+    loadChildren: () => import('../../components/calendar/calendar.module').then(m => m.CalendarModule),
+    data: {
+      breadcrumb: 'Calendar'
+    }
+  },
+  {
     path: 'coupons',
     loadChildren: () => import('../../components/coupons/coupons.module').then(m => m.CouponsModule),
     data: {
