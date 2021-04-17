@@ -26,7 +26,11 @@ export  class SheduleServices {
         headers = headers.append('Authorization', 'Bearer ' + token);
         return this.http.get(this.url + 'all?id=' + id, {headers } );
     }
-
+getBusiness(token: string, dttm: string){
+    let  headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Authorization', 'Bearer ' + token);
+    return this.http.get(this.url + 'business?days=' + dttm, {headers } );
+}
     getconcreteDay(token: string, id: number){
         let  headers: HttpHeaders = new HttpHeaders();
         headers = headers.append('Authorization', 'Bearer ' + token);
@@ -53,9 +57,19 @@ export  class SheduleServices {
         headers = headers.append('Authorization', 'Bearer ' + token);
         return this.http.post(this.url + 'addservices', send,{headers } );
     }
+    AddRecordBis(token: string, send: SendRecord){
+        let  headers: HttpHeaders = new HttpHeaders();
+        headers = headers.append('Authorization', 'Bearer ' + token);
+        return this.http.post(this.url + 'addserBis', send,{headers } );
+    }
     GetCancelled(token: string, id: number){
         let  headers: HttpHeaders = new HttpHeaders();
         headers = headers.append('Authorization', 'Bearer ' + token);
         return this.http.get(this.url +'cancelled?id='+id, {headers } );
+    }
+    getDays(token: string, days: string, id: string){
+        let  headers: HttpHeaders = new HttpHeaders();
+        headers = headers.append('Authorization', 'Bearer ' + token);
+        return this.http.get(this.url +'days?id='+id+'&days='+days, {headers } );
     }
 }

@@ -8,11 +8,14 @@ import {MatIconModule} from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {OverlayModule} from "@angular/cdk/overlay";
-import {ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from '@angular/forms';
+import {SchedulerComponent} from './createcalendar/scheduler/scheduler.component';
+import {DayPilotModule} from "daypilot-pro-angular";
+
 
 
 @NgModule({
-  declarations: [CreatecalendarComponent, MultipleIconsDialogComponent],
+  declarations: [CreatecalendarComponent, MultipleIconsDialogComponent, SchedulerComponent],
     imports: [
         CommonModule,
         CalendarRoutingModule,
@@ -22,7 +25,8 @@ import {ReactiveFormsModule} from "@angular/forms";
         MatIconModule,
         OverlayModule,
         MatDialogModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        DayPilotModule
     ],
   providers: [MatDialog ]
 })

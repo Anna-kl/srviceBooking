@@ -85,7 +85,7 @@ export class LoginComponent implements OnInit {
             this.dataservies.SendAccount(user);
             if (user.isfilled) {
               if (user.role === 'owner') {
-              this.router.navigate(['/settings/profile']);
+              this.router.navigate(['/dashboard/default']);
               } else {
                 this.router.navigate(['/settings/profilestaff']);
               }

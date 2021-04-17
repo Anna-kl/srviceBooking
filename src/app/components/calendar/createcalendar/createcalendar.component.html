@@ -88,25 +88,26 @@ class="img-fluid img-90 rounded-circle blur-up lazyloaded"
     </div>
     <div class="modal-body" *ngIf="addDay">
         <span>Чтобы добавить рабочий день выберите время работы и сотрудника</span>
-        <form [formGroup]="TimeControl" (ngSubmit)="AddDays()">
-            <select class="custom-select" (change)="changeCategory($event)"
+        <form [formGroup]="TimeControl" (ngSubmit)="AddDays()" >
+            <select class="custom-select" (change)="changeCategory($event)" *ngIf="Category.length>0"
                     formControlName="category" [value]="category">
 
                 <option *ngFor="let city of Category" >{{city.firstname}} {{city.lastname}}</option>
             </select>
-            <div class="form-group">
+            <div class="form-group" >
                 <label>Время начала</label>
                 <input type="time" style="margin-left: 20px" formControlName="start">
 
             </div>
-            <div class="form-group">
+            <div class="form-group"  >
                 <label>Время окончания</label>
                 <input type="time" style="margin-left: 20px" formControlName="end">
 
             </div>
             <button class="btn btn-success shadow-lg mx-auto" type="submit">Добавить</button>
         </form>
+
     </div>
 
-
+    <button class="btn btn-success shadow-lg mx-auto" (click)="GoOver()">Просмотреть</button>
 </ng-template>

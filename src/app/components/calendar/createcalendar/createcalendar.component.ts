@@ -17,6 +17,8 @@ import {ClientServices} from "../../../shared/service/client.services";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {FormBuilder} from "@angular/forms";
 import {DaysOf} from "../../../shared/class/Shedule/DaysOf";
+import Swal from "sweetalert2";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-createcalendar',
@@ -73,7 +75,8 @@ export class CreatecalendarComponent implements OnInit {
   private modalReference: any;
   private closeResult: string;
 
-  constructor(public dialog: MatDialog, private formBuilder: FormBuilder, private schedule: SheduleServices, private dataservices: DataServices, private cookieService: CookieService,
+  constructor(public dialog: MatDialog, private formBuilder: FormBuilder, private schedule: SheduleServices, private dataservices: DataServices,
+              private cookieService: CookieService,private sheduleservices: SheduleServices,  private router: Router,
               private staff: StaffServices,  private modalService: NgbModal, private sanitizer: DomSanitizer, private clientser: ClientServices) {
   }
 
@@ -325,10 +328,12 @@ LoadCalendar(month: string, year: string){
   }
 
   TestClick(content, cell: any) {
+  //  this.router.navigate(['/calendar/scheduler/']);
     this.TimeControl=this.formBuilder.group({
       start: '',
       end: '',
-      category: null
+      category: null,
+      days: cell.date,
     });
     this.modalReference = this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
     this.modalReference.result.then(
@@ -351,16 +356,60 @@ LoadCalendar(month: string, year: string){
   }
 
   AddDays() {
-    const dar = new DayOfWeek(0, )
+
+    const data = this.TimeControl.getRawValue();
+    const start = new Date(data.days);
+    let a2 = parseInt(data.start.split(':')[0], 10);
+    start.setHours(a2);
+    a2 = parseInt(data.start.split(':')[1], 10);
+    start.setMinutes(a2);
+    start.setSeconds(0);
+    const end = new Date(data.days);
+    a2 = parseInt(data.end.split(':')[0], 10);
+    end.setHours(a2);
+    a2 = parseInt(data.end.split(':')[1], 10);
+    end.setMinutes(a2);
+    end.setSeconds(0);
+    const days = new DayOfWeek(0, start, end, data.category.id);
+    this.sheduleservices.addDaysofWork(this.user.token,  days).subscribe(
+        (result: Answer)  => {
+          if (result.status.code === 201) {
+            this.position('День добавлен');
+            this.modalReference.close();
+           // this.UpdateDate();
+          }
+        }, error1 => console.log(error1)
+    );
 console.log();
   }
-
+  position(text: string) {
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: text,
+      showConfirmButton: false,
+      timer: 1500
+    }); }
+  noposition(text: string) {
+    Swal.fire({
+      position: 'top-end',
+      icon: 'error',
+      title: text,
+      showConfirmButton: false,
+      timer: 1500
+    }); }
   changeCategory($event: Event) {
 console.log();
   }
 
   private getDismissReason(reason) {
     
+  }
+
+  GoOver() {
+    const data = this.TimeControl.getRawValue();
+    this.modalReference.close();
+    this.router.navigate(['calendar/scheduler/'+data.days]);
   }
 }
 

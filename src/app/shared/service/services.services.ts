@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
 import {SendAcount} from '../class/account/SendAcount';
 import {environment} from '../../../environments/environment.prod';
-import {SendServices} from "../class/SendServices";
+import {SendServices} from '../class/SendServices';
 
 
 @Injectable()
@@ -43,7 +43,11 @@ export  class ServicesServices {
         headers = headers.append('Authorization', 'Bearer ' + token);
         return this.http.post(this.url, send, {headers } );
     }
-
+getServicesId(token: string, id: string){
+    let  headers: HttpHeaders = new HttpHeaders();
+    headers = headers.append('Authorization', 'Bearer ' + token);
+    return this.http.get(this.url+id, {headers } );
+}
     updateService(token: string, send: SendServices) {
         let  headers: HttpHeaders = new HttpHeaders();
         headers = headers.append('Authorization', 'Bearer ' + token);
