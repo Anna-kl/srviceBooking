@@ -22,6 +22,12 @@ export  class AccountServices {
         headers = headers.append('Authorization', 'Bearer ' + token);
         return this.http.put(this.urlaccount + 'category', item,{headers } );
     }
+    getAddress(address: string){
+       let url = 'https://geocode-maps.yandex.ru/1.x/?apikey=a2c8035f-05f9-4489-aea1-ad9b2a841572&geocode='+
+       address+'&format=json'
+
+        return this.http.get(url);
+    }
     uploadUserPic(header: string, file: File){
         let  headers: HttpHeaders = new HttpHeaders();
         const formData = new FormData();

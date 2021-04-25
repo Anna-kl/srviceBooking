@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Category, MultiCategery} from '../../../shared/class/category/Category';
 import {SendAuth} from '../../../shared/class/auth/SendAuth';
@@ -12,12 +12,20 @@ import Swal from 'sweetalert2';
 import {EmployeeOwner} from '../../../shared/class/staff/EmployeeOwner';
 import {StaffServices} from '../../../shared/service/staff.services';
 import {SendEmployee} from '../../../shared/class/staff/SendEmployee';
-import {ListItem} from "ng-multiselect-dropdown/multiselect.model";
+import {ListItem} from 'ng-multiselect-dropdown/multiselect.model';
+import {GooglePlaceDirective} from 'ngx-google-places-autocomplete';
+import {Address} from 'ngx-google-places-autocomplete/objects/address';
+import {ComponentRestrictions} from 'ngx-google-places-autocomplete/objects/options/componentRestrictions';
+import {AddressComponent} from 'ngx-google-places-autocomplete/objects/addressComponent';
+import {Location, Appearance, GermanAddress} from '@angular-material-extensions/google-maps-autocomplete';
+import {Title} from '@angular/platform-browser';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-updateprofile',
   templateUrl: './updateprofile.component.html',
   styleUrls: ['./updateprofile.component.scss'],
+    encapsulation: ViewEncapsulation.None,
   providers: [CategoryServices, AccountServices, StaffServices]
 })
 export class UpdateprofileComponent implements OnInit  {
@@ -40,12 +48,20 @@ export class UpdateprofileComponent implements OnInit  {
   account: SendAcount;
   private staffAccount: SendEmployee;
   dropdownList: any;
+    public appearance = Appearance;
+    public zoom: number;
+    public latitude: number;
+    public longitude: number;
+
   selectedItems1: any;
-  constructor(private formBuilder: FormBuilder, private categorys: CategoryServices, private staffservices: StaffServices,
+    options: any[];
+  constructor(private formBuilder: FormBuilder,
+              private titleService: Title, private categorys: CategoryServices, private staffservices: StaffServices,
               private accountSer: AccountServices, private dataservices: DataServices,  private router: Router, ) {
 
     this.createPermissionForm();
   }
+
 
   createAccountForm(account: SendAcount) {
     this.accountForm = this.formBuilder.group({
@@ -83,6 +99,13 @@ lastname: new FormControl(),
     );
 }
   ngOnInit() {
+
+
+      this.zoom = 10;
+      this.latitude = 52.520008;
+      this.longitude = 13.404954;
+
+
       // this.selectedItems1 = [
       //     { item_id: 3, item_text: 'Pune' },
       //     { item_id: 4, item_text: 'Navsari' }
@@ -110,6 +133,23 @@ lastname: new FormControl(),
 
                     this.account = result1.responce as SendAcount;
                     this.createAccountForm(this.account );
+                    this.accountForm.get('address').valueChanges.subscribe(value => {
+                            if (value[value.length-1]===' '){
+this.accountSer.getAddress(value).subscribe(
+    answer => {
+        const data = answer['response']['GeoObjectCollection']['featureMember'];
+        this.options = [];
+        for (const a of data) {
+           const aa = a['GeoObject']['metaDataProperty']['GeocoderMetaData']['text'];
+           this.options.push(aa);
+        }
+        ['GeocoderMetaData'];
+        console.log(data);
+    }
+)
+                            }
+                        }
+                    )
                     this.categorys.getGeneral().subscribe(
                         (result2: Answer) => {
                           this.mainCategory = result2.responce as Category[];
@@ -186,6 +226,37 @@ this.selectedItems1=[];
     // };
 
   }
+    public onChange(address: Address) {
+        if(address.photos && address.photos.length > 0){
+            console.dir(address.photos[0].getUrl({maxHeight:500,maxWidth:500}));
+        }
+        const x = this.getComponentByType(address,'street_number');
+        console.log(address.geometry.location.lng());
+        console.log(address.geometry.location.lat());
+        console.log(address.geometry.location.toJSON());
+        console.log(address.geometry.viewport.getNorthEast());
+    }
+
+    public getComponentByType(address: Address, type: string): AddressComponent {
+        if(!type)
+            return null;
+
+        if (!address || !address.address_components || address.address_components.length == 0)
+            return null;
+
+        type = type.toLowerCase();
+
+        for (const comp of address.address_components) {
+            if(!comp.types || comp.types.length === 0)
+                continue;
+
+            if(comp.types.findIndex(x => x.toLowerCase() === type) > -1)
+                return comp;
+        }
+
+        return null;
+    }
+
   position(text: string) {
     Swal.fire({
       position: 'top-end',
@@ -203,9 +274,15 @@ this.selectedItems1=[];
       timer: 1500
     }); }
   onSubmit() {
-    const data = this.accountForm.getRawValue();
-    const send = new SendAcount(this.selectedItems[0].id, this.selectedSubItems[0].id,
-        data.name, data.address, data.email, data.phone);
+      let send: any;
+      const data = this.accountForm.getRawValue();
+     if (this.account.level0!==0){
+          send = new SendAcount(this.mainCategory.find(x => x.name === data.level0).id, this.selectedSubItems[0].id,
+             data.name, data.address, data.email, data.phone);
+     }else {
+          send = new SendAcount(this.selectedItems[0].id, this.selectedSubItems[0].id,
+             data.name, data.address, data.email, data.phone);
+     }
     this.accountSer.updateAccount(send, this.auth.token).subscribe(
         (result: Answer) => {
           if (result.status.code === 200) {

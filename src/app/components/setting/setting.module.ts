@@ -14,6 +14,13 @@ import { UpdateStafComponent } from './update-staf/update-staf.component';
 import {RouterModule} from "@angular/router";
 import {MatTabsModule} from "@angular/material/tabs";
 import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
+import {GooglePlaceModule} from "ngx-google-places-autocomplete";
+import {MatInputModule} from "@angular/material/input";
+import {MatGoogleMapsAutocompleteModule} from "@angular-material-extensions/google-maps-autocomplete";
+import {AgmCoreModule} from "@agm/core";
+import {ExtendedModule, FlexModule} from "@angular/flex-layout";
+import {MatOptionModule} from "@angular/material/core";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 
 
@@ -27,7 +34,15 @@ import {NgMultiSelectDropDownModule} from "ng-multiselect-dropdown";
         AngularMultiSelectModule,
         FormsModule,
         MatTabsModule,
-        NgMultiSelectDropDownModule.forRoot()
+        NgMultiSelectDropDownModule.forRoot(),
+        GooglePlaceModule,
+        MatInputModule,
+        MatGoogleMapsAutocompleteModule,
+        AgmCoreModule,
+        FlexModule,
+        ExtendedModule,
+        MatOptionModule,
+        MatAutocompleteModule
     ]
 })
 export class SettingModule { }

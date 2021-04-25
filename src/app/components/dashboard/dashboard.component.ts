@@ -117,6 +117,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.MIndicators = {sum: 0, new: 0, orders: 0};
 this.indicator.getMainIndividual(this.user.token).subscribe(
     (result: Answer) => {
       if (result.status.code === 200 )

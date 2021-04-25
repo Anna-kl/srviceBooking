@@ -26,6 +26,8 @@ import {NgbModule, NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
 import {CircleProgressOptions, NgCircleProgressModule} from "ng-circle-progress";
 import {CookieService} from "ngx-cookie-service";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {AgmCoreModule} from "@agm/core";
+import {MatGoogleMapsAutocompleteModule} from "@angular-material-extensions/google-maps-autocomplete";
 
 
 function HttpLoaderFactory() {
@@ -57,6 +59,11 @@ function HttpLoaderFactory() {
     UsersModule,
     HttpClientModule,
     NgbModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDqlZ-lc5o8cspsEpfzDrEsrJ5EBrjqYxk',
+      libraries: ['places']
+    }),
+    MatGoogleMapsAutocompleteModule,
   ],
   providers: [DataServices, CircleProgressOptions, CookieService  ],
   bootstrap: [AppComponent]

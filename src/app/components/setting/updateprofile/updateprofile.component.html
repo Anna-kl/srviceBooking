@@ -28,6 +28,7 @@
                                 >
 
                                 </angular2-multiselect>
+
                                 <form [formGroup]="accountForm" (ngSubmit)="onSubmit()" *ngIf="subflag&&auth.role==='owner'"
                                       class="needs-validation user-add" novalidate="">
                                     <h4>Заполните следующие поля</h4>
@@ -53,7 +54,16 @@
                                         <label for="validationCustom4" class="col-xl-3 col-md-4"><span>*</span>
                                             Адрес</label>
                                         <input class="form-control col-xl-8 col-md-7" id="validationCustom4"
-                                               type="text" required="" formControlName="address">
+                                               [matAutocomplete]="auto"             type="text" required="" formControlName="address" />
+
+                                            <mat-autocomplete #auto="matAutocomplete">
+                                                <mat-option *ngFor="let option of options" [value]="option">
+                                                    {{option}}
+                                                </mat-option>
+                                            </mat-autocomplete>
+
+<!--
+
                                     </div>
 
 
@@ -61,7 +71,8 @@
                                         <button class="btn btn-primary" type="submit">Сохранить</button>
                                     </div>
                                 </form>
-<!--                            <ng-multiselect-dropdown  [placeholder]="'Выберите услугу'"-->
+
+                          <ng-multiselect-dropdown  [placeholder]="'Выберите услугу'"-->
 <!--                                                      [data]="dropdownList"-->
 <!--                                                      [(ngModel)]="selectedItems1"-->
 <!--                                                      [settings]="dropdownSettings"-->
@@ -108,11 +119,13 @@
 <!--                                    </div>-->
 
 
-<!--                                    <div class="form-button">-->
-<!--                                        <button class="btn btn-primary" type="submit">Сохранить</button>-->
-<!--                                    </div>-->
-<!--                                </form>-->
-                                <!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+                                    <div class="form-button">
+                                        <button class="btn btn-primary" type="submit">Сохранить</button>
+                                    </div>
+                                    </div>
+                                </form>
+
+<!--                                                                </div>-->
 
                         </mat-tab>
                         <mat-tab label="Категории">
