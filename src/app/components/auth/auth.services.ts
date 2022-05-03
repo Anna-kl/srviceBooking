@@ -25,6 +25,20 @@ changepassword(email: string) {
         const  headers: HttpHeaders = new HttpHeaders();
         return this.http.post(this.url + 'token', data, {headers});
     }
+
+    checkCode(phone: string, code: string, id: string, role: string){
+        const data = {phone, code, id, role};
+        const  headers: HttpHeaders = new HttpHeaders();
+        return this.http.post(this.url + 'code', data, {headers});
+    }
+
+    checkCookie(id: string){
+        return this.http.get(this.url + id);
+    }
+
+    sendPhone(phone: string){
+        return this.http.get(`${this.url}code?phone=${phone}`);
+    }
     registration(email: string, password: string, role: string) {
         const data = {email, password, role}
         const  headers: HttpHeaders = new HttpHeaders();

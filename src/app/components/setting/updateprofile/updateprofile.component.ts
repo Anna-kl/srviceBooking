@@ -45,7 +45,7 @@ export class UpdateprofileComponent implements OnInit  {
   selectedSubItems: any;
   subflag = false;
   auth: SendAuth;
-  account: SendAcount;
+  account: SendAcount | undefined;
   private staffAccount: SendEmployee;
   dropdownList: any;
     public appearance = Appearance;
@@ -99,17 +99,10 @@ lastname: new FormControl(),
     );
 }
   ngOnInit() {
-
-
       this.zoom = 10;
       this.latitude = 52.520008;
       this.longitude = 13.404954;
 
-
-      // this.selectedItems1 = [
-      //     { item_id: 3, item_text: 'Pune' },
-      //     { item_id: 4, item_text: 'Navsari' }
-      // ];
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'id_item',
@@ -121,16 +114,9 @@ lastname: new FormControl(),
     };
     this.createStaffForm();
     this.dataservices.users.subscribe(result => {this.auth = result;
-    // if (this.auth.role === 'staff'){
-    //   this.staffForm = this.formBuilder.group(
-    //       { firstname: ''}
-    //   );account
-    // }
-                                                 this.accountSer.getAccount(this.auth.accountid, this.auth.token).subscribe(
+          this.accountSer.getAccount(this.auth.accountid, this.auth.token).subscribe(
               (result1: Answer) => {
                 if (result1.status.code === 200) {
-
-
                     this.account = result1.responce as SendAcount;
                     this.createAccountForm(this.account );
                     this.accountForm.get('address').valueChanges.subscribe(value => {
@@ -159,7 +145,8 @@ this.accountSer.getAddress(value).subscribe(
                                 id: item.id,
                                 itemName: item.name
                               };
-                            }); } else if (this.account.level1 !== 0) {
+                            });
+                          } else if (this.account.level1 !== 0) {
                             this.subflag = true;
                             this.accountForm.patchValue( {level0: this.mainCategory.find(x=>x.id === this.account.level0).name})
                             this.categorys.getSubCategory(1, this.account.level0).subscribe(
@@ -277,23 +264,31 @@ this.selectedItems1=[];
       let send: any;
       const data = this.accountForm.getRawValue();
      if (this.account.level0!==0){
-          send = new SendAcount(this.mainCategory.find(x => x.name === data.level0).id, this.selectedSubItems[0].id,
+          send = new SendAcount(this.mainCategory.find(x => x.name === data.level0).id, 0,
              data.name, data.address, data.email, data.phone);
+         this.accountSer.updateAccount(send, this.auth.token).subscribe(
+             (result: Answer) => {
+                 if (result.status.code === 200) {
+                     this.position('Изменения сохранены');
+                     this.router.navigate(['/settings/profile']);
+                 } else {
+                     this.noposition(result.status.message);
+                 }
+             });
      }else {
           send = new SendAcount(this.selectedItems[0].id, this.selectedSubItems[0].id,
              data.name, data.address, data.email, data.phone);
-     }
-    this.accountSer.updateAccount(send, this.auth.token).subscribe(
-        (result: Answer) => {
-          if (result.status.code === 200) {
-            this.position('Изменения сохранены');
-            this.router.navigate(['/settings/profile']);
-          } else {
-            this.noposition(result.status.message);
-          }
-        }
-    );
-  }
+         this.accountSer.addAccount(send, this.auth.token).subscribe(
+             (result: Answer) => {
+                 if (result.status.code === 200) {
+                     this.position('Изменения сохранены');
+                     this.router.navigate(['/settings/profile']);
+                 } else {
+                     this.noposition(result.status.message);
+                 }
+             });
+
+  }}
 
   SelectLevel() {
     console.log();

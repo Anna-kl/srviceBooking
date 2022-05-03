@@ -8,7 +8,7 @@
                 </div>
                 <div class="card-body tab2-card">
                     <mat-tab-group>
-                        <mat-tab label="Профиль">
+                        <mat-tab label="Профиль" *ngIf="account">
 
                                 <angular2-multiselect [data]="list" [(ngModel)]="selectedItems"
                                                       [settings]="dropdownSettings"
@@ -128,7 +128,7 @@
 <!--                                                                </div>-->
 
                         </mat-tab>
-                        <mat-tab label="Категории">
+                        <mat-tab label="Категории" *ngIf="account">
                             <div class="form-group row" *ngIf="this.account.level0!=0">
                                 <label for="validationCustom5" class="col-xl-3 col-md-4"><span>*</span>
                                     Категория</label>

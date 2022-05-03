@@ -38,8 +38,7 @@
         'background': 'none'
       }"
                 [ngClass]="cell.date"
-                gutterSize="0"
-        >
+                gutterSize="0">
             <button
                     class="dialogButton"
                     mat-raised-button
@@ -86,13 +85,13 @@ class="img-fluid img-90 rounded-circle blur-up lazyloaded"
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <div class="modal-body" *ngIf="addDay">
+    <div class="modal-body" *ngIf="addDay&&staff.length>0">
         <span>Чтобы добавить рабочий день выберите время работы и сотрудника</span>
         <form [formGroup]="TimeControl" (ngSubmit)="AddDays()" >
-            <select class="custom-select" (change)="changeCategory($event)" *ngIf="Category.length>0"
+            <select class="custom-select" (change)="changeCategory($event)"
                     formControlName="category" [value]="category">
 
-                <option *ngFor="let city of Category" >{{city.firstname}} {{city.lastname}}</option>
+                <option *ngFor="let city of staff" >{{city.firstname}} {{city.lastname}}</option>
             </select>
             <div class="form-group" >
                 <label>Время начала</label>

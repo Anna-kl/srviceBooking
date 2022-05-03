@@ -272,15 +272,16 @@
             <a href="/"><img src="/assets/images/logo.png" /></a>
         </div>
         <div class="other">
-            <b>Другие наши продукты</b>
+            <b>Выберите свою роль</b>
         </div>
         <!-- PROD1 -->
         <div class="prod">
             <div class="prod-img">
                 <img src="/assets/images/prod1.png" style="margin:10px;">
             </div>
-            <div style="padding: 20px 20px 20px 110px;">
-                <p class="prod-numb"><b>Продукт первый</b><br>
+            <div style="padding: 20px 20px 20px 110px;" (click)="ChangeRole('owner')"
+            [style.background]="role === 'owner'? 'green': 'none'">
+                <p class="prod-numb"><b>Вход для собственника</b><br>
                     <span style="color:#000;">Дополнительная информация</span>
                 </p>
             </div>
@@ -290,8 +291,9 @@
             <div class="prod-img">
                 <img src="/assets/images/prod2.png" style="margin:10px;">
             </div>
-            <div style="padding: 20px 20px 20px 110px;">
-                <p class="prod-numb"><b>Продукт второй</b><br>
+            <div style="padding: 20px 20px 20px 110px;" (click)="ChangeRole('staff')"
+                 [style.background]="role === 'staff'? 'green': 'none'">
+                <p class="prod-numb"><b>Вход для мастера</b><br>
                     <span style="color:#000;">Необходимая информация</span>
                 </p>
             </div>
@@ -321,18 +323,19 @@
             <span class="#">еще не с нами? <span class="green"><a [routerLink]="'/registration'">Зарегистрироваться</a></span></span>
 			<br><br>
 			<div class="form-group">
-				<input type="email" class="form-control" id="inputEmail" formControlName="userName" placeholder="Ваш логин или почта">
+				<input type="email" class="form-control" id="inputEmail" formControlName="userName" placeholder="+7(999)0000000">
 				<i class="fa fa-user"></i>
 			</div>
-			<div class="form-group help">
-				<input type="password" class="form-control" id="inputPassword" formControlName="password" placeholder="**********">
-					<i class="fa fa-lock"></i>	<br>
-				<div class="main-checkbox" style="">
-					<input type="checkbox" value="none" id="checkbox1" name="check"/>
-					<label for="checkbox1"></label>
-				</div>
-				<span class="text">Запомнить</span>
-				<span style="float:right;margin:5px;">Забыли пароль?</span>
+			<div class="form-group help" *ngIf="flagSms">
+				<input type="number" class="form-control" id="inputPassword" formControlName="password" placeholder="Введите код _ _ _ _">
+                <span class="txt-danger" *ngIf="errorTimeFlag">повторно можно запросить, через {{timeLeft}} </span>
+                <span class="txt-danger" *ngIf="errorCode">{{errorText}}</span>
+<!--				<div class="main-checkbox" style="">-->
+<!--					<input type="checkbox" value="none" id="checkbox1" name="check"/>-->
+<!--					<label for="checkbox1"></label>-->
+<!--				</div>-->
+<!--				<span class="text">Запомнить</span>-->
+<!--				<span style="float:right;margin:5px;">Забыли пароль?</span>-->
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-default"><b>ВХОД</b></button>

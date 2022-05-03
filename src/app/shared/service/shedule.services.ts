@@ -12,7 +12,7 @@ import {SendRecord} from "../class/services/SendServices";
 @Injectable()
 
 export  class SheduleServices {
-    private url =  environment.Uri + 'Shedules/';
+    private url =  environment.Uri + 'Schedules/';
     constructor(private  http: HttpClient) {
 
     }

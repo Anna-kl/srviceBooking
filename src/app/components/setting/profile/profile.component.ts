@@ -6,9 +6,8 @@ import {DataServices} from '../../../shared/service/data.services';
 import {AccountServices} from '../../../shared/service/accountservices';
 import {SendAuth} from '../../../shared/class/auth/SendAuth';
 import {FormBuilder, Validators} from '@angular/forms';
-import {EmployeeOwner} from "../../../shared/class/staff/EmployeeOwner";
-import {StaffServices} from "../../../shared/service/staff.services";
-import {SendEmployee} from "../../../shared/class/staff/SendEmployee";
+import {StaffServices} from '../../../shared/service/staff.services';
+import {SendEmployee} from '../../../shared/class/staff/SendEmployee';
 
 @Component({
   selector: 'app-profile',
@@ -33,7 +32,6 @@ export class ProfileComponent implements OnInit {
     { this.accountSer.getAccount(this.auth.accountid, this.auth.token).subscribe(
               (result1: Answer) => {
                 if (result1.status.code === 200) {
-
                   this.account = result1.responce as SendAcount; }
               }); } }
     );

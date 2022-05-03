@@ -14,7 +14,6 @@ constructor(firstname: string, lastname: string, middlename: string, phone: stri
     this.firstname = firstname;
     this.phone = phone;
     this.lastname = lastname;
-    this.phone = phone;
     this.id = id;
 }
 }

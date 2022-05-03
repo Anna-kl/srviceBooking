@@ -19,7 +19,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form class="needs-validation" [formGroup]="ServicesControl" (ngSubmit)="Saveservices()">
+                                <form class="needs-validation" [formGroup]="ServicesControl" (ngSubmit)="SaveServices()">
                                     <div class="form">
                                         <div class="form-group">
                                             <label for="validationCustom01" class="mb-1">Наименование :</label>
@@ -39,15 +39,16 @@
                                         <div class="form-group mb-0">
                                             <label for="validationCustom04" class="mb-1">Описание:</label>
                                             <textarea rows="3" cols="20" class="form-control" id="validationCustom04" type="text"
-                                                      formControlName="descride"></textarea>
+                                                      formControlName="describe"></textarea>
                                         </div>
                                         <label class="mb-1" *ngIf="add">Выберите категорию:</label>
                                         <label class="mb-1" for="validationCustom031" *ngIf="!add">Категория:</label>
                                         <input class="form-control" id="validationCustom031" type="text"
                                                formControlName="category"  *ngIf="!add">
+
                                         <select class="custom-select" (change)="changeCategory($event)" *ngIf="add"
-                                                formControlName="category" [value]="category">
-                                            <option value="" disabled>Выберите категорию</option>
+                                                formControlName="category" [value]="category"  >
+<!--                                            <option value="" disabled>Выберите категорию</option>-->
                                             <option *ngFor="let city of Category" >{{city.name}}</option>
                                         </select>
                                         <label class="mb-1" *ngIf="add">Выберите подкатегорию:</label>
@@ -55,10 +56,21 @@
                                         <input class="form-control" id="validationCustom032" type="text"
                                                formControlName="subcategory"  *ngIf="!add">
                                         <select class="custom-select" (change)="changeSubCategory($event)" *ngIf="add"
-                                                formControlName="category" [value]="subcategory" >
-                                            <option value="" disabled>Выберите подкатегорию</option>
-                                            <option *ngFor="let city of SubCategory" [(ngModel)]="subcategory">{{city.name}}</option>
+                                                formControlName="subcategory" [value]="subcategory" >
+<!--                                            <option value="" disabled>Выберите подкатегорию</option>-->
+                                            <option *ngFor="let city of SubCategory">{{city.name}}</option>
                                         </select>
+
+                                        <label class="mb-1" *ngIf="add">Выберите категорию:</label>
+                                        <label class="mb-1" *ngIf="!add" for="validationCustom031">Категория:</label>
+                                        <input class="form-control" id="validationCustom033" type="text"
+                                               formControlName="categoryLevel2"  *ngIf="!add">
+                                        <select class="custom-select" (change)="changeCategoryLevel2($event)" *ngIf="add"
+                                                formControlName="categoryLevel2" [value]="categoryLevel2" >
+                                            <!--                                            <option value="" disabled>Выберите подкатегорию</option>-->
+                                            <option *ngFor="let city of categoriesLevel2">{{city.name}}</option>
+                                        </select>
+
                                         <label class="mb-1" *ngIf="add">Добавить фото</label>
                                         <label class="mb-1" *ngIf="!add">Редактировать фото</label>
                                         <input type="file" class="form-control" id="files" multiple *ngIf="add"

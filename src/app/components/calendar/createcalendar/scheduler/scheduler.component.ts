@@ -37,16 +37,20 @@ export class SchedulerComponent implements AfterViewInit {
   calendar: DayPilotCalendarComponent;
   events: DayPilot.EventData[] = [];
   dttm: string;
-     resources = [];
-Send: SendRecord;
-     form = [];
+  resources = [];
+  Send: SendRecord;
+  form = [];
+  private user: any;
+  private columns: SendBusiness[];
+  private modalReference: any;
+  private closeResult: string;
   config: DayPilot.CalendarConfig = {
-cellDuration: 15,
-    viewType: 'Resources',
-    headerLevels: 1,
-    showCurrentTime: false,
-    onTimeRangeSelected: args => {
-    this.serservices.getServicesId(this.user.token, args.resource).subscribe(
+  cellDuration: 15,
+  viewType: 'Resources',
+  headerLevels: 1,
+  showCurrentTime: false,
+  onTimeRangeSelected: args => {
+  this.serservices.getServicesId(this.user.token, args.resource).subscribe(
         (result: Answer) => {
             if (result.status.code === 200){
                 const temp = result.responce as Service[];
@@ -60,15 +64,22 @@ cellDuration: 15,
                     {name: 'Выберите услугу', id: 'resource', options: this.resources},
                 )
                 const data = {
-  text: args.resource,
-                    token: this.user.token,
-  start: new Date(args.start).toTimeString(),
-  resource: 'B',
-                    send: this.Send
-};
+                      text: args.resource,
+                      token: this.user.token,
+                      start: new Date(args.start).toTimeString(),
+                      resource: 'B',
+                      send: this.Send
+                    };
                 this.scheduler.getDays(this.user.token, this.dttm, args.resource).subscribe(
                     (res: Answer) =>{
                         const daysof=res.responce as DayOfWeek;
+                        let d=data.start.split(' ');
+                        d=d[0].split(':');
+                        const a = new Date(new Date(new Date(daysof.dttmStart).setHours(Number(d[0]))).setMinutes(Number(d[1])));
+
+                        if (a < new Date(daysof.dttmStart)){
+                            return;
+                        }
                         const serv=this.scheduler;
                         DayPilot.Modal.form(this.form, data).then(function(modal){
                             //   const dp = this.calendar.control;
@@ -114,15 +125,6 @@ cellDuration: 15,
   private SendData(){
       this.scheduler.AddRecordBis(this.user.token, this.Send);
   }
-  private user: any;
-  private columns: SendBusiness[];
-  private modalReference: any;
-  private closeResult: string;
-  Test($event){
-    console.log();
-  }
-
-
   constructor(private ds: DataService, private dataservices: DataServices,  private route: ActivatedRoute, private scheduler: SheduleServices,
               private cookieService: CookieService, private serservices: ServicesServices) {
     this.route.params.subscribe(params => {
@@ -135,41 +137,67 @@ cellDuration: 15,
         } else {
           this.user = result;
         }
-
       });
-    } );
+    });
 
   }
   ngAfterViewInit(): void {
 
-    this.ds.getResources().subscribe(result =>{
+    this.ds.getResources().subscribe(result => {
         this.config.columns = [];
-    this.scheduler.getBusiness(this.user.token, this.dttm).subscribe(
-        (resultsc: Answer) => {
-          if (resultsc.status.code === 200) {
-             let data = resultsc.responce as SendBusiness[];
-            for (const a of data){
-                if (!this.config.columns.find(x=>x.id===a.account_id.toString())) {
-                    this.config.columns.push({name: a.resource.toString(), id: a.account_id.toString()})
+        this.scheduler.getBusiness(this.user.token, this.dttm).subscribe(
+            (resultsc: Answer) => {
+                if (resultsc.status.code === 200) {
+                    let data = resultsc.responce as SendBusiness[];
+                    //    data.push({
+                    //
+                    // });
 
+                    for (const a of data) {
+                        if (!this.config.columns.find(x => x.id === a.account_id.toString())) {
+                            this.config.columns.push({name: a.resource.toString(), id: a.account_id.toString()})
+
+                        }
+                        a.start = new DayPilot.Date(a.start.toString());
+                        a.resource = a.account_id.toString();
+                        a.end = new DayPilot.Date(a.end.toString());
+                    }
+                    let res_s = [];
+                    data.map(s => {
+                        if (!res_s.find(x => x === s['resource']))
+                            res_s.push(s['resource']);
+                    })
+                    for (let a of res_s) {
+                        this.scheduler.getDays(this.user.token, this.dttm, a).subscribe(
+                            (res: Answer) => {
+                                const daysof = res.responce as DayOfWeek;
+                                data.push({
+                                    account_id: 0,
+                                    html: '',
+                                    id: -1, services_name: '', start: new DayPilot.Date('2021-05-05T00:00:00'),
+                                    end: new DayPilot.Date(daysof.dttmStart), resource: a,
+                                    backColor: '#cccccc'
+                                });
+                                data.push({
+                                    account_id: 0,
+                                    html: '',
+                                    id: -1, services_name: '', start: new DayPilot.Date(daysof.dttmEnd),
+                                    end: new DayPilot.Date('2021-05-05T23:59:00'), resource: a,
+                                    backColor: '#cccccc'
+                                });
+                            });
+                    }
+                    // this.config.columns.pop();
+                    const from = this.calendar.control.visibleStart();
+                    const to = this.calendar.control.visibleEnd();
+                    this.ds.getEvents(from, to).subscribe(resulttemp => {
+                        data = data.filter(x => x.id !== 0);
+                        this.events = data as unknown as DayPilot.EventData[];
+
+                    });
                 }
-                a.start = new DayPilot.Date(a.start.toString());
-                a.resource = a.account_id.toString();
-                a.end = new DayPilot.Date(a.end.toString());
-            }
-            // this.config.columns.pop();
-            const from = this.calendar.control.visibleStart();
-            const to = this.calendar.control.visibleEnd();
-            this.ds.getEvents(from, to).subscribe(resulttemp => {
-                data = data.filter(x=>x.id!==0);
-              this.events = data as unknown as DayPilot.EventData[];
-
             });
-          }
-        });
-        });
-
-
+    });
     }
 
 

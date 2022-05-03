@@ -2,23 +2,22 @@
 
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import {SheduleServices} from "../../../shared/service/shedule.services";
-import {DataService} from "angular2-multiselect-dropdown/lib/multiselect.service";
-import {DataServices} from "../../../shared/service/data.services";
-import {CookieService} from "ngx-cookie-service";
-import {SendAuth} from "../../../shared/class/auth/SendAuth";
-import {Answer} from "../../../shared/class/helpers/Response";
-import {DayOfWeek} from "../../../shared/class/Shedule/dateOfweek";
-import {SendCalendar, StaffData} from "../../../shared/class/Shedule/SendCalendar";
-import {StaffServices} from "../../../shared/service/staff.services";
-import {DomSanitizer} from "@angular/platform-browser";
-import {EmployeeOwner} from "../../../shared/class/staff/EmployeeOwner";
-import {ClientServices} from "../../../shared/service/client.services";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {FormBuilder} from "@angular/forms";
-import {DaysOf} from "../../../shared/class/Shedule/DaysOf";
-import Swal from "sweetalert2";
-import {Router} from "@angular/router";
+import {SheduleServices} from '../../../shared/service/shedule.services';
+import {DataService} from 'angular2-multiselect-dropdown/lib/multiselect.service';
+import {DataServices} from '../../../shared/service/data.services';
+import {CookieService} from 'ngx-cookie-service';
+import {SendAuth} from '../../../shared/class/auth/SendAuth';
+import {Answer} from '../../../shared/class/helpers/Response';
+import {DayOfWeek} from '../../../shared/class/Shedule/dateOfweek';
+import {SendCalendar, StaffData} from '../../../shared/class/Shedule/SendCalendar';
+import {StaffServices} from '../../../shared/service/staff.services';
+import {DomSanitizer} from '@angular/platform-browser';
+import {EmployeeOwner} from '../../../shared/class/staff/EmployeeOwner';
+import {ClientServices} from '../../../shared/service/client.services';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {FormBuilder} from '@angular/forms';
+import Swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-createcalendar',
@@ -48,7 +47,7 @@ export class CreatecalendarComponent implements OnInit {
   visibleYear: string;
  corner: any[];
   prevYear: number;
-  Category: EmployeeOwner[];
+  staff: EmployeeOwner[];
   nextYear: number;
   staffdata: any;
   months = [
@@ -77,26 +76,27 @@ export class CreatecalendarComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private formBuilder: FormBuilder, private schedule: SheduleServices, private dataservices: DataServices,
               private cookieService: CookieService,private sheduleservices: SheduleServices,  private router: Router,
-              private staff: StaffServices,  private modalService: NgbModal, private sanitizer: DomSanitizer, private clientser: ClientServices) {
+              private staffServices: StaffServices,
+              private modalService: NgbModal,
+              private sanitizer: DomSanitizer,
+              private clientser: ClientServices) {
   }
 
   ngOnInit(): void {
     this.corner = ['left-top', 'rigth-top'];
     this.events = [];
-      this.dataservices.users.subscribe(result => {
-        if (result === undefined || result === null) {
-          this.user = JSON.parse(this.cookieService.get('user'));
-          this.dataservices.SendAccount(this.user);
-        } else {
-          this.user = result;
-        }
-       this.LoadCalendar(((new Date()).getMonth() + 1).toString(),(new Date()).getFullYear().toString());
-        this.nextmonth = this.MONTHS[(new Date()).getMonth() + 1];
-        this.prevmonth = this.MONTHS[(new Date()).getMonth() - 1];
-        this.visibleMonth = this.MONTHS[(new Date()).getMonth()]
-        console.log(this.nextMonth);
-  });
-  }
+    this.dataservices.users.subscribe(result => {
+      if (result === undefined || result === null) {
+        this.user = JSON.parse(this.cookieService.get('user'));
+        this.dataservices.SendAccount(this.user);
+      } else {
+        this.user = result;
+      }
+      this.resetCalendar();
+    });
+    this.staff = [];
+    }
+
 LoadCalendar(month: string, year: string){
   this.schedule.getDaysOfWeek(this.user.token, month,
     year).subscribe(
@@ -104,12 +104,12 @@ LoadCalendar(month: string, year: string){
         if (result1.status.code === 200) {
           this.dateOf = result1.responce as SendCalendar[];
           for(const t of this.dateOf){
-            this.staff.getUserpic(this.user.token, t.id_staff).subscribe(
+            this.staffServices.getUserpic(this.user.token, t.id_staff).subscribe(
                 avatar=>{
                   const unsafeImageUrl = URL.createObjectURL(avatar);
                   t.avatar = this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl);
                   const listaa = this.cells.filter(x=>x.corner.find(y=>y === t.id_staff));
-                  for (let b of listaa) {
+                  for (const b of listaa) {
                     b.icon.push('url(\'' + unsafeImageUrl + '\')');
                   }
                 }
@@ -162,7 +162,7 @@ LoadCalendar(month: string, year: string){
     this.visibleMonth = this.MONTHS[this.currentMonth];
     const month = (this.currentMonth+1).toString().length === 1? '0'+ (this.currentMonth+1).toString(): (this.currentMonth+1).toString();
     this.LoadCalendar(month, this.currentYear.toString());
-    //this.drawCalendar(this.currentMonth, this.currentYear);
+    // this.drawCalendar(this.currentMonth, this.currentYear);
   }
 
   daysInMonth(iMonth, iYear) {
@@ -347,16 +347,16 @@ LoadCalendar(month: string, year: string){
    this.clientser.getStaffs(this.user.token, new Date(cell.date)).subscribe(
        (result: Answer) => {
          if (result.status.code === 200){
-           this.Category = result.responce as EmployeeOwner[];
-           if (this.Category.length>0)
-           this.TimeControl.patchValue({category: this.Category[0]});
+           this.staff = [];
+           this.staff.push(new EmployeeOwner(this.user.name, 'Нет сотрудника', null, null, null, null, -1));
+           this.staff.push(...result.responce as EmployeeOwner[]);
+           if (this.staff.length > 0)
+           this.TimeControl.patchValue({category: this.staff[0]});
          }
-       }
-   )
-  }
+       });
+   }
 
   AddDays() {
-
     const data = this.TimeControl.getRawValue();
     const start = new Date(data.days);
     let a2 = parseInt(data.start.split(':')[0], 10);
@@ -376,12 +376,19 @@ LoadCalendar(month: string, year: string){
           if (result.status.code === 201) {
             this.position('День добавлен');
             this.modalReference.close();
-           // this.UpdateDate();
+            this.resetCalendar();
           }
         }, error1 => console.log(error1)
     );
-console.log();
   }
+
+  resetCalendar(){
+    this.LoadCalendar(((new Date()).getMonth() + 1).toString(),(new Date()).getFullYear().toString());
+    this.nextmonth = this.MONTHS[(new Date()).getMonth() + 1];
+    this.prevmonth = this.MONTHS[(new Date()).getMonth() - 1];
+    this.visibleMonth = this.MONTHS[(new Date()).getMonth()]
+  }
+
   position(text: string) {
     Swal.fire({
       position: 'top-end',
@@ -403,7 +410,7 @@ console.log();
   }
 
   private getDismissReason(reason) {
-    
+
   }
 
   GoOver() {

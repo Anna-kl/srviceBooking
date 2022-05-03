@@ -8,4 +8,5 @@ export interface SendBusiness {
     resource: string;
     html: string;
     account_id: number;
+    backColor: string;
 }

@@ -22,30 +22,26 @@ export class ListUserComponent implements OnInit {
   constructor(private dataservices: DataServices, private sraffservice: StaffServices,
               private sanitizer: DomSanitizer, private router: Router) {}
   private user: SendAuth;
-    public user_list: StaffSend[];
-public testdata: StaffSend[];
+  public user_list: StaffSend[];
+  public testdata: StaffSend[];
   public settings = {
       selectMode: 'single',
       delete: {
           confirmDelete: true,
-      },
-    columns: {
-        avatar: {
-            type: 'html',
-            title: 'Аватар'
         },
-      name: {
-        title: 'name',
-      },
-      email: {
-        title: 'Email'
-      },
-      lastvisit: {
-        title: 'Last Login'
-      },
-      role: {
-        title: 'Role'
-      },
+      columns: {
+          name: {
+            title: 'name',
+          },
+          email: {
+            title: 'Email'
+          },
+          lastvisit: {
+            title: 'Last Login'
+          },
+          role: {
+            title: 'Role'
+          },
     },
   };
               public LoadData(): void {
@@ -55,21 +51,22 @@ public testdata: StaffSend[];
                       this.sraffservice.getAccount(this.user.token).subscribe(
                           (result1: Answer) => {
                               this.user_list = result1.responce as StaffSend[];
-                              this.user_list.forEach(a => {
-                                  this.sraffservice.getUserpic(this.user.token, a.id).subscribe(
-                                      result2 => {
-                                          try {
-                                              const unsafeImageUrl = URL.createObjectURL(result2);
-                                              this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl)
-                                              a.avatar = "<img src='" + unsafeImageUrl + "' class='imgTable'>"
-                                              this.source = new LocalDataSource(this.user_list);
-                                          } catch (e) {
-                                              a.avatar = "<img src='assets/images/user.png' class='imgTable'>"
-                                              this.source = new LocalDataSource(this.user_list);
-                                          }
-                                      }
-                                  );
-                              });
+                              this.source = new LocalDataSource(this.user_list);
+                              // this.user_list.forEach(a => {
+                              //     this.sraffservice.getUserpic(this.user.token, a.id).subscribe(
+                              //         result2 => {
+                              //             try {
+                              //                 const unsafeImageUrl = URL.createObjectURL(result2);
+                              //                 const url_image = this.sanitizer.bypassSecurityTrustUrl(unsafeImageUrl)
+                              //
+                              //                 this.source = new LocalDataSource(this.user_list);
+                              //             } catch (e) {
+                              //                 a.avatar = "<img src='assets/images/user.png' class='imgTable'>"
+                              //                 this.source = new LocalDataSource(this.user_list);
+                              //             }
+                              //         }
+                              //     );
+                              // });
                              // create the source
                               //  this.user_list[0].avatar = "<img src='assets/images/dashboard/user5.jpg' class='imgTable'>";
                               });

@@ -46,9 +46,14 @@ export  class AccountServices {
         headers = headers.append('Authorization', 'Bearer ' + token);
         return this.http.get(this.urlaccount + id.toString(), {headers } );
     }
-    updateAccount(send: SendAcount, token: string) {
+    addAccount(send: SendAcount, token: string) {
         let  headers: HttpHeaders = new HttpHeaders();
         headers = headers.append('Authorization', 'Bearer ' + token);
         return this.http.post(this.urlaccount, send, {headers} );
+    }
+    updateAccount(send: SendAcount, token: string) {
+        let  headers: HttpHeaders = new HttpHeaders();
+        headers = headers.append('Authorization', 'Bearer ' + token);
+        return this.http.put(this.urlaccount+send.level0, send, {headers} );
     }
 }

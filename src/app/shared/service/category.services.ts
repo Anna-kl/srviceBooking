@@ -17,6 +17,13 @@ export  class CategoryServices {
         const  headers: HttpHeaders = new HttpHeaders();
         return this.http.get(this.url);
     }
+
+    getOwnerCategories(token: string, level: number, parent: number) {
+        let  headers: HttpHeaders = new HttpHeaders();
+        headers = headers.append('Authorization', 'Bearer ' + token);
+        return this.http.get(`${this.url}owner-category?level=${level}&parent=${parent}`, {headers});
+    }
+
     getSubCategory(level: number, parent: number) {
         const  headers: HttpHeaders = new HttpHeaders();
         return this.http.get(this.url + 'Subcategory?level=' + level + '&parent=' + parent, {headers});
@@ -26,7 +33,7 @@ export  class CategoryServices {
         headers = headers.append('Authorization', 'Bearer ' + token);
         return this.http.get(this.url + 'bissness', {headers});
     }
-    getCategoriesservices(token: string) {
+    getCategoriesServices(token: string) {
         let  headers: HttpHeaders = new HttpHeaders();
         headers = headers.append('Authorization', 'Bearer ' + token);
         return this.http.get(this.url + 'services', {headers});

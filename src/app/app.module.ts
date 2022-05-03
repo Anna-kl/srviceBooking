@@ -28,6 +28,7 @@ import {CookieService} from "ngx-cookie-service";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {AgmCoreModule} from "@agm/core";
 import {MatGoogleMapsAutocompleteModule} from "@angular-material-extensions/google-maps-autocomplete";
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 
 function HttpLoaderFactory() {
@@ -65,7 +66,7 @@ function HttpLoaderFactory() {
     }),
     MatGoogleMapsAutocompleteModule,
   ],
-  providers: [DataServices, CircleProgressOptions, CookieService  ],
+  providers: [DataServices, CircleProgressOptions, CookieService , {provide: LocationStrategy, useClass: HashLocationStrategy} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
